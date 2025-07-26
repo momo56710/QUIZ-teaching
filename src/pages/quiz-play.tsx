@@ -63,7 +63,7 @@ export default function QuizPlay() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isRedirecting] = useState(false);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [maxPoints, setMaxPoints] = useState(0);
 

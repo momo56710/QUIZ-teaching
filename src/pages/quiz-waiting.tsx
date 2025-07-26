@@ -19,13 +19,6 @@ import 'antd/dist/reset.css';
 
 const { Title, Text } = Typography;
 
-interface ActiveUser {
-  uid: string;
-  displayName: string;
-  email: string;
-  photoURL?: string;
-  joinedAt: number;
-}
 
 interface WaitlistUser {
   uid: string;
