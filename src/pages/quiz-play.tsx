@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Card, Button, Typography, Space, Radio, Progress } from 'antd';
+import { Card, Button, Typography, Space, Radio, Progress, Divider } from 'antd';
 import { 
   ClockCircleOutlined, 
   TrophyOutlined, 
@@ -48,11 +48,17 @@ interface QuizSession {
   isFinished?: boolean;
 }
 
+const LANG_LABELS: Record<'en' | 'fr' | 'ar', string> = {
+  en: 'English',
+  fr: 'Français',
+  ar: 'العربية'
+};
+
 export default function QuizPlay() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [currentQuiz, setCurrentQuiz] = useState<QuizSession | null>(null);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1); // Use question numbers (1, 2, 3...)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [selectedPoints, setSelectedPoints] = useState<number | null>(null);
   const [usedPoints, setUsedPoints] = useState<number[]>([]);
@@ -66,6 +72,7 @@ export default function QuizPlay() {
   const [isRedirecting] = useState(false);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [maxPoints, setMaxPoints] = useState(0);
+  const [stateRestored, setStateRestored] = useState(false);
 
   // Simplified quiz listener
   useEffect(() => {
@@ -80,11 +87,6 @@ export default function QuizPlay() {
       }
 
       setCurrentQuiz(quizData);
-      
-      // Set question index (currentQuestion 1 = index 0)
-      if (quizData.currentQuestion >= 1) {
-        setCurrentQuestionIndex(quizData.currentQuestion - 1);
-      }
       
       // Get dynamic total questions and max points
       try {
@@ -106,7 +108,7 @@ export default function QuizPlay() {
 
   // Simplified navigation logic
   useEffect(() => {
-    if (isRedirecting || loading) return;
+    if (isRedirecting || loading || !stateRestored) return;
 
     if (!currentQuiz) {
       navigate('/quiz/waiting');
@@ -138,7 +140,12 @@ export default function QuizPlay() {
       navigate('/quiz/waiting');
       return;
     }
-  }, [currentQuiz, user, loading, isRedirecting, navigate]);
+
+    // Don't navigate away if user is in the middle of an answer or results
+    if (showAnswer || showResults) {
+      return;
+    }
+  }, [currentQuiz, user, loading, isRedirecting, navigate, showAnswer, showResults]);
 
   // Timer countdown
   useEffect(() => {
@@ -150,6 +157,16 @@ export default function QuizPlay() {
 
     return () => clearTimeout(timer);
   }, [timeLeft, currentQuiz, showAnswer, showResults]);
+
+  // Initialize timer when question changes
+  useEffect(() => {
+    if (!currentQuiz || showAnswer || showResults) return;
+    
+    // Reset timer when question changes (but not during state restoration)
+    if (!showAnswer && stateRestored) {
+      setTimeLeft(20);
+    }
+  }, [currentQuestionNumber, currentQuiz, showAnswer, showResults, stateRestored]);
 
   // Handle timeout
   useEffect(() => {
@@ -177,23 +194,119 @@ export default function QuizPlay() {
     return () => unsubscribe();
   }, [currentQuiz?.id]);
 
+  // Restore user state on page refresh
+  useEffect(() => {
+    if (!currentQuiz?.id || !user?.uid) return;
+
+    const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
+    const unsubscribe = onValue(playerScoreRef, (snapshot) => {
+      const playerData = snapshot.val();
+      
+      if (playerData) {
+        // Restore user's progress
+        setCurrentScore(playerData.score || 0);
+        setAnswers(playerData.answers || []);
+        setUsedPoints(playerData.answers?.map((ans: QuizAnswer) => ans.selectedPoints) || []);
+        
+        // Check if user has finished the quiz
+        if (playerData.isFinished) {
+          setShowResults(true);
+          setStateRestored(true);
+          return;
+        }
+        
+        // Restore current question number
+        const userCurrentQuestion = playerData.currentQuestion || 1;
+        setCurrentQuestionNumber(userCurrentQuestion);
+        
+        // Reset timer for the current question
+        setTimeLeft(20);
+        
+        // If user is on a question that should show answer, restore that state
+        if (playerData.answers && playerData.answers.length > 0) {
+          const lastAnswer = playerData.answers[playerData.answers.length - 1];
+          
+          // Check if we should show answer state
+          // If the last answer is for the current question, show the answer
+          if (lastAnswer.questionId === userCurrentQuestion) {
+            setShowAnswer(true);
+          }
+        }
+        
+        // Reset selected answer and points for current question
+        setSelectedAnswer(null);
+        setSelectedPoints(null);
+        
+        setStateRestored(true);
+      } else {
+        // No existing data, user is starting fresh - start from quiz's current question
+        const quizCurrentQuestion = currentQuiz.currentQuestion || 1;
+        setCurrentQuestionNumber(quizCurrentQuestion);
+        setTimeLeft(20);
+        setStateRestored(true);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [currentQuiz?.id, user?.uid, currentQuiz?.currentQuestion]);
+
+  // Fallback: Set stateRestored to true if no quiz data after a delay
+  useEffect(() => {
+    if (!currentQuiz?.id || !user?.uid) {
+      // If no quiz or user, set stateRestored to true after a short delay
+      const timer = setTimeout(() => {
+        setStateRestored(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentQuiz?.id, user?.uid]);
+
+  // Additional fallback: Set stateRestored to true after a maximum delay
+  useEffect(() => {
+    const maxDelayTimer = setTimeout(() => {
+      setStateRestored(true);
+    }, 3000); // 3 seconds maximum wait time
+
+    return () => clearTimeout(maxDelayTimer);
+  }, []);
+
+  // Debug: Log state changes for troubleshooting
+  useEffect(() => {
+    if (stateRestored && currentQuiz && user) {
+      console.log('Quiz State:', {
+        currentQuestionNumber,
+        totalQuestions,
+        showAnswer,
+        showResults,
+        answersCount: answers.length,
+        lastAnswerId: answers.length > 0 ? answers[answers.length - 1]?.questionId : null
+      });
+    }
+  }, [stateRestored, currentQuestionNumber, totalQuestions, showAnswer, showResults, answers.length, currentQuiz, user]);
+
   const handleSubmitAnswer = useCallback(async () => {
     if (!user || selectedAnswer === null || !selectedPoints || !currentQuiz) return;
 
-    const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionIndex + 1);
+    const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionNumber);
     if (!currentQuestion) return;
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
     const timeSpent = 20 - timeLeft;
 
     const answer: QuizAnswer = {
-      questionId: currentQuestion.id,
+      questionId: currentQuestionNumber, // Use question number directly
       selectedAnswer,
       selectedPoints,
       isCorrect,
       timeSpent,
       timestamp: Date.now()
     };
+
+    console.log('Submitting answer:', {
+      questionId: answer.questionId,
+      currentQuestionNumber,
+      stayingOnSameQuestion: true
+    });
 
     const newAnswers = [...answers, answer];
     setAnswers(newAnswers);
@@ -209,52 +322,25 @@ export default function QuizPlay() {
       email: user.email,
       photoURL: user.photoURL,
       score: newScore,
-      currentQuestion: currentQuestionIndex + 2,
+      currentQuestion: currentQuestionNumber, // Keep same question number
       totalQuestions: totalQuestions,
       answers: newAnswers
     });
 
     setShowAnswer(true);
-    
-    setTimeout(async () => {
-      setShowAnswer(false);
-      
-      if (currentQuestionIndex < totalQuestions - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null);
-        setSelectedPoints(null);
-        setTimeLeft(20);
-      } else {
-        const quizHistoryRef = ref(database, `quizHistory/${user.uid}/${currentQuiz.id}`);
-        set(quizHistoryRef, {
-          quizId: currentQuiz.id,
-          language: currentQuiz.language,
-          score: newScore,
-          totalQuestions: totalQuestions,
-          completedAt: Date.now(),
-          answers: newAnswers
-        });
-
-        await update(playerScoreRef, {
-          isFinished: true
-        });
-        
-        setShowResults(true);
-      }
-    }, 3000);
-  }, [user, selectedAnswer, selectedPoints, currentQuiz, currentQuestionIndex, timeLeft, answers, usedPoints, totalQuestions]);
+  }, [user, selectedAnswer, selectedPoints, currentQuiz, currentQuestionNumber, timeLeft, answers, usedPoints, totalQuestions]);
 
   const handleTimeout = useCallback(async () => {
     if (!user || !currentQuiz) return;
 
-    const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionIndex + 1);
+    const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionNumber);
     if (!currentQuestion) return;
 
     const availablePoints = Array.from({ length: maxPoints }, (_, i) => i + 1).filter(p => !usedPoints.includes(p));
     const minPoints = availablePoints.length > 0 ? Math.min(...availablePoints) : 1;
 
     const answer: QuizAnswer = {
-      questionId: currentQuestion.id,
+      questionId: currentQuestionNumber, // Use question number directly
       selectedAnswer: selectedAnswer || 0,
       selectedPoints: minPoints,
       isCorrect: false,
@@ -276,40 +362,13 @@ export default function QuizPlay() {
       email: user.email,
       photoURL: user.photoURL,
       score: newScore,
-      currentQuestion: currentQuestionIndex + 2,
+      currentQuestion: currentQuestionNumber, // Keep same question number
       totalQuestions: totalQuestions,
       answers: newAnswers
     });
 
     setShowAnswer(true);
-    
-    setTimeout(async () => {
-      setShowAnswer(false);
-      
-      if (currentQuestionIndex < totalQuestions - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null);
-        setSelectedPoints(null);
-        setTimeLeft(20);
-      } else {
-        const quizHistoryRef = ref(database, `quizHistory/${user.uid}/${currentQuiz.id}`);
-        set(quizHistoryRef, {
-          quizId: currentQuiz.id,
-          language: currentQuiz.language,
-          score: newScore,
-          totalQuestions: totalQuestions,
-          completedAt: Date.now(),
-          answers: newAnswers
-        });
-
-        await update(playerScoreRef, {
-          isFinished: true
-        });
-        
-        setShowResults(true);
-      }
-    }, 3000);
-  }, [user, currentQuiz, currentQuestionIndex, selectedAnswer, answers, usedPoints, maxPoints, totalQuestions]);
+  }, [user, currentQuiz, currentQuestionNumber, selectedAnswer, answers, usedPoints, maxPoints, totalQuestions]);
 
   const handlePointSelection = useCallback((points: number) => {
     if (!usedPoints.includes(points)) {
@@ -321,17 +380,48 @@ export default function QuizPlay() {
     return Array.from({ length: maxPoints }, (_, i) => i + 1).filter(p => !usedPoints.includes(p));
   }, [usedPoints, maxPoints]);
 
-  const getLanguageName = useCallback((lang: string) => {
-    switch (lang) {
-      case 'en': return 'English';
-      case 'fr': return 'Français';
-      case 'ar': return 'العربية';
-      default: return lang;
+  const handleNextQuestion = useCallback(async () => {
+    if (!user || !currentQuiz) return;
+
+    if (currentQuestionNumber < totalQuestions) {
+      const nextQuestionNumber = currentQuestionNumber + 1;
+      
+      // Update local state
+      setCurrentQuestionNumber(nextQuestionNumber);
+      setSelectedAnswer(null);
+      setSelectedPoints(null);
+      setTimeLeft(20);
+      setShowAnswer(false);
+      
+      // Update user's current question in Firebase
+      const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
+      await update(playerScoreRef, {
+        currentQuestion: nextQuestionNumber
+      });
+    } else {
+      // Quiz completed
+      const quizHistoryRef = ref(database, `quizHistory/${user.uid}/${currentQuiz.id}`);
+      set(quizHistoryRef, {
+        quizId: currentQuiz.id,
+        language: currentQuiz.language,
+        score: currentScore,
+        totalQuestions: totalQuestions,
+        completedAt: Date.now(),
+        answers: answers
+      });
+
+      const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
+      await update(playerScoreRef, {
+        isFinished: true
+      });
+      
+      setShowAnswer(false);
+      setShowResults(true);
     }
-  }, []);
+  }, [user, currentQuiz, currentQuestionNumber, totalQuestions, currentScore, answers]);
 
   // Loading state
-  if (loading) {
+  if (loading || !stateRestored) {
     return (
       <div style={{ 
         display: 'flex', 
@@ -395,7 +485,7 @@ export default function QuizPlay() {
     );
   }
 
-  const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionIndex + 1);
+  const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionNumber);
   if (!currentQuestion) {
     return (
       <div style={{ 
@@ -417,7 +507,7 @@ export default function QuizPlay() {
     );
   }
 
-  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+  const progress = (currentQuestionNumber / totalQuestions) * 100;
 
   // Show answer display
   if (showAnswer) {
@@ -426,7 +516,10 @@ export default function QuizPlay() {
     const isTimeout = lastAnswer?.timeSpent === 20 && !isCorrect;
     const correctAnswerText = currentQuestion.options[currentQuestion.correctAnswer];
     const selectedAnswerText = currentQuestion.options[lastAnswer?.selectedAnswer || 0];
-    
+
+    // Show explanation in all three languages, each on its own line, Arabic right-aligned
+    const explanation = currentQuestion.explanation || {};
+
     return (
       <div style={{ padding: '16px', background: '#f0f2f5', minHeight: '100vh' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -482,11 +575,33 @@ export default function QuizPlay() {
               </div>
               <div>
                 <Text strong>Explanation: </Text>
-                <Text>
-                  {currentQuestion.explanation[currentQuiz.language]}
-                </Text>
+                <div style={{ marginTop: 8 }}>
+                  <div>
+                    <Text strong style={{ fontSize: 14 }}>{explanation['en']}</Text>
+                    <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.en})</span>
+                  </div>
+                  <div>
+                    <Text strong style={{ fontSize: 14 }}>{explanation['fr']}</Text>
+                    <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.fr})</span>
+                  </div>
+                  <div style={{ textAlign: 'right', direction: 'rtl' }}>
+                    <Text strong style={{ fontSize: 14 }}>{explanation['ar']}</Text>
+                    <span style={{ marginRight: 8, color: '#888', direction: 'ltr' }}>({LANG_LABELS.ar})</span>
+                  </div>
+                </div>
               </div>
             </Space>
+
+            {/* Next Question Button */}
+            <div style={{ textAlign: 'center', marginTop: '24px' }}>
+              <Button 
+                type="primary" 
+                size="large"
+                onClick={handleNextQuestion}
+              >
+                {currentQuestionNumber < totalQuestions ? 'Next Question' : 'Finish Quiz'}
+              </Button>
+            </div>
           </Card>
         </div>
       </div>
@@ -577,10 +692,10 @@ export default function QuizPlay() {
           }}>
             <div>
               <Title level={3} style={{ margin: 0 }}>
-                Question {currentQuestionIndex + 1} of {totalQuestions}
+                Question {currentQuestionNumber} of {totalQuestions}
               </Title>
               <Text type="secondary">
-                Language: {getLanguageName(currentQuiz.language)}
+                Language: {currentQuiz.language}
               </Text>
             </div>
             <div style={{ textAlign: window.innerWidth <= 768 ? 'center' : 'right' }}>
@@ -605,34 +720,49 @@ export default function QuizPlay() {
 
         {/* Question Card */}
         <Card style={{ marginBottom: '16px' }}>
-          <Title level={4} style={{ marginBottom: '16px' }}>
-            {currentQuestion.question[currentQuiz.language]}
-          </Title>
-
-          <Radio.Group 
-            value={selectedAnswer} 
-            onChange={(e) => setSelectedAnswer(e.target.value)}
-            style={{ width: '100%' }}
-          >
-            <Space direction="vertical" style={{ width: '100%' }}>
-              {currentQuestion.options.map((option, index) => (
-                <Radio 
-                  key={index} 
-                  value={index}
-                  style={{ 
-                    display: 'block',
-                    padding: '12px',
-                    border: '1px solid #d9d9d9',
-                    borderRadius: '8px',
-                    marginBottom: '8px',
-                    width: '100%'
-                  }}
-                >
-                  {option}
-                </Radio>
-              ))}
-            </Space>
-          </Radio.Group>
+          <div>
+            {/* Show the question in three languages, each on its own line, Arabic right-aligned */}
+            <div style={{ marginBottom: 16 }}>
+              <div>
+                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['en']}</Text>
+                <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.en})</span>
+              </div>
+              <div>
+                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['fr']}</Text>
+                <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.fr})</span>
+              </div>
+              <div style={{ textAlign: 'right', direction: 'rtl' }}>
+                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['ar']}</Text>
+                <span style={{ marginRight: 8, color: '#888', direction: 'ltr' }}>({LANG_LABELS.ar})</span>
+              </div>
+            </div>
+            <Divider style={{ margin: '12px 0' }} />
+            {/* Show the options only once, as a vertical radio group */}
+            <Radio.Group 
+              value={selectedAnswer} 
+              onChange={(e) => setSelectedAnswer(e.target.value)}
+              style={{ width: '100%' }}
+            >
+              <Space direction="vertical" style={{ width: '100%' }}>
+                {currentQuestion.options.map((option, index) => (
+                  <Radio 
+                    key={index} 
+                    value={index}
+                    style={{ 
+                      display: 'block',
+                      padding: '12px',
+                      border: '1px solid #d9d9d9',
+                      borderRadius: '8px',
+                      marginBottom: '8px',
+                      width: '100%'
+                    }}
+                  >
+                    {option}
+                  </Radio>
+                ))}
+              </Space>
+            </Radio.Group>
+          </div>
         </Card>
 
         {/* Points Selection */}

@@ -103,8 +103,9 @@ export const getTotalQuestions = (quizId: string, language: 'en' | 'fr' | 'ar'):
 };
 
 export const getMaxPoints = (quizId: string, language: 'en' | 'fr' | 'ar'): number => {
-  const quiz = getQuizData(quizId, language);
-  return quiz.questions.length;
+  // Return a fixed maximum points value (e.g., 30) instead of number of questions
+  // This allows users to choose from 1-30 points per question
+  return 30;
 };
 
 export const validateAnswer = (quizId: string, language: 'en' | 'fr' | 'ar', questionId: number, selectedAnswer: number): boolean => {
