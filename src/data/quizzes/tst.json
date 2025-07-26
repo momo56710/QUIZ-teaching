@@ -1,0 +1,30 @@
+{
+  "id": "tst",
+  "title": "TST Quiz",
+  "description": "Test your knowledge of TST (Test Subject Topic)",
+  "category": "Programming",
+  "difficulty": "Medium",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What does TST stand for?",
+        "fr": "Que signifie TST ?",
+        "ar": "ماذا تعني TST؟"
+      },
+      "options": [
+        "Test Subject Topic",
+        "Technical Support Team",
+        "Time Series Testing",
+        "TypeScript Testing"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "TST stands for Test Subject Topic, which is a general testing framework.",
+        "fr": "TST signifie Test Subject Topic, qui est un framework de test général.",
+        "ar": "TST تعني Test Subject Topic، وهي إطار عمل اختبار عام."
+      }
+    }
+  ]
+}

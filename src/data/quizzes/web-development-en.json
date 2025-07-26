@@ -1,0 +1,610 @@
+{
+  "id": "web-development",
+  "title": "Web Development Quiz",
+  "description": "Test your knowledge of HTML, CSS, JavaScript, and modern web technologies",
+  "category": "Programming",
+  "difficulty": "Medium",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What does HTML stand for?",
+        "fr": "Que signifie HTML ?",
+        "ar": "ماذا تعني HTML؟"
+      },
+      "options": [
+        "Hyper Text Markup Language",
+        "High Tech Modern Language",
+        "Home Tool Markup Language",
+        "Hyperlink and Text Markup Language"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "HTML stands for Hyper Text Markup Language, which is the standard markup language for creating web pages.",
+        "fr": "HTML signifie Hyper Text Markup Language, qui est le langage de balisage standard pour créer des pages web.",
+        "ar": "HTML تعني Hyper Text Markup Language، وهي لغة الترميز القياسية لإنشاء صفحات الويب."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "Which CSS property is used to change the text color?",
+        "fr": "Quelle propriété CSS est utilisée pour changer la couleur du texte ?",
+        "ar": "أي خاصية CSS تستخدم لتغيير لون النص؟"
+      },
+      "options": [
+        "text-color",
+        "color",
+        "font-color",
+        "text-style"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'color' property is used to set the color of text in CSS.",
+        "fr": "La propriété 'color' est utilisée pour définir la couleur du texte en CSS.",
+        "ar": "تُستخدم خاصية 'color' لتعيين لون النص في CSS."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "What is the correct way to write a JavaScript array?",
+        "fr": "Quelle est la bonne façon d'écrire un tableau JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لكتابة مصفوفة JavaScript؟"
+      },
+      "options": [
+        "var colors = (1:'red', 2:'green', 3:'blue')",
+        "var colors = 'red', 'green', 'blue'",
+        "var colors = ['red', 'green', 'blue']",
+        "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "JavaScript arrays are written with square brackets and comma-separated values.",
+        "fr": "Les tableaux JavaScript sont écrits avec des crochets et des valeurs séparées par des virgules.",
+        "ar": "تُكتب مصفوفات JavaScript بأقواس مربعة وقيم مفصولة بفواصل."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "Which HTML tag is used to define an internal style sheet?",
+        "fr": "Quelle balise HTML est utilisée pour définir une feuille de style interne ?",
+        "ar": "أي وسم HTML يستخدم لتعريف ورقة أنماط داخلية؟"
+      },
+      "options": [
+        "<css>",
+        "<script>",
+        "<style>",
+        "<link>"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The <style> tag is used to define CSS styles within an HTML document.",
+        "fr": "La balise <style> est utilisée pour définir des styles CSS dans un document HTML.",
+        "ar": "يُستخدم وسم <style> لتعريف أنماط CSS داخل مستند HTML."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "What does CSS stand for?",
+        "fr": "Que signifie CSS ?",
+        "ar": "ماذا تعني CSS؟"
+      },
+      "options": [
+        "Computer Style Sheets",
+        "Creative Style Sheets",
+        "Cascading Style Sheets",
+        "Colorful Style Sheets"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "CSS stands for Cascading Style Sheets, which describes how HTML elements are to be displayed.",
+        "fr": "CSS signifie Cascading Style Sheets, qui décrit comment les éléments HTML doivent être affichés.",
+        "ar": "CSS تعني Cascading Style Sheets، والتي تصف كيفية عرض عناصر HTML."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "Which method is used to remove the last element from an array in JavaScript?",
+        "fr": "Quelle méthode est utilisée pour supprimer le dernier élément d'un tableau en JavaScript ?",
+        "ar": "أي طريقة تستخدم لإزالة العنصر الأخير من مصفوفة في JavaScript؟"
+      },
+      "options": [
+        "pop()",
+        "push()",
+        "shift()",
+        "unshift()"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "The pop() method removes and returns the last element of an array.",
+        "fr": "La méthode pop() supprime et retourne le dernier élément d'un tableau.",
+        "ar": "تزيل الطريقة pop() وتعيد العنصر الأخير من المصفوفة."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "What is the correct HTML element for inserting a line break?",
+        "fr": "Quel est l'élément HTML correct pour insérer un saut de ligne ?",
+        "ar": "ما هو العنصر HTML الصحيح لإدراج فاصل أسطر؟"
+      },
+      "options": [
+        "<break>",
+        "<lb>",
+        "<br>",
+        "<newline>"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The <br> tag inserts a single line break in HTML.",
+        "fr": "La balise <br> insère un saut de ligne simple en HTML.",
+        "ar": "يُدرج وسم <br> فاصل أسطر واحد في HTML."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "Which JavaScript method is used to find the largest number in an array?",
+        "fr": "Quelle méthode JavaScript est utilisée pour trouver le plus grand nombre dans un tableau ?",
+        "ar": "أي طريقة JavaScript تستخدم للعثور على أكبر رقم في مصفوفة؟"
+      },
+      "options": [
+        "Math.max()",
+        "array.max()",
+        "array.largest()",
+        "Math.largest()"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Math.max() can be used with the spread operator to find the maximum value in an array.",
+        "fr": "Math.max() peut être utilisé avec l'opérateur spread pour trouver la valeur maximale dans un tableau.",
+        "ar": "يمكن استخدام Math.max() مع عامل الانتشار للعثور على القيمة القصوى في المصفوفة."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "What is the default value of the position property?",
+        "fr": "Quelle est la valeur par défaut de la propriété position ?",
+        "ar": "ما هي القيمة الافتراضية لخاصية position؟"
+      },
+      "options": [
+        "relative",
+        "absolute",
+        "static",
+        "fixed"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The default value of the position property is 'static'.",
+        "fr": "La valeur par défaut de la propriété position est 'static'.",
+        "ar": "القيمة الافتراضية لخاصية position هي 'static'."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "Which HTML attribute specifies an alternate text for an image?",
+        "fr": "Quel attribut HTML spécifie un texte alternatif pour une image ?",
+        "ar": "أي سمة HTML تحدد نص بديل للصورة؟"
+      },
+      "options": [
+        "alt",
+        "title",
+        "src",
+        "href"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "The 'alt' attribute provides alternative text for an image if it cannot be displayed.",
+        "fr": "L'attribut 'alt' fournit un texte alternatif pour une image si elle ne peut pas être affichée.",
+        "ar": "توفر السمة 'alt' نص بديل للصورة إذا لم تتمكن من عرضها."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "What is the correct way to create a function in JavaScript?",
+        "fr": "Quelle est la bonne façon de créer une fonction en JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لإنشاء دالة في JavaScript؟"
+      },
+      "options": [
+        "function myFunction()",
+        "function:myFunction()",
+        "function = myFunction()",
+        "function => myFunction()"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Functions in JavaScript are declared using the 'function' keyword followed by the function name.",
+        "fr": "Les fonctions en JavaScript sont déclarées en utilisant le mot-clé 'function' suivi du nom de la fonction.",
+        "ar": "تُعلن الدوال في JavaScript باستخدام الكلمة المفتاحية 'function' متبوعة باسم الدالة."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "Which CSS property controls the text size?",
+        "fr": "Quelle propriété CSS contrôle la taille du texte ?",
+        "ar": "أي خاصية CSS تتحكم في حجم النص؟"
+      },
+      "options": [
+        "text-size",
+        "font-size",
+        "text-style",
+        "font-style"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'font-size' property sets the size of the text.",
+        "fr": "La propriété 'font-size' définit la taille du texte.",
+        "ar": "تحدد خاصية 'font-size' حجم النص."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "How do you write an IF statement in JavaScript?",
+        "fr": "Comment écrire une instruction IF en JavaScript ?",
+        "ar": "كيف تكتب عبارة IF في JavaScript؟"
+      },
+      "options": [
+        "if i == 5 then",
+        "if (i == 5)",
+        "if i = 5 then",
+        "if i == 5"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JavaScript if statements use parentheses around the condition.",
+        "fr": "Les instructions if en JavaScript utilisent des parenthèses autour de la condition.",
+        "ar": "تستخدم عبارات if في JavaScript أقواس حول الشرط."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "Which HTML element defines the title of a document?",
+        "fr": "Quel élément HTML définit le titre d'un document ?",
+        "ar": "أي عنصر HTML يحدد عنوان المستند؟"
+      },
+      "options": [
+        "<head>",
+        "<meta>",
+        "<title>",
+        "<header>"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The <title> element defines the title of the HTML document.",
+        "fr": "L'élément <title> définit le titre du document HTML.",
+        "ar": "يحدد عنصر <title> عنوان مستند HTML."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "How do you create a variable in JavaScript?",
+        "fr": "Comment créer une variable en JavaScript ?",
+        "ar": "كيف تنشئ متغير في JavaScript؟"
+      },
+      "options": [
+        "v carName;",
+        "variable carName;",
+        "var carName;",
+        "v: carName;"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "Variables in JavaScript are declared using 'var', 'let', or 'const' keywords.",
+        "fr": "Les variables en JavaScript sont déclarées en utilisant les mots-clés 'var', 'let' ou 'const'.",
+        "ar": "تُعلن المتغيرات في JavaScript باستخدام الكلمات المفتاحية 'var' أو 'let' أو 'const'."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "Which CSS property is used to create space between the element's border and inner content?",
+        "fr": "Quelle propriété CSS est utilisée pour créer de l'espace entre la bordure de l'élément et son contenu interne ?",
+        "ar": "أي خاصية CSS تستخدم لإنشاء مساحة بين حدود العنصر والمحتوى الداخلي؟"
+      },
+      "options": [
+        "margin",
+        "padding",
+        "border",
+        "spacing"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'padding' property creates space between the element's border and its content.",
+        "fr": "La propriété 'padding' crée de l'espace entre la bordure de l'élément et son contenu.",
+        "ar": "تنشئ خاصية 'padding' مساحة بين حدود العنصر ومحتواه."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "What is the correct way to write a JavaScript object?",
+        "fr": "Quelle est la bonne façon d'écrire un objet JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لكتابة كائن JavaScript؟"
+      },
+      "options": [
+        "var person = {firstName:'John', lastName:'Doe'};",
+        "var person = (firstName:'John', lastName:'Doe');",
+        "var person = [firstName:'John', lastName:'Doe'];",
+        "var person = firstName:'John', lastName:'Doe';"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "JavaScript objects are written with curly braces and key-value pairs.",
+        "fr": "Les objets JavaScript sont écrits avec des accolades et des paires clé-valeur.",
+        "ar": "تُكتب كائنات JavaScript بأقواس مجعدة وأزواج مفتاح-قيمة."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "Which HTML tag is used to create a hyperlink?",
+        "fr": "Quelle balise HTML est utilisée pour créer un lien hypertexte ?",
+        "ar": "أي وسم HTML يستخدم لإنشاء رابط تشعبي؟"
+      },
+      "options": [
+        "<link>",
+        "<a>",
+        "<href>",
+        "<url>"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The <a> tag defines a hyperlink in HTML.",
+        "fr": "La balise <a> définit un lien hypertexte en HTML.",
+        "ar": "يحدد وسم <a> رابط تشعبي في HTML."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "How do you round the number 7.25 to the nearest integer?",
+        "fr": "Comment arrondir le nombre 7.25 à l'entier le plus proche ?",
+        "ar": "كيف تقرب الرقم 7.25 إلى أقرب عدد صحيح؟"
+      },
+      "options": [
+        "Math.round(7.25)",
+        "Math.rnd(7.25)",
+        "round(7.25)",
+        "Math.ceil(7.25)"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Math.round() rounds a number to the nearest integer.",
+        "fr": "Math.round() arrondit un nombre à l'entier le plus proche.",
+        "ar": "تقرب Math.round() الرقم إلى أقرب عدد صحيح."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "Which CSS property is used to change the background color?",
+        "fr": "Quelle propriété CSS est utilisée pour changer la couleur d'arrière-plan ?",
+        "ar": "أي خاصية CSS تستخدم لتغيير لون الخلفية؟"
+      },
+      "options": [
+        "bgcolor",
+        "background-color",
+        "color",
+        "background"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'background-color' property sets the background color of an element.",
+        "fr": "La propriété 'background-color' définit la couleur d'arrière-plan d'un élément.",
+        "ar": "تحدد خاصية 'background-color' لون خلفية العنصر."
+      }
+    },
+    {
+      "id": 21,
+      "question": {
+        "en": "What is the correct way to add a comment in JavaScript?",
+        "fr": "Quelle est la bonne façon d'ajouter un commentaire en JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لإضافة تعليق في JavaScript؟"
+      },
+      "options": [
+        "<!--This is a comment-->",
+        "//This is a comment",
+        "/*This is a comment*/",
+        "Both B and C"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "JavaScript supports both single-line comments (//) and multi-line comments (/* */).",
+        "fr": "JavaScript prend en charge les commentaires sur une ligne (//) et les commentaires multi-lignes (/* */).",
+        "ar": "يدعم JavaScript التعليقات أحادية السطر (//) والتعليقات متعددة الأسطر (/* */)."
+      }
+    },
+    {
+      "id": 22,
+      "question": {
+        "en": "Which HTML element is used to specify a header for a document or section?",
+        "fr": "Quel élément HTML est utilisé pour spécifier un en-tête pour un document ou une section ?",
+        "ar": "أي عنصر HTML يستخدم لتحديد رأس للمستند أو القسم؟"
+      },
+      "options": [
+        "<header>",
+        "<head>",
+        "<title>",
+        "<h1>"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "The <header> element represents a container for introductory content.",
+        "fr": "L'élément <header> représente un conteneur pour le contenu d'introduction.",
+        "ar": "يمثل عنصر <header> حاوية للمحتوى التمهيدي."
+      }
+    },
+    {
+      "id": 23,
+      "question": {
+        "en": "How do you declare a JavaScript array?",
+        "fr": "Comment déclarer un tableau JavaScript ?",
+        "ar": "كيف تعلن عن مصفوفة JavaScript؟"
+      },
+      "options": [
+        "var cars = new Array();",
+        "var cars = [];",
+        "var cars = Array();",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "All three methods can be used to declare a JavaScript array.",
+        "fr": "Les trois méthodes peuvent être utilisées pour déclarer un tableau JavaScript.",
+        "ar": "يمكن استخدام جميع الطرق الثلاث لتعريف مصفوفة JavaScript."
+      }
+    },
+    {
+      "id": 24,
+      "question": {
+        "en": "Which CSS property is used to control the element's width?",
+        "fr": "Quelle propriété CSS est utilisée pour contrôler la largeur de l'élément ?",
+        "ar": "أي خاصية CSS تستخدم للتحكم في عرض العنصر؟"
+      },
+      "options": [
+        "height",
+        "width",
+        "size",
+        "length"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'width' property sets the width of an element.",
+        "fr": "La propriété 'width' définit la largeur d'un élément.",
+        "ar": "تحدد خاصية 'width' عرض العنصر."
+      }
+    },
+    {
+      "id": 25,
+      "question": {
+        "en": "What is the correct way to write a JavaScript array?",
+        "fr": "Quelle est la bonne façon d'écrire un tableau JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لكتابة مصفوفة JavaScript؟"
+      },
+      "options": [
+        "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')",
+        "var colors = 'red', 'green', 'blue'",
+        "var colors = ['red', 'green', 'blue']",
+        "var colors = (1:'red', 2:'green', 3:'blue')"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "JavaScript arrays are written with square brackets and comma-separated values.",
+        "fr": "Les tableaux JavaScript sont écrits avec des crochets et des valeurs séparées par des virgules.",
+        "ar": "تُكتب مصفوفات JavaScript بأقواس مربعة وقيم مفصولة بفواصل."
+      }
+    },
+    {
+      "id": 26,
+      "question": {
+        "en": "Which HTML attribute is used to define inline styles?",
+        "fr": "Quel attribut HTML est utilisé pour définir des styles en ligne ?",
+        "ar": "أي سمة HTML تستخدم لتعريف الأنماط المضمنة؟"
+      },
+      "options": [
+        "class",
+        "id",
+        "style",
+        "font"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The 'style' attribute is used to add inline styles to HTML elements.",
+        "fr": "L'attribut 'style' est utilisé pour ajouter des styles en ligne aux éléments HTML.",
+        "ar": "تُستخدم السمة 'style' لإضافة أنماط مضمنة لعناصر HTML."
+      }
+    },
+    {
+      "id": 27,
+      "question": {
+        "en": "How do you find the number with the highest value of x and y?",
+        "fr": "Comment trouver le nombre avec la valeur la plus élevée de x et y ?",
+        "ar": "كيف تجد الرقم ذو القيمة الأعلى من x و y؟"
+      },
+      "options": [
+        "Math.ceil(x, y)",
+        "top(x, y)",
+        "Math.max(x, y)",
+        "ceil(x, y)"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "Math.max() returns the number with the highest value.",
+        "fr": "Math.max() retourne le nombre avec la valeur la plus élevée.",
+        "ar": "تُعيد Math.max() الرقم ذو القيمة الأعلى."
+      }
+    },
+    {
+      "id": 28,
+      "question": {
+        "en": "Which CSS property is used to change the font of an element?",
+        "fr": "Quelle propriété CSS est utilisée pour changer la police d'un élément ?",
+        "ar": "أي خاصية CSS تستخدم لتغيير خط العنصر؟"
+      },
+      "options": [
+        "font-family",
+        "font-weight",
+        "font-style",
+        "font-size"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "The 'font-family' property specifies the font for an element.",
+        "fr": "La propriété 'font-family' spécifie la police pour un élément.",
+        "ar": "تحدد خاصية 'font-family' الخط للعنصر."
+      }
+    },
+    {
+      "id": 29,
+      "question": {
+        "en": "What is the correct way to write a JavaScript object?",
+        "fr": "Quelle est la bonne façon d'écrire un objet JavaScript ?",
+        "ar": "ما هي الطريقة الصحيحة لكتابة كائن JavaScript؟"
+      },
+      "options": [
+        "var person = firstName:'John', lastName:'Doe';",
+        "var person = {firstName:'John', lastName:'Doe'};",
+        "var person = (firstName:'John', lastName:'Doe');",
+        "var person = [firstName:'John', lastName:'Doe'];"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JavaScript objects are written with curly braces and key-value pairs.",
+        "fr": "Les objets JavaScript sont écrits avec des accolades et des paires clé-valeur.",
+        "ar": "تُكتب كائنات JavaScript بأقواس مجعدة وأزواج مفتاح-قيمة."
+      }
+    },
+    {
+      "id": 30,
+      "question": {
+        "en": "Which HTML element defines a paragraph?",
+        "fr": "Quel élément HTML définit un paragraphe ?",
+        "ar": "أي عنصر HTML يحدد فقرة؟"
+      },
+      "options": [
+        "<paragraph>",
+        "<p>",
+        "<para>",
+        "<text>"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The <p> tag defines a paragraph in HTML.",
+        "fr": "La balise <p> définit un paragraphe en HTML.",
+        "ar": "يحدد وسم <p> فقرة في HTML."
+      }
+    }
+  ]
+} 
