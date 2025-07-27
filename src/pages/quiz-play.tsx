@@ -62,7 +62,7 @@ export default function QuizPlay() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [selectedPoints, setSelectedPoints] = useState<number | null>(null);
   const [usedPoints, setUsedPoints] = useState<number[]>([]);
-  const [timeLeft, setTimeLeft] = useState(20);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [playerScores, setPlayerScores] = useState<PlayerScore[]>([]);
@@ -164,7 +164,7 @@ export default function QuizPlay() {
     
     // Reset timer when question changes (but not during state restoration)
     if (!showAnswer && stateRestored) {
-      setTimeLeft(20);
+      setTimeLeft(60);
     }
   }, [currentQuestionNumber, currentQuiz, showAnswer, showResults, stateRestored]);
 
@@ -220,7 +220,7 @@ export default function QuizPlay() {
         setCurrentQuestionNumber(userCurrentQuestion);
         
         // Reset timer for the current question
-        setTimeLeft(20);
+        setTimeLeft(60);
         
         // If user is on a question that should show answer, restore that state
         if (playerData.answers && playerData.answers.length > 0) {
@@ -242,7 +242,7 @@ export default function QuizPlay() {
         // No existing data, user is starting fresh - start from quiz's current question
         const quizCurrentQuestion = currentQuiz.currentQuestion || 1;
         setCurrentQuestionNumber(quizCurrentQuestion);
-        setTimeLeft(20);
+        setTimeLeft(60);
         setStateRestored(true);
       }
     });
@@ -291,7 +291,7 @@ export default function QuizPlay() {
     if (!currentQuestion) return;
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    const timeSpent = 20 - timeLeft;
+    const timeSpent = 60 - timeLeft;
 
     const answer: QuizAnswer = {
       questionId: currentQuestionNumber, // Use question number directly
@@ -344,7 +344,7 @@ export default function QuizPlay() {
       selectedAnswer: selectedAnswer || 0,
       selectedPoints: minPoints,
       isCorrect: false,
-      timeSpent: 20,
+      timeSpent: 60,
       timestamp: Date.now()
     };
 
@@ -390,7 +390,7 @@ export default function QuizPlay() {
       setCurrentQuestionNumber(nextQuestionNumber);
       setSelectedAnswer(null);
       setSelectedPoints(null);
-      setTimeLeft(20);
+      setTimeLeft(60);
       setShowAnswer(false);
       
       // Update user's current question in Firebase
@@ -503,7 +503,7 @@ export default function QuizPlay() {
   if (showAnswer) {
     const lastAnswer = answers[answers.length - 1];
     const isCorrect = lastAnswer?.isCorrect;
-    const isTimeout = lastAnswer?.timeSpent === 20 && !isCorrect;
+    const isTimeout = lastAnswer?.timeSpent === 60 && !isCorrect;
     const correctAnswerText = currentQuestion.options[currentQuestion.correctAnswer];
     const selectedAnswerText = currentQuestion.options[lastAnswer?.selectedAnswer || 0];
 
