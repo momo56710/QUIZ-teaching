@@ -1,6 +1,6 @@
 import webDevelopment from '../data/quizzes/web-development-en.json';
 import tst from '../data/quizzes/tst.json';
-
+import expressBackend from '../data/quizzes/express-backend-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -65,6 +65,14 @@ export const availableQuizzes = [
     category: 'Programming',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'express-backend-development',
+    title: 'Express.js Backend Development Quiz',
+    description: 'Test your knowledge of Express.js, Node.js, API development, and backend file structure',
+    category: 'Backend Development',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -76,6 +84,10 @@ const quizData: Record<string, QuizData> = {
   },
   'tst': {
     ...tst,
+    difficulty: 'Medium' as const
+  },
+  'express-backend-development': {
+    ...expressBackend,
     difficulty: 'Medium' as const
   }
 };
