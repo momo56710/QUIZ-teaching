@@ -400,16 +400,6 @@ export default function QuizPlay() {
       });
     } else {
       // Quiz completed
-      const quizHistoryRef = ref(database, `quizHistory/${user.uid}/${currentQuiz.id}`);
-      set(quizHistoryRef, {
-        quizId: currentQuiz.id,
-        language: currentQuiz.language,
-        score: currentScore,
-        totalQuestions: totalQuestions,
-        completedAt: Date.now(),
-        answers: answers
-      });
-
       const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
       await update(playerScoreRef, {
         isFinished: true

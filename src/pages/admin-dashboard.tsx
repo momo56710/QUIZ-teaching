@@ -306,6 +306,8 @@ export default function AdminDashboard() {
     toast.success(`${waitlistUser.displayName} added to the quiz!`);
   };
 
+
+
   const availableQuizzes = getAvailableQuizzes();
 
   const scoreColumns = [

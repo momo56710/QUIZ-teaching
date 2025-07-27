@@ -3,11 +3,11 @@ import { useAuth } from "../contexts/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useNavigate } from "react-router";
-import { ref, set, remove } from 'firebase/database';
-import { database } from '../config/firebase';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'antd/dist/reset.css';
+import { ref, set, remove } from "firebase/database";
+import { database } from "../config/firebase";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "antd/dist/reset.css";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
         displayName: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
-        joinedAt: Date.now()
+        joinedAt: Date.now(),
       });
 
       // Remove user from active users when component unmounts
@@ -40,7 +40,7 @@ export default function Home() {
         const activeUsersRef = ref(database, `activeUsers/${user.uid}`);
         await remove(activeUsersRef);
       }
-      
+
       await signOut(auth);
       navigate("/login");
     } catch (error) {
@@ -58,13 +58,13 @@ export default function Home() {
         displayName: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
-        joinedAt: Date.now()
+        joinedAt: Date.now(),
       });
 
       // Navigate to quiz waiting room
-      navigate('/quiz/waiting');
+      navigate("/quiz/waiting");
     } catch (error) {
-      toast.error('Failed to join quiz', {
+      toast.error("Failed to join quiz", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -72,40 +72,39 @@ export default function Home() {
   };
 
   const handleAdminAccess = () => {
-    navigate('/admin/login');
+    navigate("/admin/login");
   };
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: '100vh',
-      padding: '16px',
-      background: '#f0f2f5'
-    }}>
-      <div style={{ width: '100%', maxWidth: '600px' }}>
-        <Space direction="vertical" size="large" style={{ width: '100%' }}>
-          <div style={{ textAlign: 'center' }}>
-            <Title level={1} style={{ marginBottom: '16px' }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "16px",
+        background: "#f0f2f5",
+      }}
+    >
+      <div style={{ width: "100%", maxWidth: "600px" }}>
+        <Space direction="vertical" size="large" style={{ width: "100%" }}>
+          <div style={{ textAlign: "center" }}>
+            <Title level={1} style={{ marginBottom: "16px" }}>
               Welcome to Quiz App
             </Title>
-            <Text type="secondary" style={{ fontSize: '16px' }}>
+            <Text type="secondary" style={{ fontSize: "16px" }}>
               You are successfully logged in!
             </Text>
           </div>
 
           {user && (
-            <Card style={{ textAlign: 'center' }}>
+            <Card style={{ textAlign: "center" }}>
               <Space direction="vertical" size="middle">
-                <Avatar 
-                  size={80} 
-                  src={user.photoURL || undefined}
-                >
+                <Avatar size={80} src={user.photoURL || undefined}>
                   {user.displayName?.[0] || user.email?.[0]}
                 </Avatar>
                 <div>
-                  <Title level={3} style={{ marginBottom: '8px' }}>
+                  <Title level={3} style={{ marginBottom: "8px" }}>
                     {user.displayName || "User"}
                   </Title>
                   <Text type="secondary">{user.email}</Text>
@@ -114,33 +113,26 @@ export default function Home() {
             </Card>
           )}
 
-          <div style={{ textAlign: 'center' }}>
-            <Space 
-              size="middle" 
-              direction={window.innerWidth <= 768 ? 'vertical' : 'horizontal'}
-              style={{ width: '100%' }}
+          <div style={{ textAlign: "center" }}>
+            <Space
+              size="middle"
+              direction={window.innerWidth <= 768 ? "vertical" : "horizontal"}
+              style={{ width: "100%" }}
             >
-              <Button 
-                type="primary" 
-                size="large" 
+              <Button
+                type="primary"
+                size="large"
                 onClick={handleJoinQuiz}
-                style={{ width: window.innerWidth <= 768 ? '100%' : 'auto' }}
+                style={{ width: window.innerWidth <= 768 ? "100%" : "auto" }}
               >
                 Join Quiz
               </Button>
-              <Button 
-                type="default" 
-                size="large"
-                onClick={() => navigate('/quiz/history')}
-                style={{ width: window.innerWidth <= 768 ? '100%' : 'auto' }}
-              >
-                Quiz History
-              </Button>
-              <Button 
-                danger 
+
+              <Button
+                danger
                 size="large"
                 onClick={handleSignOut}
-                style={{ width: window.innerWidth <= 768 ? '100%' : 'auto' }}
+                style={{ width: window.innerWidth <= 768 ? "100%" : "auto" }}
               >
                 Sign Out
               </Button>
@@ -149,12 +141,8 @@ export default function Home() {
 
           <Divider />
 
-          <div style={{ textAlign: 'center' }}>
-            <Button 
-              type="dashed" 
-              size="small"
-              onClick={handleAdminAccess}
-            >
+          <div style={{ textAlign: "center" }}>
+            <Button type="dashed" size="small" onClick={handleAdminAccess}>
               Admin Access
             </Button>
           </div>
