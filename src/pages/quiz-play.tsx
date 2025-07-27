@@ -7,7 +7,7 @@ import {
   CloseCircleOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
-import { ref, onValue, set, update } from 'firebase/database';
+import { ref, onValue, update } from 'firebase/database';
 import { database } from '../config/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { getQuestion, getTotalQuestions, getMaxPoints } from '../services/quizService';
