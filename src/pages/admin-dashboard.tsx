@@ -15,6 +15,7 @@ import { ref, onValue, set, update, remove } from 'firebase/database';
 import { database } from '../config/firebase';
 import { toast } from 'react-toastify';
 import { getAvailableQuizzes, getTotalQuestions, getMaxPoints } from '../services/quizService';
+import LeaderboardPodium from '../components/LeaderboardPodium';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/reset.css';
 
@@ -546,7 +547,22 @@ export default function AdminDashboard() {
         {currentQuiz && Object.keys(currentQuiz.players || {}).length > 0 && (
           <Card title="Quiz Players" style={{ marginBottom: '24px' }}>
             <Table 
-              dataSource={playerScores} 
+              dataSource={
+                // Use playerScores if available (has score tracking), otherwise use currentQuiz.players
+                playerScores.length > 0 
+                  ? playerScores 
+                  : Object.values(currentQuiz.players || {}).map((player: any) => ({
+                      uid: player.uid,
+                      displayName: player.displayName,
+                      email: player.email,
+                      photoURL: player.photoURL,
+                      score: player.score || 0,
+                      currentQuestion: player.currentQuestion || 1,
+                      totalQuestions: totalQuestions,
+                      answers: player.answers || [],
+                      isFinished: player.isFinished || false
+                    }))
+              } 
               columns={scoreColumns} 
               rowKey="uid"
               pagination={false}
@@ -581,6 +597,9 @@ export default function AdminDashboard() {
             style={{ marginBottom: '24px' }}
           />
         )}
+
+        {/* Leaderboard */}
+        <LeaderboardPodium />
 
         {/* Change Quiz Modal */}
         <Modal

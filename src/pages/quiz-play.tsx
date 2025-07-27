@@ -11,6 +11,7 @@ import { ref, onValue, update } from 'firebase/database';
 import { database } from '../config/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { getQuestion, getTotalQuestions, getMaxPoints } from '../services/quizService';
+import { saveQuizResult } from '../services/firestoreService';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/reset.css';
 
@@ -404,6 +405,28 @@ export default function QuizPlay() {
       await update(playerScoreRef, {
         isFinished: true
       });
+      
+      // Save quiz result to Firestore
+      try {
+        const correctAnswers = answers.filter(answer => answer.isCorrect).length;
+        const totalTimeSpent = answers.reduce((total, answer) => total + answer.timeSpent, 0);
+        
+        await saveQuizResult(
+          currentQuiz.id,
+          user.uid,
+          user.displayName || 'Anonymous',
+          user.email || '',
+          user.photoURL || undefined,
+          currentScore,
+          totalQuestions,
+          correctAnswers,
+          totalTimeSpent
+        );
+        
+        console.log('Quiz result saved to Firestore successfully');
+      } catch (error) {
+        console.error('Error saving quiz result to Firestore:', error);
+      }
       
       setShowAnswer(false);
       setShowResults(true);

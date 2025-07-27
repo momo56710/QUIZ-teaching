@@ -1,0 +1,410 @@
+{
+  "id": "mongoose-mongodb-development",
+  "title": "Mongoose & MongoDB Development Quiz",
+  "description": "Test your knowledge of Mongoose ODM, MongoDB, database modeling, and NoSQL development",
+  "category": "Database Development",
+  "difficulty": "Medium",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What is Mongoose?",
+        "fr": "Qu'est-ce que Mongoose ?",
+        "ar": "ما هو Mongoose؟"
+      },
+      "options": [
+        "A NoSQL database",
+        "An Object Document Mapper (ODM) for MongoDB",
+        "A web framework",
+        "A testing library"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Mongoose is an Object Document Mapper (ODM) library for MongoDB and Node.js that provides a straightforward, schema-based solution to model your application data.",
+        "fr": "Mongoose est une bibliothèque Object Document Mapper (ODM) pour MongoDB et Node.js qui fournit une solution simple et basée sur des schémas pour modéliser les données de votre application.",
+        "ar": "Mongoose هو مكتبة Object Document Mapper (ODM) لـ MongoDB و Node.js توفر حلاً بسيطًا وقائمًا على المخططات لنمذجة بيانات تطبيقك."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "How do you connect to MongoDB using Mongoose?",
+        "fr": "Comment se connecter à MongoDB en utilisant Mongoose ?",
+        "ar": "كيف تتصل بـ MongoDB باستخدام Mongoose؟"
+      },
+      "options": [
+        "mongoose.createConnection(uri)",
+        "mongoose.connect(uri)",
+        "mongoose.open(uri)",
+        "mongoose.start(uri)"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "mongoose.connect() is used to connect to a MongoDB database using a connection string.",
+        "fr": "mongoose.connect() est utilisé pour se connecter à une base de données MongoDB en utilisant une chaîne de connexion.",
+        "ar": "يُستخدم mongoose.connect() للاتصال بقاعدة بيانات MongoDB باستخدام سلسلة الاتصال."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "How do you create a Mongoose schema?",
+        "fr": "Comment créer un schéma Mongoose ?",
+        "ar": "كيف تنشئ مخطط Mongoose؟"
+      },
+      "options": [
+        "new mongoose.Schema()",
+        "mongoose.createSchema()",
+        "new Schema()",
+        "mongoose.schema()"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "You create a Mongoose schema using 'new mongoose.Schema()' with an object defining the structure of your documents.",
+        "fr": "Vous créez un schéma Mongoose en utilisant 'new mongoose.Schema()' avec un objet définissant la structure de vos documents.",
+        "ar": "تنشئ مخطط Mongoose باستخدام 'new mongoose.Schema()' مع كائن يحدد بنية مستنداتك."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "What is the purpose of the 'required' option in a Mongoose schema?",
+        "fr": "Quel est le but de l'option 'required' dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من خيار 'required' في مخطط Mongoose؟"
+      },
+      "options": [
+        "To make the field unique",
+        "To make the field mandatory",
+        "To set a default value",
+        "To validate the field type"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'required' option makes a field mandatory, meaning the document cannot be saved without providing a value for this field.",
+        "fr": "L'option 'required' rend un champ obligatoire, ce qui signifie que le document ne peut pas être sauvegardé sans fournir une valeur pour ce champ.",
+        "ar": "يجعل خيار 'required' الحقل إلزاميًا، مما يعني أنه لا يمكن حفظ المستند دون توفير قيمة لهذا الحقل."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "How do you create a model from a schema in Mongoose?",
+        "fr": "Comment créer un modèle à partir d'un schéma dans Mongoose ?",
+        "ar": "كيف تنشئ نموذج من مخطط في Mongoose؟"
+      },
+      "options": [
+        "mongoose.createModel(name, schema)",
+        "mongoose.model(name, schema)",
+        "new mongoose.Model(name, schema)",
+        "mongoose.buildModel(name, schema)"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "mongoose.model() creates a model from a schema, which is used to create and interact with documents in the database.",
+        "fr": "mongoose.model() crée un modèle à partir d'un schéma, qui est utilisé pour créer et interagir avec les documents dans la base de données.",
+        "ar": "mongoose.model() ينشئ نموذج من مخطط، والذي يُستخدم لإنشاء والتفاعل مع المستندات في قاعدة البيانات."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "What is the purpose of the 'unique' option in a Mongoose schema?",
+        "fr": "Quel est le but de l'option 'unique' dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من خيار 'unique' في مخطط Mongoose؟"
+      },
+      "options": [
+        "To make the field required",
+        "To ensure the field value is unique across all documents",
+        "To set a default value",
+        "To validate the field format"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'unique' option ensures that the field value is unique across all documents in the collection, preventing duplicate values.",
+        "fr": "L'option 'unique' assure que la valeur du champ est unique parmi tous les documents de la collection, empêchant les valeurs en double.",
+        "ar": "يضمن خيار 'unique' أن قيمة الحقل فريدة بين جميع المستندات في المجموعة، مما يمنع القيم المكررة."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "How do you save a document to the database using Mongoose?",
+        "fr": "Comment sauvegarder un document dans la base de données en utilisant Mongoose ?",
+        "ar": "كيف تحفظ مستند في قاعدة البيانات باستخدام Mongoose؟"
+      },
+      "options": [
+        "document.create()",
+        "document.save()",
+        "document.insert()",
+        "document.store()"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "document.save() saves the document to the database and returns a promise that resolves to the saved document.",
+        "fr": "document.save() sauvegarde le document dans la base de données et retourne une promesse qui se résout au document sauvegardé.",
+        "ar": "document.save() يحفظ المستند في قاعدة البيانات ويعيد وعدًا يحل إلى المستند المحفوظ."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "What is the purpose of the 'default' option in a Mongoose schema?",
+        "fr": "Quel est le but de l'option 'default' dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من خيار 'default' في مخطط Mongoose؟"
+      },
+      "options": [
+        "To make the field required",
+        "To set a default value when no value is provided",
+        "To validate the field type",
+        "To make the field unique"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'default' option sets a default value for a field when no value is provided during document creation.",
+        "fr": "L'option 'default' définit une valeur par défaut pour un champ lorsqu'aucune valeur n'est fournie lors de la création du document.",
+        "ar": "يحدد خيار 'default' قيمة افتراضية للحقل عندما لا يتم توفير قيمة أثناء إنشاء المستند."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "How do you find all documents in a collection using Mongoose?",
+        "fr": "Comment trouver tous les documents dans une collection en utilisant Mongoose ?",
+        "ar": "كيف تجد جميع المستندات في مجموعة باستخدام Mongoose؟"
+      },
+      "options": [
+        "Model.getAll()",
+        "Model.find()",
+        "Model.findAll()",
+        "Model.select()"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Model.find() retrieves all documents from the collection. You can pass an empty object {} to get all documents or specify criteria to filter results.",
+        "fr": "Model.find() récupère tous les documents de la collection. Vous pouvez passer un objet vide {} pour obtenir tous les documents ou spécifier des critères pour filtrer les résultats.",
+        "ar": "Model.find() يجلب جميع المستندات من المجموعة. يمكنك تمرير كائن فارغ {} للحصول على جميع المستندات أو تحديد معايير لتصفية النتائج."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "What is the purpose of the 'ref' option in a Mongoose schema?",
+        "fr": "Quel est le but de l'option 'ref' dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من خيار 'ref' في مخطط Mongoose؟"
+      },
+      "options": [
+        "To reference another field in the same document",
+        "To reference another model/collection",
+        "To set a default value",
+        "To validate the field type"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'ref' option is used with ObjectId fields to reference another model/collection, enabling population of related documents.",
+        "fr": "L'option 'ref' est utilisée avec les champs ObjectId pour référencer un autre modèle/collection, permettant la population de documents liés.",
+        "ar": "يُستخدم خيار 'ref' مع حقول ObjectId للإشارة إلى نموذج/مجموعة أخرى، مما يتيح ملء المستندات المرتبطة."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "How do you find a document by its ID using Mongoose?",
+        "fr": "Comment trouver un document par son ID en utilisant Mongoose ?",
+        "ar": "كيف تجد مستند بواسطة معرفه باستخدام Mongoose؟"
+      },
+      "options": [
+        "Model.findById(id)",
+        "Model.findByID(id)",
+        "Model.getById(id)",
+        "Model.selectById(id)"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Model.findById(id) finds a document by its unique _id field and returns a promise that resolves to the document or null if not found.",
+        "fr": "Model.findById(id) trouve un document par son champ _id unique et retourne une promesse qui se résout au document ou null s'il n'est pas trouvé.",
+        "ar": "Model.findById(id) يجد مستند بواسطة حقل _id الفريد ويعيد وعدًا يحل إلى المستند أو null إذا لم يتم العثور عليه."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "What is the purpose of the 'populate()' method in Mongoose?",
+        "fr": "Quel est le but de la méthode 'populate()' dans Mongoose ?",
+        "ar": "ما هو الغرض من الطريقة 'populate()' في Mongoose؟"
+      },
+      "options": [
+        "To create new documents",
+        "To replace referenced ObjectIds with actual documents",
+        "To validate document data",
+        "To delete documents"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "populate() replaces the specified paths in the document with document(s) from other collection(s) that were referenced by the stored ObjectIds.",
+        "fr": "populate() remplace les chemins spécifiés dans le document par des document(s) d'autres collection(s) qui étaient référencés par les ObjectIds stockés.",
+        "ar": "populate() يستبدل المسارات المحددة في المستند بمستند(ات) من مجموعة(ات) أخرى كانت مشار إليها بواسطة ObjectIds المخزنة."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "How do you update a document by ID using Mongoose?",
+        "fr": "Comment mettre à jour un document par ID en utilisant Mongoose ?",
+        "ar": "كيف تحدث مستند بواسطة المعرف باستخدام Mongoose؟"
+      },
+      "options": [
+        "Model.updateById(id, data)",
+        "Model.findByIdAndUpdate(id, data)",
+        "Model.modifyById(id, data)",
+        "Model.changeById(id, data)"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Model.findByIdAndUpdate(id, data) finds a document by ID and updates it with the provided data, returning the updated document.",
+        "fr": "Model.findByIdAndUpdate(id, data) trouve un document par ID et le met à jour avec les données fournies, retournant le document mis à jour.",
+        "ar": "Model.findByIdAndUpdate(id, data) يجد مستند بواسطة المعرف ويحدثه بالبيانات المقدمة، ويعيد المستند المحدث."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "What is the purpose of middleware in Mongoose?",
+        "fr": "Quel est le but du middleware dans Mongoose ?",
+        "ar": "ما هو الغرض من middleware في Mongoose؟"
+      },
+      "options": [
+        "To handle HTTP requests",
+        "To execute functions before or after certain operations",
+        "To validate data types",
+        "To create database indexes"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Middleware in Mongoose allows you to execute functions before or after certain operations like save, find, update, etc.",
+        "fr": "Le middleware dans Mongoose vous permet d'exécuter des fonctions avant ou après certaines opérations comme save, find, update, etc.",
+        "ar": "يسمح middleware في Mongoose بتنفيذ الدوال قبل أو بعد عمليات معينة مثل save و find و update وما إلى ذلك."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "How do you delete a document by ID using Mongoose?",
+        "fr": "Comment supprimer un document par ID en utilisant Mongoose ?",
+        "ar": "كيف تحذف مستند بواسطة المعرف باستخدام Mongoose؟"
+      },
+      "options": [
+        "Model.deleteById(id)",
+        "Model.findByIdAndDelete(id)",
+        "Model.removeById(id)",
+        "Model.destroyById(id)"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Model.findByIdAndDelete(id) finds a document by ID and deletes it from the database, returning the deleted document.",
+        "fr": "Model.findByIdAndDelete(id) trouve un document par ID et le supprime de la base de données, retournant le document supprimé.",
+        "ar": "Model.findByIdAndDelete(id) يجد مستند بواسطة المعرف ويحذفه من قاعدة البيانات، ويعيد المستند المحذوف."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "What is the purpose of the 'select()' method in Mongoose queries?",
+        "fr": "Quel est le but de la méthode 'select()' dans les requêtes Mongoose ?",
+        "ar": "ما هو الغرض من الطريقة 'select()' في استعلامات Mongoose؟"
+      },
+      "options": [
+        "To select which database to use",
+        "To specify which fields to include or exclude in the result",
+        "To validate the query",
+        "To sort the results"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "select() specifies which fields to include or exclude in the query result. Use field names to include or prefix with '-' to exclude.",
+        "fr": "select() spécifie quels champs inclure ou exclure dans le résultat de la requête. Utilisez les noms de champs pour inclure ou préfixez avec '-' pour exclure.",
+        "ar": "select() تحدد أي الحقول لتضمينها أو استبعادها في نتيجة الاستعلام. استخدم أسماء الحقول للتضمين أو أضف '-' كبادئة للاستبعاد."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "What is the purpose of the 'new' option in findByIdAndUpdate?",
+        "fr": "Quel est le but de l'option 'new' dans findByIdAndUpdate ?",
+        "ar": "ما هو الغرض من خيار 'new' في findByIdAndUpdate؟"
+      },
+      "options": [
+        "To create a new document",
+        "To return the updated document instead of the original",
+        "To validate the update data",
+        "To set a default value"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'new' option when set to true returns the modified document rather than the original document after the update operation.",
+        "fr": "L'option 'new' lorsqu'elle est définie sur true retourne le document modifié plutôt que le document original après l'opération de mise à jour.",
+        "ar": "خيار 'new' عند تعيينه على true يعيد المستند المعدل بدلاً من المستند الأصلي بعد عملية التحديث."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "What is the purpose of the 'runValidators' option in update operations?",
+        "fr": "Quel est le but de l'option 'runValidators' dans les opérations de mise à jour ?",
+        "ar": "ما هو الغرض من خيار 'runValidators' في عمليات التحديث؟"
+      },
+      "options": [
+        "To run database validations",
+        "To run schema validators during update operations",
+        "To validate the query syntax",
+        "To check field types"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "runValidators ensures that schema validators run during update operations, validating the data before saving changes.",
+        "fr": "runValidators assure que les validateurs de schéma s'exécutent pendant les opérations de mise à jour, validant les données avant de sauvegarder les modifications.",
+        "ar": "runValidators يضمن تشغيل محققات المخطط أثناء عمليات التحديث، والتحقق من صحة البيانات قبل حفظ التغييرات."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "What is the purpose of the 'pre' middleware in Mongoose?",
+        "fr": "Quel est le but du middleware 'pre' dans Mongoose ?",
+        "ar": "ما هو الغرض من middleware 'pre' في Mongoose؟"
+      },
+      "options": [
+        "To execute after an operation",
+        "To execute before an operation",
+        "To validate data",
+        "To create indexes"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "pre middleware executes before a specified operation (like 'save', 'find', etc.) and can modify the document or perform side effects.",
+        "fr": "Le middleware pre s'exécute avant une opération spécifiée (comme 'save', 'find', etc.) et peut modifier le document ou effectuer des effets secondaires.",
+        "ar": "middleware pre يعمل قبل عملية محددة (مثل 'save' و 'find' وما إلى ذلك) ويمكنه تعديل المستند أو تنفيذ تأثيرات جانبية."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "What is the purpose of ObjectId in MongoDB/Mongoose?",
+        "fr": "Quel est le but d'ObjectId dans MongoDB/Mongoose ?",
+        "ar": "ما هو الغرض من ObjectId في MongoDB/Mongoose؟"
+      },
+      "options": [
+        "To store object data",
+        "To provide a unique identifier for documents",
+        "To validate data types",
+        "To create relationships"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "ObjectId is a 12-byte unique identifier automatically generated by MongoDB for each document, serving as the primary key.",
+        "fr": "ObjectId est un identifiant unique de 12 octets généré automatiquement par MongoDB pour chaque document, servant de clé primaire.",
+        "ar": "ObjectId هو معرف فريد من 12 بايت يتم إنشاؤه تلقائيًا بواسطة MongoDB لكل مستند، ويعمل كمفتاح أساسي."
+      }
+    }
+  ]
+} 

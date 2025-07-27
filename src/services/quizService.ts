@@ -1,6 +1,7 @@
 import webDevelopment from '../data/quizzes/web-development-en.json';
 import tst from '../data/quizzes/tst.json';
 import expressBackend from '../data/quizzes/express-backend-quiz.json';
+import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -73,6 +74,14 @@ export const availableQuizzes = [
     category: 'Backend Development',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'mongoose-mongodb-development',
+    title: 'Mongoose & MongoDB Development Quiz',
+    description: 'Test your knowledge of Mongoose ODM, MongoDB, database modeling, and NoSQL development',
+    category: 'Database Development',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -88,6 +97,10 @@ const quizData: Record<string, QuizData> = {
   },
   'express-backend-development': {
     ...expressBackend,
+    difficulty: 'Medium' as const
+  },
+  'mongoose-mongodb-development': {
+    ...mongooseMongoDB,
     difficulty: 'Medium' as const
   }
 };
