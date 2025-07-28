@@ -245,29 +245,6 @@ const LeaderboardPodium: React.FC = () => {
           </div>
         )}
       </div>
-
-      {/* Additional Stats */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-around', 
-        marginTop: '20px',
-        padding: '16px',
-        backgroundColor: '#f8f9fa',
-        borderRadius: '8px'
-      }}>
-        {leaderboard.map((player) => (
-          <div key={player.uid} style={{ textAlign: 'center' }}>
-            <Text type="secondary" style={{ fontSize: '12px' }}>Quizzes</Text>
-            <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#1890ff' }}>
-              {player.quizCount}
-            </div>
-            <Text type="secondary" style={{ fontSize: '12px' }}>Avg Score</Text>
-            <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#52c41a' }}>
-              {player.averageScore}
-            </div>
-          </div>
-        ))}
-      </div>
     </Card>
   );
 };

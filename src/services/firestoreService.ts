@@ -21,7 +21,6 @@ export interface UserStats {
   photoURL?: string;
   totalPoints: number;
   quizCount: number;
-  averageScore: number;
   lastQuizDate: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -49,7 +48,6 @@ export interface LeaderboardEntry {
   photoURL?: string;
   totalPoints: number;
   quizCount: number;
-  averageScore: number;
   rank: number;
 }
 
@@ -112,12 +110,10 @@ export const updateUserStats = async (
       const currentData = userDoc.data() as UserStats;
       const newQuizCount = currentData.quizCount + 1;
       const newTotalPoints = currentData.totalPoints + newScore;
-      const newAverageScore = Math.round(newTotalPoints / newQuizCount);
 
       await updateDoc(userRef, {
         totalPoints: newTotalPoints,
         quizCount: newQuizCount,
-        averageScore: newAverageScore,
         lastQuizDate: new Date(),
         updatedAt: new Date(),
       });
@@ -130,7 +126,6 @@ export const updateUserStats = async (
         photoURL,
         totalPoints: newScore,
         quizCount: 1,
-        averageScore: newScore,
         lastQuizDate: new Date(),
       };
 
@@ -165,7 +160,6 @@ export const getTopLeaderboard = async (): Promise<LeaderboardEntry[]> => {
         photoURL: data.photoURL,
         totalPoints: data.totalPoints,
         quizCount: data.quizCount,
-        averageScore: data.averageScore,
         rank,
       });
       rank++;
