@@ -1,0 +1,405 @@
+{
+  "id": "express-mongoose-ecommerce",
+  "title": "Express.js & Mongoose E-commerce API Quiz",
+  "description": "Test your knowledge of Express.js, Mongoose, and e-commerce API development",
+  "category": "Backend Development",
+  "difficulty": "Intermediate",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What is the purpose of the `timestamps: true` option in a Mongoose schema?",
+        "fr": "Quel est le but de l'option `timestamps: true` dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من الخيار `timestamps: true` في مخطط Mongoose؟"
+      },
+      "options": [
+        "To create unique identifiers",
+        "To validate data types",
+        "To automatically add createdAt and updatedAt fields",
+        "To enable database indexing"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The `timestamps: true` option automatically adds `createdAt` and `updatedAt` fields to documents, tracking when they were created and last modified.",
+        "fr": "L'option `timestamps: true` ajoute automatiquement les champs `createdAt` et `updatedAt` aux documents, suivant quand ils ont été créés et modifiés.",
+        "ar": "الخيار `timestamps: true` يضيف تلقائياً حقول `createdAt` و `updatedAt` للمستندات، لتتبع وقت إنشائها وآخر تعديل."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "What does the `unique: true` property do in a Mongoose schema field?",
+        "fr": "Que fait la propriété `unique: true` dans un champ de schéma Mongoose ?",
+        "ar": "ماذا تفعل الخاصية `unique: true` في حقل مخطط Mongoose؟"
+      },
+      "options": [
+        "Encrypts the field data",
+        "Prevents duplicate values in the database",
+        "Ensures field validation",
+        "Makes the field required"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `unique: true` property creates a unique index on the field, preventing multiple documents from having the same value for that field.",
+        "fr": "La propriété `unique: true` crée un index unique sur le champ, empêchant plusieurs documents d'avoir la même valeur pour ce champ.",
+        "ar": "الخاصية `unique: true` تنشئ فهرس فريد على الحقل، مما يمنع وجود عدة مستندات بنفس القيمة لهذا الحقل."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "What is the purpose of `versionKey: false` in a Mongoose schema?",
+        "fr": "Quel est le but de `versionKey: false` dans un schéma Mongoose ?",
+        "ar": "ما هو الغرض من `versionKey: false` في مخطط Mongoose؟"
+      },
+      "options": [
+        "Disables document versioning",
+        "Enables optimistic locking",
+        "Removes the __v field from documents",
+        "Prevents schema validation"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "`versionKey: false` removes the `__v` field that Mongoose automatically adds to documents for versioning purposes.",
+        "fr": "`versionKey: false` supprime le champ `__v` que Mongoose ajoute automatiquement aux documents à des fins de versioning.",
+        "ar": "`versionKey: false` يزيل حقل `__v` الذي يضيفه Mongoose تلقائياً للمستندات لأغراض إدارة الإصدارات."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "What type of relationship is created when using `ref` in a Mongoose schema?",
+        "fr": "Quel type de relation est créé lors de l'utilisation de `ref` dans un schéma Mongoose ?",
+        "ar": "ما نوع العلاقة التي يتم إنشاؤها عند استخدام `ref` في مخطط Mongoose؟"
+      },
+      "options": ["One-to-Many", "Many-to-One", "Many-to-Many", "One-to-One"],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `ref` property typically creates a Many-to-One relationship where many documents can reference one document from another collection.",
+        "fr": "La propriété `ref` crée généralement une relation Many-to-One où plusieurs documents peuvent référencer un document d'une autre collection.",
+        "ar": "الخاصية `ref` تنشئ عادة علاقة Many-to-One حيث يمكن لعدة مستندات الإشارة إلى مستند واحد من مجموعة أخرى."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "What does `mongoose.Schema.Types.ObjectId` represent?",
+        "fr": "Que représente `mongoose.Schema.Types.ObjectId` ?",
+        "ar": "ماذا يمثل `mongoose.Schema.Types.ObjectId`؟"
+      },
+      "options": [
+        "A string identifier",
+        "A MongoDB ObjectId type",
+        "A UUID",
+        "A numeric ID"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "`mongoose.Schema.Types.ObjectId` represents MongoDB's ObjectId type, which is a 12-byte unique identifier used as the primary key in MongoDB documents.",
+        "fr": "`mongoose.Schema.Types.ObjectId` représente le type ObjectId de MongoDB, qui est un identifiant unique de 12 octets utilisé comme clé primaire dans les documents MongoDB.",
+        "ar": "`mongoose.Schema.Types.ObjectId` يمثل نوع ObjectId في MongoDB، وهو معرف فريد من 12 بايت يستخدم كالمفتاح الأساسي في مستندات MongoDB."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "What is the primary purpose of the `cors` middleware in Express?",
+        "fr": "Quel est le but principal du middleware `cors` dans Express ?",
+        "ar": "ما هو الغرض الأساسي من middleware `cors` في Express؟"
+      },
+      "options": [
+        "To handle database connections",
+        "To enable Cross-Origin Resource Sharing",
+        "To compress responses",
+        "To validate request data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `cors` middleware enables Cross-Origin Resource Sharing, allowing the API to accept requests from different domains and origins.",
+        "fr": "Le middleware `cors` active le Cross-Origin Resource Sharing, permettant à l'API d'accepter des requêtes de différents domaines et origines.",
+        "ar": "middleware `cors` يمكّن Cross-Origin Resource Sharing، مما يسمح للـ API بقبول الطلبات من نطاقات وأصول مختلفة."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "What is the purpose of custom validation in Mongoose schemas?",
+        "fr": "Quel est le but de la validation personnalisée dans les schémas Mongoose ?",
+        "ar": "ما هو الغرض من التحقق المخصص في مخططات Mongoose؟"
+      },
+      "options": [
+        "To enforce business rules",
+        "To improve performance",
+        "To ensure data integrity",
+        "To create indexes"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "Custom validation in Mongoose ensures data integrity by enforcing business rules and constraints on field values before saving to the database.",
+        "fr": "La validation personnalisée dans Mongoose garantit l'intégrité des données en appliquant des règles métier et des contraintes sur les valeurs des champs avant la sauvegarde en base de données.",
+        "ar": "التحقق المخصص في Mongoose يضمن سلامة البيانات من خلال تطبيق قواعد العمل والقيود على قيم الحقول قبل الحفظ في قاعدة البيانات."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "What is the purpose of `app.use(express.json())` in Express?",
+        "fr": "Quel est le but de `app.use(express.json())` dans Express ?",
+        "ar": "ما هو الغرض من `app.use(express.json())` في Express؟"
+      },
+      "options": [
+        "To handle database queries",
+        "To validate request headers",
+        "To serve static files",
+        "To parse JSON request bodies"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "`app.use(express.json())` is middleware that parses incoming requests with JSON payloads and makes the parsed data available in `req.body`.",
+        "fr": "`app.use(express.json())` est un middleware qui analyse les requêtes entrantes avec des charges JSON et rend les données analysées disponibles dans `req.body`.",
+        "ar": "`app.use(express.json())` هو middleware يحلل الطلبات الواردة مع بيانات JSON ويجعل البيانات المحللة متاحة في `req.body`."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "What is the purpose of subdocuments in Mongoose?",
+        "fr": "Quel est le but des sous-documents dans Mongoose ?",
+        "ar": "ما هو الغرض من المستندات الفرعية في Mongoose؟"
+      },
+      "options": [
+        "To create separate collections",
+        "To improve query performance",
+        "To embed related data within a document",
+        "To enable transactions"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "Subdocuments in Mongoose allow you to embed related data within a document, creating nested structures that are part of the parent document.",
+        "fr": "Les sous-documents dans Mongoose permettent d'imbriquer des données liées dans un document, créant des structures imbriquées qui font partie du document parent.",
+        "ar": "المستندات الفرعية في Mongoose تسمح بتضمين البيانات المرتبطة داخل مستند، مما ينشئ هياكل متداخلة تكون جزءاً من المستند الأصلي."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "What is the purpose of the `ref` property in Mongoose schema fields?",
+        "fr": "Quel est le but de la propriété `ref` dans les champs de schéma Mongoose ?",
+        "ar": "ما هو الغرض من الخاصية `ref` في حقول مخطط Mongoose؟"
+      },
+      "options": [
+        "To define field validation rules",
+        "To establish relationships between collections",
+        "To enable indexing",
+        "To set default values"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `ref` property establishes relationships between collections by referencing another model, enabling population and join-like operations.",
+        "fr": "La propriété `ref` établit des relations entre les collections en référençant un autre modèle, permettant la population et les opérations de type jointure.",
+        "ar": "الخاصية `ref` تنشئ علاقات بين المجموعات من خلال الإشارة إلى نموذج آخر، مما يمكّن من التعبئة وعمليات مشابهة للربط."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "What does the `mongoose.connect()` method return?",
+        "fr": "Que retourne la méthode `mongoose.connect()` ?",
+        "ar": "ماذا ترجع دالة `mongoose.connect()`؟"
+      },
+      "options": [
+        "A Promise",
+        "A database object",
+        "A connection string",
+        "A configuration object"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "`mongoose.connect()` returns a Promise that resolves when the connection is established or rejects if there's an error.",
+        "fr": "`mongoose.connect()` retourne une Promise qui se résout quand la connexion est établie ou se rejette s'il y a une erreur.",
+        "ar": "`mongoose.connect()` ترجع Promise يحل عند إنشاء الاتصال أو يرفض إذا كان هناك خطأ."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "What is the purpose of the `default` property in Mongoose schema fields?",
+        "fr": "Quel est le but de la propriété `default` dans les champs de schéma Mongoose ?",
+        "ar": "ما هو الغرض من الخاصية `default` في حقول مخطط Mongoose؟"
+      },
+      "options": [
+        "To validate the field value",
+        "To set the initial value when creating documents",
+        "To enable field indexing",
+        "To prevent null values"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `default` property sets the initial value of a field when a new document is created without specifying a value for that field.",
+        "fr": "La propriété `default` définit la valeur initiale d'un champ quand un nouveau document est créé sans spécifier une valeur pour ce champ.",
+        "ar": "الخاصية `default` تحدد القيمة الأولية لحقل ما عند إنشاء مستند جديد بدون تحديد قيمة لهذا الحقل."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "What is the purpose of `app.use('/path', router)` in Express?",
+        "fr": "Quel est le but de `app.use('/path', router)` dans Express ?",
+        "ar": "ما هو الغرض من `app.use('/path', router)` في Express؟"
+      },
+      "options": [
+        "To create a new route",
+        "To mount a router at a specific path",
+        "To validate request data",
+        "To handle database queries"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "`app.use('/path', router)` mounts a router at a specific path, making all routes defined in the router accessible under that path prefix.",
+        "fr": "`app.use('/path', router)` monte un routeur à un chemin spécifique, rendant toutes les routes définies dans le routeur accessibles sous ce préfixe de chemin.",
+        "ar": "`app.use('/path', router)` يثبت router في مسار محدد، مما يجعل جميع المسارات المعرفة في router متاحة تحت بادئة المسار تلك."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "What does the `validate` property in a Mongoose schema field do?",
+        "fr": "Que fait la propriété `validate` dans un champ de schéma Mongoose ?",
+        "ar": "ماذا تفعل الخاصية `validate` في حقل مخطط Mongoose؟"
+      },
+      "options": [
+        "Enables field indexing",
+        "Defines custom validation rules",
+        "Sets field constraints",
+        "Creates database triggers"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `validate` property defines custom validation rules for a field, including a validator function and an error message.",
+        "fr": "La propriété `validate` définit des règles de validation personnalisées pour un champ, incluant une fonction de validation et un message d'erreur.",
+        "ar": "الخاصية `validate` تحدد قواعد التحقق المخصصة لحقل ما، بما في ذلك دالة التحقق ورسالة الخطأ."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "What is the purpose of `process.env.PORT` in Express applications?",
+        "fr": "Quel est le but de `process.env.PORT` dans les applications Express ?",
+        "ar": "ما هو الغرض من `process.env.PORT` في تطبيقات Express؟"
+      },
+      "options": [
+        "To set the database port",
+        "To configure the server port from environment variables",
+        "To enable port forwarding",
+        "To validate port numbers"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "`process.env.PORT` reads the port number from environment variables, allowing the application to run on different ports in different environments.",
+        "fr": "`process.env.PORT` lit le numéro de port depuis les variables d'environnement, permettant à l'application d'exécuter sur différents ports dans différents environnements.",
+        "ar": "`process.env.PORT` يقرأ رقم المنفذ من متغيرات البيئة، مما يسمح للتطبيق بالعمل على منافذ مختلفة في بيئات مختلفة."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "What is the purpose of population in Mongoose?",
+        "fr": "Quel est le but de la population dans Mongoose ?",
+        "ar": "ما هو الغرض من التعبئة في Mongoose؟"
+      },
+      "options": [
+        "To create new documents",
+        "To improve performance",
+        "To replace references with actual documents",
+        "To validate relationships"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "Population in Mongoose replaces references with actual documents from other collections, allowing you to access related data.",
+        "fr": "La population dans Mongoose remplace les références par des documents réels d'autres collections, permettant d'accéder aux données liées.",
+        "ar": "التعبئة في Mongoose تستبدل المراجع بمستندات فعلية من مجموعات أخرى، مما يسمح بالوصول إلى البيانات المرتبطة."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "What is the purpose of `require('dotenv').config()` in Node.js applications?",
+        "fr": "Quel est le but de `require('dotenv').config()` dans les applications Node.js ?",
+        "ar": "ما هو الغرض من `require('dotenv').config()` في تطبيقات Node.js؟"
+      },
+      "options": [
+        "To set default environment values",
+        "To encrypt sensitive data",
+        "To load environment variables from .env file",
+        "To validate environment configuration"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "`require('dotenv').config()` loads environment variables from a .env file into `process.env`, making them accessible throughout the application.",
+        "fr": "`require('dotenv').config()` charge les variables d'environnement depuis un fichier .env dans `process.env`, les rendant accessibles dans toute l'application.",
+        "ar": "`require('dotenv').config()` يحمل متغيرات البيئة من ملف .env إلى `process.env`، مما يجعلها متاحة في جميع أنحاء التطبيق."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "What does the `methods` array in CORS configuration specify?",
+        "fr": "Que spécifie le tableau `methods` dans la configuration CORS ?",
+        "ar": "ماذا تحدد مصفوفة `methods` في إعدادات CORS؟"
+      },
+      "options": [
+        "Database query methods",
+        "HTTP methods allowed for cross-origin requests",
+        "Validation methods",
+        "Middleware functions"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The `methods` array in CORS configuration specifies which HTTP methods (GET, POST, PUT, DELETE) are allowed for cross-origin requests.",
+        "fr": "Le tableau `methods` dans la configuration CORS spécifie quelles méthodes HTTP (GET, POST, PUT, DELETE) sont autorisées pour les requêtes cross-origin.",
+        "ar": "مصفوفة `methods` في إعدادات CORS تحدد أي طرق HTTP (GET, POST, PUT, DELETE) مسموح بها للطلبات cross-origin."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "What is the purpose of middleware in Express?",
+        "fr": "Quel est le but du middleware dans Express ?",
+        "ar": "ما هو الغرض من middleware في Express؟"
+      },
+      "options": [
+        "To create routes",
+        "To process requests and responses",
+        "To validate schemas",
+        "To handle database operations"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Middleware in Express are functions that have access to the request and response objects, and can process requests, modify responses, or pass control to the next middleware.",
+        "fr": "Les middleware dans Express sont des fonctions qui ont accès aux objets request et response, et peuvent traiter les requêtes, modifier les réponses, ou passer le contrôle au middleware suivant.",
+        "ar": "middleware في Express هي دوال لها إمكانية الوصول إلى كائنات الطلب والاستجابة، ويمكنها معالجة الطلبات أو تعديل الاستجابات أو تمرير التحكم إلى middleware التالي."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "What does `require('dotenv').config()` return?",
+        "fr": "Que renvoie `require('dotenv').config()` ?",
+        "ar": "ماذا تُرجع `require('dotenv').config()`؟"
+      },
+      "options": [
+        "undefined",
+        "An array of key-value strings",
+        "An object with parsed environment variables and any loading error",
+        "A Promise that resolves when variables are loaded"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "`require('dotenv').config()` returns an object with two properties: `parsed` (containing the key/value pairs loaded) and `error` if loading failed.",
+        "fr": "`require('dotenv').config()` renvoie un objet contenant deux propriétés : `parsed` (les paires clé/valeur chargées) et `error` en cas d'échec.",
+        "ar": "`require('dotenv').config()` تُرجع كائنًا يحتوي على خاصيتين: `parsed` (قيم البيئة المحمّلة) و `error` إذا فشل التحميل."
+      }
+    }
+  ]
+}

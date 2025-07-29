@@ -2,6 +2,7 @@ import webDevelopment from '../data/quizzes/web-development-en.json';
 import tst from '../data/quizzes/tst.json';
 import expressBackend from '../data/quizzes/express-backend-quiz.json';
 import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
+import expressMongoose from '../data/quizzes/express-mongoose-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -82,6 +83,14 @@ export const availableQuizzes = [
     category: 'Database Development',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'express-mongoose-development',
+    title: 'Express.js & Mongoose Development Quiz',
+    description: 'Test your knowledge of Express.js, Mongoose, and e-commerce API development',
+    category: 'Backend Development',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -101,6 +110,10 @@ const quizData: Record<string, QuizData> = {
   },
   'mongoose-mongodb-development': {
     ...mongooseMongoDB,
+    difficulty: 'Medium' as const
+  },
+  'express-mongoose-development': {
+    ...expressMongoose,
     difficulty: 'Medium' as const
   }
 };
