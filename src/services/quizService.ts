@@ -3,6 +3,7 @@ import tst from '../data/quizzes/tst.json';
 import expressBackend from '../data/quizzes/express-backend-quiz.json';
 import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
 import expressMongoose from '../data/quizzes/express-mongoose-quiz.json';
+import jwtAuthentication from '../data/quizzes/JWT-token-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -91,6 +92,14 @@ export const availableQuizzes = [
     category: 'Backend Development',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'jwt-authentication',
+    title: 'JWT Authentication Quiz',
+    description: 'Test your knowledge of JWT authentication and authorization concepts',
+    category: 'Authentication & Authorization',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -114,6 +123,10 @@ const quizData: Record<string, QuizData> = {
   },
   'express-mongoose-development': {
     ...expressMongoose,
+    difficulty: 'Medium' as const
+  },
+  'jwt-authentication': {
+    ...jwtAuthentication,
     difficulty: 'Medium' as const
   }
 };

@@ -1,0 +1,410 @@
+{
+  "id": "jwt-authentication-quiz",
+  "title": "JWT and Authentication Concepts Quiz",
+  "description": "Test your knowledge of JWT (JSON Web Token), session-based authentication, and authorization concepts in web applications",
+  "category": "Authentication & Authorization",
+  "difficulty": "Intermediate",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What is the primary purpose of JWT (JSON Web Token) in authentication?",
+        "fr": "Quel est le but principal du JWT (JSON Web Token) dans l'authentification ?",
+        "ar": "ما هو الغرض الأساسي من JWT (JSON Web Token) في المصادقة؟"
+      },
+      "options": [
+        "To encrypt database passwords and sensitive information",
+        "To provide stateless authentication and authorization",
+        "To validate user input data and prevent attacks",
+        "To send user information to the server"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JWT provides stateless authentication by containing user information in a token that can be verified without storing session data on the server.",
+        "fr": "JWT fournit une authentification sans état en contenant les informations utilisateur dans un token qui peut être vérifié sans stocker les données de session sur le serveur.",
+        "ar": "JWT يوفر مصادقة بدون حالة من خلال احتواء معلومات المستخدم في رمز يمكن التحقق منه دون تخزين بيانات الجلسة على الخادم."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "What is the difference between session-based and token-based authentication?",
+        "fr": "Quelle est la différence entre l'authentification basée sur les sessions et basée sur les tokens ?",
+        "ar": "ما الفرق بين المصادقة القائمة على الجلسات والمصادقة القائمة على الرموز؟"
+      },
+      "options": [
+        "Session-based stores user data on server, token-based stores data in client",
+        "Token-based is more secure and encrypted by default",
+        "Session-based is faster and requires less memory",
+        "Token-based requires database storage while session-based doesn't"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Session-based authentication stores user session data on the server, while token-based (JWT) stores the data in the token itself on the client side.",
+        "fr": "L'authentification basée sur les sessions stocke les données de session utilisateur sur le serveur, tandis que basée sur les tokens (JWT) stocke les données dans le token lui-même côté client.",
+        "ar": "المصادقة القائمة على الجلسات تخزن بيانات جلسة المستخدم على الخادم، بينما المصادقة القائمة على الرموز (JWT) تخزن البيانات في الرمز نفسه على جانب العميل."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "What is the purpose of the 'expiresIn' option in JWT token generation?",
+        "fr": "Quel est le but de l'option 'expiresIn' dans la génération de tokens JWT ?",
+        "ar": "ما هو الغرض من الخيار 'expiresIn' في توليد رموز JWT؟"
+      },
+      "options": [
+        "To encrypt the token and ensure security",
+        "To set a time limit for token validity",
+        "To validate user input and prevent token tampering",
+        "To compress the token data and reduce size"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'expiresIn' option sets a time limit for token validity, ensuring that authentication tokens expire after a specified period for security.",
+        "fr": "L'option 'expiresIn' définit une limite de temps pour la validité du token, garantissant que les tokens d'authentification expirent après une période spécifiée pour la sécurité.",
+        "ar": "الخيار 'expiresIn' يحدد مهلة زمنية لصلاحية الرمز، مما يضمن انتهاء صلاحية رموز المصادقة بعد فترة محددة للأمان."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "What is the purpose of the Authorization header in JWT authentication?",
+        "fr": "Quel est le but de l'en-tête Authorization dans l'authentification JWT ?",
+        "ar": "ما هو الغرض من رأس Authorization في مصادقة JWT؟"
+      },
+      "options": [
+        "To encrypt the request body and ensure data security",
+        "To send the JWT token with each authenticated request",
+        "To validate the request format and prevent attacks",
+        "To compress the request data and reduce bandwidth"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The Authorization header is used to send the JWT token with each authenticated request, typically in the format 'Bearer <token>'.",
+        "fr": "L'en-tête Authorization est utilisé pour envoyer le token JWT avec chaque requête authentifiée, typiquement dans le format 'Bearer <token>'.",
+        "ar": "رأس Authorization يستخدم لإرسال رمز JWT مع كل طلب مصادق، عادةً بالتنسيق 'Bearer <token>'."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "What is the purpose of bcrypt in authentication systems?",
+        "fr": "Quel est le but de bcrypt dans les systèmes d'authentification ?",
+        "ar": "ما هو الغرض من bcrypt في أنظمة المصادقة؟"
+      },
+      "options": [
+        "To encrypt JWT tokens and ensure security",
+        "To hash passwords securely",
+        "To validate user input and prevent injection",
+        "To compress authentication data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Bcrypt is used to hash passwords securely with salt, making it resistant to rainbow table attacks and providing one-way encryption.",
+        "fr": "Bcrypt est utilisé pour hacher les mots de passe de manière sécurisée avec du sel, le rendant résistant aux attaques par table arc-en-ciel et fournissant un chiffrement unidirectionnel.",
+        "ar": "Bcrypt يستخدم لتشفير كلمات المرور بشكل آمن مع الملح، مما يجعله مقاوم لهجمات جداول قوس قزح ويوفر تشفيراً أحادي الاتجاه."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "What is the purpose of the verifyToken middleware in JWT authentication?",
+        "fr": "Quel est le but du middleware verifyToken dans l'authentification JWT ?",
+        "ar": "ما هو الغرض من middleware verifyToken في مصادقة JWT؟"
+      },
+      "options": [
+        "To encrypt sensitive data and ensure privacy",
+        "To verify JWT tokens",
+        "To validate user input and prevent attacks",
+        "To compress API responses"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The verifyToken middleware verifies JWT tokens from the Authorization header and extracts user information to make it available in the request object.",
+        "fr": "Le middleware verifyToken vérifie les tokens JWT de l'en-tête Authorization et extrait les informations utilisateur pour les rendre disponibles dans l'objet requête.",
+        "ar": "middleware verifyToken يتحقق من رموز JWT من رأس Authorization ويستخرج معلومات المستخدم لجعلها متاحة في كائن الطلب."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "What is the purpose of JWT_SECRET in JWT token generation?",
+        "fr": "Quel est le but de JWT_SECRET dans la génération de tokens JWT ?",
+        "ar": "ما هو الغرض من JWT_SECRET في توليد رموز JWT؟"
+      },
+      "options": [
+        "To encrypt the token payload and ensure security",
+        "To sign and verify JWT tokens",
+        "To validate user credentials and prevent attacks",
+        "To compress the token data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JWT_SECRET is used to sign and verify JWT tokens, ensuring that tokens cannot be tampered with and are authentic.",
+        "fr": "JWT_SECRET est utilisé pour signer et vérifier les tokens JWT, garantissant que les tokens ne peuvent pas être falsifiés et sont authentiques.",
+        "ar": "JWT_SECRET يستخدم لتوقيع والتحقق من رموز JWT، مما يضمن أن الرموز لا يمكن التلاعب بها وهي أصلية."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "What is the difference between authentication and authorization?",
+        "fr": "Quelle est la différence entre l'authentification et l'autorisation ?",
+        "ar": "ما الفرق بين المصادقة والتفويض؟"
+      },
+      "options": [
+        "Authentication verifies identity, authorization controls access",
+        "Authentication uses tokens, authorization uses passwords",
+        "Authentication uses passwords, authorization uses tokens",
+        "Authentication controls access, authorization verifies identity"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Authentication verifies who the user is (identity), while authorization determines what the user can access (permissions and roles).",
+        "fr": "L'authentification vérifie qui est l'utilisateur (identité), tandis que l'autorisation détermine ce que l'utilisateur peut accéder (permissions et rôles).",
+        "ar": "المصادقة تتحقق من هوية المستخدم، بينما التفويض يحدد ما يمكن للمستخدم الوصول إليه (الصلاحيات والأدوار)."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "What is the purpose of role-based access control in authentication?",
+        "fr": "Quel est le but du contrôle d'accès basé sur les rôles dans l'authentification ?",
+        "ar": "ما هو الغرض من التحكم في الوصول القائم على الأدوار في المصادقة؟"
+      },
+      "options": [
+        "To improve database performance and query optimization",
+        "To restrict access based on user roles and permissions",
+        "To encrypt sensitive data and ensure privacy",
+        "To validate user input and prevent attacks"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Role-based access control restricts different functionalities based on user roles, ensuring that admins, sellers, and buyers can only access appropriate features.",
+        "fr": "Le contrôle d'accès basé sur les rôles restreint différentes fonctionnalités selon les rôles utilisateur, garantissant que les admins, vendeurs et acheteurs ne peuvent accéder qu'aux fonctionnalités appropriées.",
+        "ar": "التحكم في الوصول القائم على الأدوار يحد من الوظائف المختلفة بناءً على أدوار المستخدمين، مما يضمن أن المشرفين والبائعين والمشترين يمكنهم الوصول فقط إلى الميزات المناسبة."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "What is the purpose of the 'Bearer' prefix in Authorization headers?",
+        "fr": "Quel est le but du préfixe 'Bearer' dans les en-têtes Authorization ?",
+        "ar": "ما هو الغرض من البادئة 'Bearer' في رؤوس Authorization؟"
+      },
+      "options": [
+        "To encrypt the token and ensure security",
+        "To indicate the type of authentication scheme",
+        "To validate the token format and prevent tampering",
+        "To compress the token data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'Bearer' prefix indicates that the token is a bearer token, which means the client can use it to access protected resources without additional authentication.",
+        "fr": "Le préfixe 'Bearer' indique que le token est un token porteur, ce qui signifie que le client peut l'utiliser pour accéder aux ressources protégées sans authentification supplémentaire.",
+        "ar": "البادئة 'Bearer' تشير إلى أن الرمز هو رمز حامل، مما يعني أن العميل يمكنه استخدامه للوصول إلى الموارد المحمية دون مصادقة إضافية."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "What happens when a JWT token expires?",
+        "fr": "Que se passe-t-il quand un token JWT expire ?",
+        "ar": "ماذا يحدث عندما تنتهي صلاحية رمز JWT؟"
+      },
+      "options": [
+        "The user is automatically logged out and redirected",
+        "The token becomes invalid",
+        "The server deletes the user session data",
+        "The token is automatically refreshed by the server"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "When a JWT token expires, it becomes invalid and the user must re-authenticate to get a new token, as JWT is stateless.",
+        "fr": "Quand un token JWT expire, il devient invalide et l'utilisateur doit se ré-authentifier pour obtenir un nouveau token, car JWT est sans état.",
+        "ar": "عندما تنتهي صلاحية رمز JWT، يصبح غير صالح ويجب على المستخدم إعادة المصادقة للحصول على رمز جديد، لأن JWT بدون حالة."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "What is the purpose of storing user information in JWT payload?",
+        "fr": "Quel est le but de stocker les informations utilisateur dans la charge utile JWT ?",
+        "ar": "ما هو الغرض من تخزين معلومات المستخدم في حمولة JWT؟"
+      },
+      "options": [
+        "To encrypt sensitive user data and ensure privacy",
+        "To avoid database queries for user information",
+        "To validate user input and prevent attacks",
+        "To compress user data and reduce storage"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Storing user information in JWT payload allows the server to access user data without making database queries, improving performance in stateless authentication.",
+        "fr": "Stocker les informations utilisateur dans la charge utile JWT permet au serveur d'accéder aux données utilisateur sans faire de requêtes base de données, améliorant les performances dans l'authentification sans état.",
+        "ar": "تخزين معلومات المستخدم في حمولة JWT يسمح للخادم بالوصول إلى بيانات المستخدم دون إجراء استعلامات قاعدة البيانات، مما يحسن الأداء في المصادقة بدون حالة."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "What is the purpose of the 'split' method in JWT token extraction?",
+        "fr": "Quel est le but de la méthode 'split' dans l'extraction de tokens JWT ?",
+        "ar": "ما هو الغرض من دالة 'split' في استخراج رموز JWT؟"
+      },
+      "options": [
+        "To validate the token format and structure",
+        "To separate the 'Bearer' prefix from the actual token",
+        "To encrypt the token and ensure security",
+        "To compress the token data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'split' method separates the 'Bearer' prefix from the actual JWT token in the Authorization header, allowing access to the token value.",
+        "fr": "La méthode 'split' sépare le préfixe 'Bearer' du token JWT réel dans l'en-tête Authorization, permettant l'accès à la valeur du token.",
+        "ar": "دالة 'split' تفصل البادئة 'Bearer' من رمز JWT الفعلي في رأس Authorization، مما يسمح بالوصول إلى قيمة الرمز."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "What is the purpose of error handling in JWT authentication?",
+        "fr": "Quel est le but de la gestion d'erreur dans l'authentification JWT ?",
+        "ar": "ما هو الغرض من معالجة الأخطاء في مصادقة JWT؟"
+      },
+      "options": [
+        "To improve database performance and reduce response times",
+        "To handle invalid tokens and authentication",
+        "To encrypt sensitive data and ensure security",
+        "To validate user input and prevent attacks"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Error handling in JWT authentication handles invalid tokens, expired tokens, and authentication failures gracefully, providing meaningful error responses.",
+        "fr": "La gestion d'erreur dans l'authentification JWT gère gracieusement les tokens invalides, expirés et les échecs d'authentification, fournissant des réponses d'erreur significatives.",
+        "ar": "معالجة الأخطاء في مصادقة JWT تتعامل مع الرموز غير الصالحة والمنتهية الصلاحية وفشل المصادقة بأسلوب لطيف، مما يوفر ردود خطأ ذات معنى."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "What is the purpose of the 'jwt.verify' method in JWT authentication?",
+        "fr": "Quel est le but de la méthode 'jwt.verify' dans l'authentification JWT ?",
+        "ar": "ما هو الغرض من دالة 'jwt.verify' في مصادقة JWT؟"
+      },
+      "options": [
+        "To encrypt the token and ensure security",
+        "To verify token signature and decode payload",
+        "To validate user input and prevent tampering",
+        "To compress the token data"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The 'jwt.verify' method verifies the token signature using the secret key and decodes the payload, ensuring the token is authentic and not tampered with.",
+        "fr": "La méthode 'jwt.verify' vérifie la signature du token en utilisant la clé secrète et décode la charge utile, garantissant que le token est authentique et non falsifié.",
+        "ar": "دالة 'jwt.verify' تتحقق من توقيع الرمز باستخدام المفتاح السري وتفكك الحمولة، مما يضمن أن الرمز أصلي وغير مقلد."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "What is the purpose of storing decoded user data in req.user?",
+        "fr": "Quel est le but de stocker les données utilisateur décodées dans req.user ?",
+        "ar": "ما هو الغرض من تخزين بيانات المستخدم المفككة في req.user؟"
+      },
+      "options": [
+        "To encrypt sensitive data and ensure privacy",
+        "To validate user input and prevent attacks",
+        "To create database indexes for faster queries",
+        "To make user information available to route handlers"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Storing decoded user data in req.user makes the user information available to subsequent route handlers and middleware, allowing access to user details without re-decoding the token.",
+        "fr": "Stocker les données utilisateur décodées dans req.user rend les informations utilisateur disponibles aux gestionnaires de routes et middleware suivants, permettant l'accès aux détails utilisateur sans re-décoder le token.",
+        "ar": "تخزين بيانات المستخدم المفككة في req.user يجعل معلومات المستخدم متاحة لمعالجات المسارات والوسائط اللاحقة، مما يسمح بالوصول إلى تفاصيل المستخدم دون إعادة فك الرمز."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "Which part of a JWT contains the user's claims and permissions?",
+        "fr": "Quelle partie d'un JWT contient les revendications et permissions de l'utilisateur ?",
+        "ar": "أي جزء من JWT يحتوي على مطالبات وصلاحيات المستخدم؟"
+      },
+      "options": [
+        "Header",
+        "Payload",
+        "Signature",
+        "Footer"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The payload section of a JWT contains the user's claims, such as user data and permissions. The header contains metadata, and the signature ensures integrity.",
+        "fr": "La section charge utile (payload) d'un JWT contient les revendications de l'utilisateur, telles que les données utilisateur et les permissions. L'en-tête contient les métadonnées et la signature assure l'intégrité.",
+        "ar": "قسم الحمولة (payload) في JWT يحتوي على مطالبات المستخدم مثل بيانات المستخدم والصلاحيات. الرأس يحتوي على البيانات الوصفية والتوقيع يضمن السلامة."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "What is the purpose of JWT signature verification?",
+        "fr": "Quel est le but de la vérification de signature JWT ?",
+        "ar": "ما هو الغرض من التحقق من توقيع JWT؟"
+      },
+      "options": [
+        "To compress the token and reduce size",
+        "To ensure token integrity and authenticity",
+        "To encrypt sensitive data in the payload",
+        "To validate user input and prevent attacks"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JWT signature verification ensures that the token hasn't been tampered with and was created by a trusted source using the correct secret key.",
+        "fr": "La vérification de signature JWT garantit que le token n'a pas été falsifié et a été créé par une source de confiance utilisant la bonne clé secrète.",
+        "ar": "التحقق من توقيع JWT يضمن أن الرمز لم يتم التلاعب به وتم إنشاؤه بواسطة مصدر موثوق باستخدام المفتاح السري الصحيح."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "What happens when a JWT token is compromised?",
+        "fr": "Que se passe-t-il quand un token JWT est compromis ?",
+        "ar": "ماذا يحدث عندما يتم اختراق رمز JWT؟"
+      },
+      "options": [
+        "The server automatically revokes all tokens",
+        "The token becomes invalid immediately",
+        "The user must change their password",
+        "The server cannot revoke individual JWT tokens"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Since JWT tokens are stateless, the server cannot revoke individual tokens. The only solution is to wait for expiration or implement a token blacklist.",
+        "fr": "Puisque les tokens JWT sont sans état, le serveur ne peut pas révoquer des tokens individuels. La seule solution est d'attendre l'expiration ou d'implémenter une liste noire de tokens.",
+        "ar": "بما أن رموز JWT بدون حالة، لا يمكن للخادم إلغاء الرموز الفردية. الحل الوحيد هو انتظار انتهاء الصلاحية أو تنفيذ قائمة سوداء للرموز."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "What is the security risk of storing sensitive data in JWT payload?",
+        "fr": "Quel est le risque de sécurité de stocker des données sensibles dans la charge utile JWT ?",
+        "ar": "ما هو الخطر الأمني لتخزين البيانات الحساسة في حمولة JWT؟"
+      },
+      "options": [
+        "JWT tokens are always encrypted by default",
+        "JWT payload is base64 encoded but not encrypted",
+        "JWT tokens are automatically compressed",
+        "JWT payload is automatically validated"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "JWT payload is base64 encoded but not encrypted, meaning sensitive data stored in the payload can be easily decoded and read by anyone who intercepts the token.",
+        "fr": "La charge utile JWT est encodée en base64 mais pas chiffrée, ce qui signifie que les données sensibles stockées dans la charge utile peuvent être facilement décodées et lues par quiconque intercepte le token.",
+        "ar": "حمولة JWT مشفرة بـ base64 ولكنها غير مشفرة، مما يعني أن البيانات الحساسة المخزنة في الحمولة يمكن فك تشفيرها وقراءتها بسهولة من قبل أي شخص يعترض الرمز."
+      }
+    }
+  ]
+} 
