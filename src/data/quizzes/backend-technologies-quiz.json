@@ -1,0 +1,410 @@
+{
+  "id": "backend_tech",
+  "title": "Backend Technologies Quiz",
+  "description": "Test your knowledge of Multer, JWT, Mongoose, and Express",
+  "category": "Backend Development",
+  "difficulty": "Medium",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What is Multer primarily used for in Express.js?",
+        "fr": "À quoi sert principalement Multer dans Express.js ?",
+        "ar": "ما هو الاستخدام الأساسي لـ Multer في Express.js؟"
+      },
+      "options": [
+        "Database queries",
+        "File uploading",
+        "Authentication",
+        "Routing"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Multer is a middleware for handling multipart/form-data, primarily used for file uploads in Express.js applications.",
+        "fr": "Multer est un middleware pour gérer multipart/form-data, principalement utilisé pour les téléchargements de fichiers dans les applications Express.js.",
+        "ar": "Multer هو middleware للتعامل مع multipart/form-data، يُستخدم أساساً لرفع الملفات في تطبيقات Express.js."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "How do you configure Multer to accept only image files?",
+        "fr": "Comment configurer Multer pour accepter uniquement les fichiers image ?",
+        "ar": "كيف تُعدل Multer لقبول ملفات الصور فقط؟"
+      },
+      "options": [
+        "storage property",
+        "fileFilter function",
+        "limits property",
+        "dest property"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "You use the fileFilter function in Multer configuration to specify which file types are allowed.",
+        "fr": "Vous utilisez la fonction fileFilter dans la configuration de Multer pour spécifier quels types de fichiers sont autorisés.",
+        "ar": "تستخدم دالة fileFilter في إعدادات Multer لتحديد أنواع الملفات المسموح بها."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "What does the 'dest' property do in Multer?",
+        "fr": "Que fait la propriété 'dest' dans Multer ?",
+        "ar": "ماذا تفعل خاصية 'dest' في Multer؟"
+      },
+      "options": [
+        "Sets file size limit",
+        "Sets file name",
+        "Sets upload directory",
+        "Sets file type filter"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The 'dest' property specifies the directory where uploaded files will be stored.",
+        "fr": "La propriété 'dest' spécifie le répertoire où les fichiers téléchargés seront stockés.",
+        "ar": "خاصية 'dest' تحدد المجلد الذي سيتم حفظ الملفات المرفوعة فيه."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "How do you access uploaded file information in Express route?",
+        "fr": "Comment accéder aux informations du fichier téléchargé dans la route Express ?",
+        "ar": "كيف تصل إلى معلومات الملف المرفوع في مسار Express؟"
+      },
+      "options": [
+        "req.files",
+        "req.file",
+        "req.upload",
+        "req.body.file"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "When using Multer, uploaded file information is available in req.file for single file uploads.",
+        "fr": "Lors de l'utilisation de Multer, les informations du fichier téléchargé sont disponibles dans req.file pour les téléchargements de fichiers uniques.",
+        "ar": "عند استخدام Multer، معلومات الملف المرفوع متاحة في req.file لرفع ملف واحد."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "What is the purpose of Multer's 'limits' property?",
+        "fr": "Quel est le but de la propriété 'limits' de Multer ?",
+        "ar": "ما هو الغرض من خاصية 'limits' في Multer؟"
+      },
+      "options": [
+        "Set file type limits",
+        "Set upload time limit",
+        "Set upload count limit",
+        "Set file size restrictions"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "The 'limits' property in Multer allows you to set restrictions like maximum file size, field size, and number of files.",
+        "fr": "La propriété 'limits' dans Multer vous permet de définir des restrictions comme la taille maximale du fichier, la taille du champ et le nombre de fichiers.",
+        "ar": "خاصية 'limits' في Multer تسمح لك بتعيين قيود مثل الحد الأقصى لحجم الملف وحجم الحقل وعدد الملفات."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "What does JWT stand for?",
+        "fr": "Que signifie JWT ?",
+        "ar": "ماذا تعني JWT؟"
+      },
+      "options": [
+        "Java Web Token",
+        "JavaScript Web Token",
+        "JSON Web Transfer",
+        "JSON Web Token"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "JWT stands for JSON Web Token, which is a compact, URL-safe means of representing claims between two parties.",
+        "fr": "JWT signifie JSON Web Token, qui est un moyen compact et sûr pour représenter des revendications entre deux parties.",
+        "ar": "JWT تعني JSON Web Token، وهي وسيلة مضغوطة وآمنة لتمثيل المطالبات بين طرفين."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "What are the three parts of a JWT?",
+        "fr": "Quelles sont les trois parties d'un JWT ?",
+        "ar": "ما هي الأجزاء الثلاثة لـ JWT؟"
+      },
+      "options": [
+        "Auth.Data.Sign",
+        "Header.Payload.Signature",
+        "Token.Key.Signature",
+        "Header.Body.Footer"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "A JWT consists of three parts: Header (algorithm and token type), Payload (claims), and Signature (verification).",
+        "fr": "Un JWT se compose de trois parties : Header (algorithme et type de token), Payload (revendications) et Signature (vérification).",
+        "ar": "يتكون JWT من ثلاثة أجزاء: Header (الخوارزمية ونوع الرمز المميز)، Payload (المطالبات)، وSignature (التحقق)."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "How do you verify a JWT token?",
+        "fr": "Comment vérifier un token JWT ?",
+        "ar": "كيف تتحقق من رمز JWT؟"
+      },
+      "options": [
+        "jwt.authenticate()",
+        "jwt.verify()",
+        "jwt.validate()",
+        "jwt.check()"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "You use jwt.verify() method to verify the authenticity and integrity of a JWT token.",
+        "fr": "Vous utilisez la méthode jwt.verify() pour vérifier l'authenticité et l'intégrité d'un token JWT.",
+        "ar": "تستخدم دالة jwt.verify() للتحقق من صحة وسلامة رمز JWT."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "What is the purpose of JWT expiration time?",
+        "fr": "Quel est le but du temps d'expiration JWT ?",
+        "ar": "ما هو الغرض من وقت انتهاء صلاحية JWT؟"
+      },
+      "options": [
+        "Security measure",
+        "Performance optimization",
+        "Memory management",
+        "Network efficiency"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "JWT expiration time is a security measure that limits how long a token remains valid, reducing the risk of token misuse.",
+        "fr": "Le temps d'expiration JWT est une mesure de sécurité qui limite la durée de validité d'un token, réduisant le risque d'utilisation abusive du token.",
+        "ar": "وقت انتهاء صلاحية JWT هو إجراء أمني يحد من المدة التي يبقى فيها الرمز صالحاً، مما يقلل من خطر سوء استخدام الرمز."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "Where should you store JWT tokens on the client side?",
+        "fr": "Où devez-vous stocker les tokens JWT côté client ?",
+        "ar": "أين يجب أن تخزن رموز JWT في جانب العميل؟"
+      },
+      "options": [
+        "Global variables",
+        "SessionStorage",
+        "HttpOnly cookies",
+        "LocalStorage"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "JWT tokens should be stored in HttpOnly cookies for security, as they cannot be accessed by JavaScript and are protected from XSS attacks.",
+        "fr": "Les tokens JWT doivent être stockés dans des cookies HttpOnly pour la sécurité, car ils ne peuvent pas être accédés par JavaScript et sont protégés contre les attaques XSS.",
+        "ar": "يجب تخزين رموز JWT في ملفات تعريف الارتباط HttpOnly للأمان، حيث لا يمكن الوصول إليها بواسطة JavaScript ومحمية من هجمات XSS."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "What is Mongoose in Node.js?",
+        "fr": "Qu'est-ce que Mongoose dans Node.js ?",
+        "ar": "ما هو Mongoose في Node.js؟"
+      },
+      "options": [
+        "Database driver",
+        "Query builder",
+        "ORM library",
+        "MongoDB ODM"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Mongoose is an Object Document Mapper (ODM) for MongoDB and Node.js, providing a straightforward schema-based solution for modeling application data.",
+        "fr": "Mongoose est un Object Document Mapper (ODM) pour MongoDB et Node.js, fournissant une solution basée sur le schéma pour modéliser les données d'application.",
+        "ar": "Mongoose هو Object Document Mapper (ODM) لـ MongoDB وNode.js، يوفر حلاً بسيطاً قائماً على المخطط لنمذجة بيانات التطبيق."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "How do you define a schema in Mongoose?",
+        "fr": "Comment définir un schéma dans Mongoose ?",
+        "ar": "كيف تُعرّف مخطط في Mongoose؟"
+      },
+      "options": [
+        "mongoose.createSchema()",
+        "mongoose.define()",
+        "new mongoose.Schema()",
+        "mongoose.schema()"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "You define a Mongoose schema using the new mongoose.Schema() constructor with an object defining the structure and validation rules.",
+        "fr": "Vous définissez un schéma Mongoose en utilisant le constructeur new mongoose.Schema() avec un objet définissant la structure et les règles de validation.",
+        "ar": "تُعرّف مخطط Mongoose باستخدام المُنشئ new mongoose.Schema() مع كائن يحدد البنية وقواعد التحقق."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "What is the purpose of Mongoose middleware?",
+        "fr": "Quel est le but du middleware Mongoose ?",
+        "ar": "ما هو الغرض من middleware في Mongoose؟"
+      },
+      "options": [
+        "Connect to database",
+        "Create indexes",
+        "Validate data",
+        "Execute functions before/after operations"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Mongoose middleware (pre/post hooks) allows you to execute functions before or after specific operations like save, remove, or find.",
+        "fr": "Le middleware Mongoose (hooks pre/post) vous permet d'exécuter des fonctions avant ou après des opérations spécifiques comme save, remove ou find.",
+        "ar": "middleware في Mongoose (pre/post hooks) يسمح لك بتنفيذ دوال قبل أو بعد عمليات محددة مثل save أو remove أو find."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "How do you create a model in Mongoose?",
+        "fr": "Comment créer un modèle dans Mongoose ?",
+        "ar": "كيف تنشئ نموذج في Mongoose؟"
+      },
+      "options": [
+        "mongoose.create()",
+        "mongoose.new()",
+        "mongoose.build()",
+        "mongoose.model()"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "You create a Mongoose model using mongoose.model(name, schema) which compiles the schema into a model class.",
+        "fr": "Vous créez un modèle Mongoose en utilisant mongoose.model(name, schema) qui compile le schéma en une classe de modèle.",
+        "ar": "تنشئ نموذج Mongoose باستخدام mongoose.model(name, schema) الذي يترجم المخطط إلى فئة نموذج."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "What is the difference between find() and findOne() in Mongoose?",
+        "fr": "Quelle est la différence entre find() et findOne() dans Mongoose ?",
+        "ar": "ما الفرق بين find() و findOne() في Mongoose؟"
+      },
+      "options": [
+        "find() is deprecated, findOne() is new",
+        "find() returns array, findOne() returns single document",
+        "find() uses indexes, findOne() doesn't",
+        "find() is faster than findOne()"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "find() returns an array of documents matching the criteria, while findOne() returns a single document or null.",
+        "fr": "find() retourne un tableau de documents correspondant aux critères, tandis que findOne() retourne un seul document ou null.",
+        "ar": "find() ترجع مصفوفة من المستندات المطابقة للمعايير، بينما findOne() ترجع مستند واحد أو null."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "What is Express.js?",
+        "fr": "Qu'est-ce qu'Express.js ?",
+        "ar": "ما هو Express.js؟"
+      },
+      "options": [
+        "Testing framework",
+        "Database management system",
+        "Template engine",
+        "Web application framework"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+        "fr": "Express.js est un framework d'application web Node.js minimal et flexible qui fournit un ensemble robuste de fonctionnalités pour les applications web et mobiles.",
+        "ar": "Express.js هو إطار عمل تطبيقات الويب Node.js بسيط ومرن يوفر مجموعة قوية من الميزات لتطبيقات الويب والجوال."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "How do you define a route in Express?",
+        "fr": "Comment définir une route dans Express ?",
+        "ar": "كيف تُعرّف مسار في Express؟"
+      },
+      "options": [
+        "app.define('/path')",
+        "app.route('/path')",
+        "app.get('/path', handler)",
+        "app.create('/path')"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "You define routes in Express using app.METHOD(path, handler) where METHOD is get, post, put, delete, etc.",
+        "fr": "Vous définissez des routes dans Express en utilisant app.METHOD(path, handler) où METHOD est get, post, put, delete, etc.",
+        "ar": "تُعرّف المسارات في Express باستخدام app.METHOD(path, handler) حيث METHOD هو get أو post أو put أو delete أو غيرها."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "What is middleware in Express?",
+        "fr": "Qu'est-ce que le middleware dans Express ?",
+        "ar": "ما هو middleware في Express؟"
+      },
+      "options": [
+        "Error handling functions",
+        "Database connection functions",
+        "Template rendering functions",
+        "Functions that run between request and response"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle.",
+        "fr": "Les fonctions middleware sont des fonctions qui ont accès à l'objet de requête (req), l'objet de réponse (res) et la fonction middleware suivante dans le cycle requête-réponse de l'application.",
+        "ar": "دوال middleware هي دوال لها إمكانية الوصول إلى كائن الطلب (req) وكائن الاستجابة (res) ودالة middleware التالية في دورة الطلب-الاستجابة للتطبيق."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "How do you serve static files in Express?",
+        "fr": "Comment servir des fichiers statiques dans Express ?",
+        "ar": "كيف تخدم الملفات الثابتة في Express؟"
+      },
+      "options": [
+        "express.serve()",
+        "app.files()",
+        "app.static()",
+        "app.use(express.static())"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "You use app.use(express.static(directory)) to serve static files like images, CSS, and JavaScript files from a specified directory.",
+        "fr": "Vous utilisez app.use(express.static(directory)) pour servir des fichiers statiques comme des images, CSS et des fichiers JavaScript depuis un répertoire spécifié.",
+        "ar": "تستخدم app.use(express.static(directory)) لخدمة الملفات الثابتة مثل الصور وCSS وملفات JavaScript من مجلد محدد."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "What is the purpose of next() in Express middleware?",
+        "fr": "Quel est le but de next() dans le middleware Express ?",
+        "ar": "ما هو الغرض من next() في middleware Express؟"
+      },
+      "options": [
+        "Send response to client",
+        "End the request-response cycle",
+        "Pass control to next middleware",
+        "Handle errors"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The next() function passes control to the next middleware function in the stack, allowing the request-response cycle to continue.",
+        "fr": "La fonction next() passe le contrôle à la fonction middleware suivante dans la pile, permettant au cycle requête-réponse de continuer.",
+        "ar": "دالة next() تنقل التحكم إلى دالة middleware التالية في المكدس، مما يسمح بدورة الطلب-الاستجابة بالاستمرار."
+      }
+    }
+  ]
+}

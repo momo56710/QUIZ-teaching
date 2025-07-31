@@ -4,6 +4,7 @@ import expressBackend from '../data/quizzes/express-backend-quiz.json';
 import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
 import expressMongoose from '../data/quizzes/express-mongoose-quiz.json';
 import jwtAuthentication from '../data/quizzes/JWT-token-quiz.json';
+import backendTechnologies from '../data/quizzes/backend-technologies-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -100,6 +101,14 @@ export const availableQuizzes = [
     category: 'Authentication & Authorization',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'backend-technologies',
+    title: 'Backend Technologies Quiz',
+    description: 'Test your knowledge of Multer, JWT, Mongoose, and Express',
+    category: 'Backend Development',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -127,6 +136,10 @@ const quizData: Record<string, QuizData> = {
   },
   'jwt-authentication': {
     ...jwtAuthentication,
+    difficulty: 'Medium' as const
+  },
+  'backend-technologies': {
+    ...backendTechnologies,
     difficulty: 'Medium' as const
   }
 };
