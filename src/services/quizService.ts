@@ -5,6 +5,7 @@ import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
 import expressMongoose from '../data/quizzes/express-mongoose-quiz.json';
 import jwtAuthentication from '../data/quizzes/JWT-token-quiz.json';
 import backendTechnologies from '../data/quizzes/backend-technologies-quiz.json';
+import erpQuiz from '../data/quizzes/erp-quiz.json';
 export interface QuizQuestion {
   id: number;
   question: {
@@ -109,6 +110,14 @@ export const availableQuizzes = [
     category: 'Backend Development',
     difficulty: 'Medium' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'erp-quiz',
+    title: 'ERP Quiz',
+    description: 'Test your knowledge of ERP fundamentals and SAP S/4HANA',
+    category: 'Enterprise Systems',
+    difficulty: 'Hard' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -141,6 +150,10 @@ const quizData: Record<string, QuizData> = {
   'backend-technologies': {
     ...backendTechnologies,
     difficulty: 'Medium' as const
+  },  
+  'erp-quiz': {
+    ...erpQuiz,
+    difficulty: 'Hard' as const
   }
 };
 

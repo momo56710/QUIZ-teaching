@@ -1,0 +1,130 @@
+{
+  "id": "sap-consultant-transition",
+  "title": "Developer to SAP Consultant Quiz",
+  "description": "Test your knowledge on ERP fundamentals, SAP S/4HANA, the Big Four, and end-to-end business processes.",
+  "category": "Enterprise Systems",
+  "difficulty": "Hard",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "According to the presentation, what is the defining characteristic of the 'Consultant' mindset compared to the 'Developer' mindset?",
+        "fr": "Selon la présentation, quelle est la caractéristique principale de l'état d'esprit du 'Consultant' par rapport à celui du 'Développeur' ?",
+        "ar": "وفقًا للعرض التقديمي، ما هي السمة المميزة لعقلية 'المستشار' مقارنة بعقلية 'المطور'؟"
+      },
+      "options": [
+        "Focusing on syntax, code architecture, and ES6+ performance optimization.",
+        "Prioritizing business processes, ROI, and ensuring the solution solves the client's pain point.",
+        "Managing internal databases, server infrastructure, and network connectivity.",
+        "Building independent front-end interfaces without relying on shared databases."
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The consultant mindset focuses on the external view—evaluating business processes, ROI, and solving client pain points—whereas the developer focuses on the internal view like syntax and performance.",
+        "fr": "L'état d'esprit du consultant se concentre sur la vue externe : l'évaluation des processus métier, le ROI et la résolution des problèmes du client, tandis que le développeur se concentre sur la syntaxe et les performances.",
+        "ar": "تركز عقلية المستشار على النظرة الخارجية - تقييم العمليات التجارية، وعائد الاستثمار، وحل مشاكل العميل - بينما يركز المطور على النظرة الداخلية مثل بناء الجمل البرمجية والأداء."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "Which of the following best describes the core architectural advantage of an ERP system as highlighted in the presentation?",
+        "fr": "Laquelle des propositions suivantes décrit le mieux un avantage architectural fondamental d'un système ERP, tel que souligné dans la présentation ?",
+        "ar": "أي مما يلي يصف بشكل أفضل الميزة المعمارية الأساسية لنظام تخطيط موارد المؤسسات (ERP) كما تم إبرازه في العرض التقديمي؟"
+      },
+      "options": [
+        "It utilizes multiple isolated databases to ensure departmental data security.",
+        "It relies on a shared database so every department works from the same data, eliminating duplicates.",
+        "It is strictly an on-premise solution designed exclusively for Fortune 500 companies.",
+        "It focuses solely on automating human resource and payroll processes."
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "An ERP provides a shared database ensuring all departments work from a single source of truth, eliminating duplicates and data mismatches.",
+        "fr": "Un ERP fournit une base de données partagée garantissant que tous les départements travaillent à partir d'une source unique, éliminant ainsi les doublons et les incohérences de données.",
+        "ar": "يوفر نظام تخطيط موارد المؤسسات قاعدة بيانات مشتركة تضمن عمل جميع الأقسام من مصدر واحد للبيانات، مما يلغي التكرار وعدم التطابق."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "Among the 'Big Four' professional services firms, which one is explicitly noted for its strong presence in the financial services sectors?",
+        "fr": "Parmi les quatre grands cabinets d'audit et de conseil ('Big Four'), lequel est explicitement reconnu pour sa forte présence dans les secteurs des services financiers ?",
+        "ar": "من بين شركات الخدمات المهنية الأربع الكبرى (Big Four)، أي منها يُشار صراحةً إلى حضورها القوي في قطاعات الخدمات المالية؟"
+      },
+      "options": [
+        "Deloitte",
+        "PwC",
+        "EY",
+        "KPMG"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "The presentation specifically identifies KPMG as a global audit giant that is strong in financial services sectors.",
+        "fr": "La présentation identifie spécifiquement KPMG comme un géant mondial de l'audit, particulièrement présent dans le secteur des services financiers.",
+        "ar": "يحدد العرض التقديمي KPMG على وجه التحديد كعملاق تدقيق عالمي يتمتع بحضور قوي في قطاعات الخدمات المالية."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "What does the concept of 'Clean Core' represent in the context of SAP S/4HANA transformations?",
+        "fr": "Que représente le concept de 'Clean Core' dans le contexte des transformations SAP S/4HANA ?",
+        "ar": "ماذا يمثل مفهوم 'Clean Core' في سياق تحولات SAP S/4HANA؟"
+      },
+      "options": [
+        "A legacy database cleanup tool for on-premise systems.",
+        "A mindset shift for how enterprises evolve, rather than just a methodology.",
+        "A specific SAP module dedicated to manufacturing and production.",
+        "A syntax standard for writing custom ABAP code."
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The presentation explicitly quotes that 'Clean Core isn't just a methodology it's a mindset shift for how enterprises evolve.'",
+        "fr": "La présentation cite explicitement que 'Clean Core n'est pas seulement une méthodologie, c'est un changement de mentalité sur la façon dont les entreprises évoluent.'",
+        "ar": "يقتبس العرض التقديمي صراحةً أن 'Clean Core ليس مجرد منهجية، بل هو تحول في العقلية لكيفية تطور المؤسسات.'"
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "In SAP's framework of end-to-end business processes, which specific workflow manages finance and accounting operations?",
+        "fr": "Dans le cadre des processus métier de bout en bout de SAP, quel flux de travail spécifique gère les opérations de finance et de comptabilité ?",
+        "ar": "في إطار عمليات الأعمال الشاملة لشركة SAP، ما هو سير العمل المحدد الذي يدير عمليات المالية والمحاسبة؟"
+      },
+      "options": [
+        "Procure to Pay",
+        "Record to Report",
+        "Order to Cash",
+        "Forecast to Fulfill"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "'Record to Report' is the SAP end-to-end process dedicated to tracking financial data and generating accounting reports.",
+        "fr": "'Record to Report' est le processus de bout en bout de SAP dédié au suivi des données financières et à la génération de rapports comptables.",
+        "ar": "'Record to Report' هي عملية SAP الشاملة المخصصة لتتبع البيانات المالية وإنشاء التقارير المحاسبية."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "Which end-to-end business process encompasses 'purchasing & vendor payment'?",
+        "fr": "Quel processus métier de bout en bout englobe 'les achats et le paiement des fournisseurs' ?",
+        "ar": "أي من عمليات الأعمال الشاملة تشمل 'المشتريات ودفع الموردين'؟"
+      },
+      "options": [
+        "Acquire to Decommission",
+        "Lead to Cash",
+        "Procure to Pay",
+        "Plan to Product"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "'Procure to Pay' is the process that handles the entire lifecycle of purchasing goods or services and executing payments to vendors.",
+        "fr": "'Procure to Pay' est le processus qui gère l'ensemble du cycle de vie de l'achat de biens ou de services et de l'exécution des paiements aux fournisseurs.",
+        "ar": "'Procure to Pay' هي العملية التي تتعامل مع دورة الحياة الكاملة لشراء السلع أو الخدمات وتنفيذ المدفوعات للموردين."
+      }
+    }
+  ]
+}
