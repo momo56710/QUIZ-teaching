@@ -14,10 +14,10 @@
         "ar": "في نموذج عمليات الأعمال الشاملة، ما هو سير العمل المحدد المسؤول عن 'تخطيط الطلب والمخزون'؟"
       },
       "options": [
-        "Procure to Pay [cite: 103]",
-        "Order to Cash [cite: 113]",
-        "Record to Report [cite: 109]",
-        "Forecast to Fulfill [cite: 117]"
+        "Procure to Pay",
+        "Order to Cash",
+        "Record to Report",
+        "Forecast to Fulfill"
       ],
       "correctAnswer": 3,
       "explanation": {

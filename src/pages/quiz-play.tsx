@@ -12,8 +12,17 @@ import { database } from '../config/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { getQuestion, getTotalQuestions, getMaxPoints } from '../services/quizService';
 import { saveQuizResult } from '../services/firestoreService';
+import quizerp_en from '../data/quizzes/quizerp_en.json';
+import quizerp_fr from '../data/quizzes/quizerp_fr.json';
+import quizerp_ar from '../data/quizzes/quizerp_ar.json';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/reset.css';
+
+const erpLangData = {
+  en: quizerp_en,
+  fr: quizerp_fr,
+  ar: quizerp_ar
+} as const;
 
 const { Title, Text } = Typography;
 
@@ -49,11 +58,7 @@ interface QuizSession {
   isFinished?: boolean;
 }
 
-const LANG_LABELS: Record<'en' | 'fr' | 'ar', string> = {
-  en: 'English',
-  fr: 'Français',
-  ar: 'العربية'
-};
+
 
 export default function QuizPlay() {
   const { user } = useAuth();
@@ -74,6 +79,14 @@ export default function QuizPlay() {
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [maxPoints, setMaxPoints] = useState(0);
   const [stateRestored, setStateRestored] = useState(false);
+  const [displayLang, setDisplayLang] = useState<'en' | 'fr' | 'ar'>('en');
+
+  // Sync initial language with quiz language
+  useEffect(() => {
+    if (currentQuiz?.language && !stateRestored) {
+      setDisplayLang(currentQuiz.language);
+    }
+  }, [currentQuiz?.language, stateRestored]);
 
   // Simplified quiz listener
   useEffect(() => {
@@ -522,16 +535,30 @@ export default function QuizPlay() {
 
   const progress = (currentQuestionNumber / totalQuestions) * 100;
 
+  // Language display logic
+  let displayQuestionText = typeof currentQuestion.question === 'object' ? 
+    (currentQuestion.question[displayLang as keyof typeof currentQuestion.question] || currentQuestion.question['en']) : 
+    currentQuestion.question;
+  let displayOptions = currentQuestion.options;
+  let displayExplanation = currentQuestion.explanation ? 
+    (typeof currentQuestion.explanation === 'object' ? (currentQuestion.explanation[displayLang as keyof typeof currentQuestion.explanation] || currentQuestion.explanation['en']) : currentQuestion.explanation) : '';
+
+  if (currentQuiz.quizId === 'erp-quiz') {
+    const localQ = erpLangData[displayLang].questions.find((q: any) => q.id === currentQuestionNumber);
+    if (localQ) {
+      displayQuestionText = localQ.question;
+      displayOptions = localQ.options;
+      displayExplanation = localQ.explanation;
+    }
+  }
+
   // Show answer display
   if (showAnswer) {
     const lastAnswer = answers[answers.length - 1];
     const isCorrect = lastAnswer?.isCorrect;
     const isTimeout = lastAnswer?.timeSpent === 60 && !isCorrect;
-    const correctAnswerText = currentQuestion.options[currentQuestion.correctAnswer];
-    const selectedAnswerText = currentQuestion.options[lastAnswer?.selectedAnswer || 0];
-
-    // Show explanation in all three languages, each on its own line, Arabic right-aligned
-    const explanation = currentQuestion.explanation || {};
+    const correctAnswerText = displayOptions[currentQuestion.correctAnswer];
+    const selectedAnswerText = displayOptions[lastAnswer?.selectedAnswer || 0];
 
     return (
       <div style={{ padding: '16px', background: '#f0f2f5', minHeight: '100vh' }}>
@@ -589,17 +616,8 @@ export default function QuizPlay() {
               <div>
                 <Text strong>Explanation: </Text>
                 <div style={{ marginTop: 8 }}>
-                  <div>
-                    <Text strong style={{ fontSize: 14 }}>{explanation['en']}</Text>
-                    <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.en})</span>
-                  </div>
-                  <div>
-                    <Text strong style={{ fontSize: 14 }}>{explanation['fr']}</Text>
-                    <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.fr})</span>
-                  </div>
-                  <div style={{ textAlign: 'right', direction: 'rtl' }}>
-                    <Text strong style={{ fontSize: 14 }}>{explanation['ar']}</Text>
-                    <span style={{ marginRight: 8, color: '#888', direction: 'ltr' }}>({LANG_LABELS.ar})</span>
+                  <div style={{ textAlign: displayLang === 'ar' ? 'right' : 'left', direction: displayLang === 'ar' ? 'rtl' : 'ltr' }}>
+                    <Text strong style={{ fontSize: 14 }}>{displayExplanation as string}</Text>
                   </div>
                 </div>
               </div>
@@ -707,9 +725,19 @@ export default function QuizPlay() {
               <Title level={3} style={{ margin: 0 }}>
                 Question {currentQuestionNumber} of {totalQuestions}
               </Title>
-              <Text type="secondary">
-                Language: {currentQuiz.language}
-              </Text>
+              <div style={{ marginTop: '8px' }}>
+                <Radio.Group 
+                  value={displayLang} 
+                  onChange={(e) => setDisplayLang(e.target.value)}
+                  size="small"
+                  optionType="button"
+                  buttonStyle="solid"
+                >
+                  <Radio.Button value="en">English</Radio.Button>
+                  <Radio.Button value="fr">Français</Radio.Button>
+                  <Radio.Button value="ar">العربية</Radio.Button>
+                </Radio.Group>
+              </div>
             </div>
             <div style={{ textAlign: window.innerWidth <= 768 ? 'center' : 'right' }}>
               <Title level={3} style={{ margin: 0, color: '#52c41a' }}>
@@ -734,40 +762,30 @@ export default function QuizPlay() {
         {/* Question Card */}
         <Card style={{ marginBottom: '16px' }}>
           <div>
-            {/* Show the question in three languages, each on its own line, Arabic right-aligned */}
             <div style={{ marginBottom: 16 }}>
-              <div>
-                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['en']}</Text>
-                <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.en})</span>
-              </div>
-              <div>
-                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['fr']}</Text>
-                <span style={{ marginLeft: 8, color: '#888' }}>({LANG_LABELS.fr})</span>
-              </div>
-              <div style={{ textAlign: 'right', direction: 'rtl' }}>
-                <Text strong style={{ fontSize: 16 }}>{currentQuestion.question['ar']}</Text>
-                <span style={{ marginRight: 8, color: '#888', direction: 'ltr' }}>({LANG_LABELS.ar})</span>
+              <div style={{ textAlign: displayLang === 'ar' ? 'right' : 'left', direction: displayLang === 'ar' ? 'rtl' : 'ltr' }}>
+                <Text strong style={{ fontSize: 18 }}>{displayQuestionText as string}</Text>
               </div>
             </div>
             <Divider style={{ margin: '12px 0' }} />
-            {/* Show the options only once, as a vertical radio group */}
             <Radio.Group 
               value={selectedAnswer} 
               onChange={(e) => setSelectedAnswer(e.target.value)}
-              style={{ width: '100%' }}
+              style={{ width: '100%', direction: displayLang === 'ar' ? 'rtl' : 'ltr' }}
             >
               <Space direction="vertical" style={{ width: '100%' }}>
-                {currentQuestion.options.map((option, index) => (
+                {displayOptions.map((option, index) => (
                   <Radio 
                     key={index} 
                     value={index}
                     style={{ 
-                      display: 'block',
+                      display: 'flex',
                       padding: '12px',
                       border: '1px solid #d9d9d9',
                       borderRadius: '8px',
                       marginBottom: '8px',
-                      width: '100%'
+                      width: '100%',
+                      textAlign: displayLang === 'ar' ? 'right' : 'left'
                     }}
                   >
                     {option}

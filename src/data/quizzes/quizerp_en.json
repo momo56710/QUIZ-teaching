@@ -1,0 +1,91 @@
+{
+  "id": "sap-consultant-final-challenge-en",
+  "title": "Mastering the SAP Consulting Landscape",
+  "questions": [
+    {
+      "id": 1,
+      "question": "In the end-to-end business process model, which specific workflow is responsible for 'demand planning & inventory'?",
+      "options": ["Procure to Pay", "Order to Cash", "Record to Report", "Forecast to Fulfill"],
+      "correctAnswer": 3,
+      "explanation": "Forecast to Fulfill covers the lifecycle of demand planning and inventory management."
+    },
+    {
+      "id": 2,
+      "question": "How does the presentation define the 'Bridge' in the context of the mindset shift?",
+      "options": [
+        "Focusing on ES6+ and syntax performance",
+        "Using technical knowledge to build and use enterprise-grade solutions",
+        "Managing the relationship between the Big Four firms",
+        "Automating payroll and invoicing via shared databases"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Bridge represents the synthesis of technical expertise with enterprise-level solution building."
+    },
+    {
+      "id": 3,
+      "question": "Which of the following is identified as the world's largest professional services firm by revenue?",
+      "options": ["PwC", "KPMG", "Deloitte", "EY"],
+      "correctAnswer": 2,
+      "explanation": "Deloitte is cited as the largest of the 'Big Four' globally by revenue."
+    },
+    {
+      "id": 4,
+      "question": "When transitioning to a Consultant role, where should the primary focus shift to, according to the 'External View'?",
+      "options": [
+        "Syntax and performance metrics",
+        "Shared database architecture",
+        "Business Processes, ROI, and client pain points",
+        "Cleaning legacy ERP codebases"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The Consultant (External View) prioritizes business processes, return on investment (ROI), and client needs."
+    },
+    {
+      "id": 5,
+      "question": "What role does a 'shared database' play in an ERP system as described in the content?",
+      "options": [
+        "It isolates departments to prevent data leaks",
+        "It ensures every department works from the same data without duplicates",
+        "It acts as a next-gen cloud-first platform for S/4HANA",
+        "It manages the procurement-to-pay lifecycle manual logic"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A shared database is central to an ERP, ensuring data consistency across all departments."
+    },
+    {
+      "id": 6,
+      "question": "In the SAP End-to-End business process framework, 'Recruit to Retire' specifically manages which lifecycle?",
+      "options": ["Financial reporting", "The HR lifecycle", "Customer orders and fulfillment", "Asset decommissioning"],
+      "correctAnswer": 1,
+      "explanation": "Recruit to Retire is the designated workflow for the human resources lifecycle."
+    },
+    {
+      "id": 7,
+      "question": "What percentage of world transaction revenue is stated to touch an SAP system?",
+      "options": ["80%", "50%", "1.3M", "77%"],
+      "correctAnswer": 3,
+      "explanation": "The presentation highlights that 77% of the world's transaction revenue runs through SAP."
+    },
+    {
+      "id": 8,
+      "question": "KPMG is noted for having a particularly strong presence in which sector?",
+      "options": ["Digital Transformation", "Financial services sectors", "Global manufacturing", "Asset decommissioning"],
+      "correctAnswer": 1,
+      "explanation": "KPMG is recognized for its strong advisory and audit services in the financial services sectors."
+    },
+    {
+      "id": 9,
+      "question": "According to the transformation findings, a system is described as only being as good as:",
+      "options": ["The logic behind it", "The number of free vouchers provided", "The clean core methodology", "The OData and Fiori architecture"],
+      "correctAnswer": 0,
+      "explanation": "The lesson learned was that the technical system is dependent on the quality of the underlying business logic."
+    },
+    {
+      "id": 10,
+      "question": "Which term is used to describe SAP S/4HANA in the transformation process?",
+      "options": ["A legacy ERP", "An internal project management platform", "A next-gen cloud-first platform", "A professional services audit giant"],
+      "correctAnswer": 2,
+      "explanation": "S/4HANA is the next-generation platform replacing legacy ERP systems globally."
+    }
+  ]
+}

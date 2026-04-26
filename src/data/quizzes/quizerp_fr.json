@@ -1,0 +1,91 @@
+{
+  "id": "sap-consultant-final-challenge-fr",
+  "title": "Maîtriser le paysage du conseil SAP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Dans le modèle de processus métier de bout en bout, quel flux de travail spécifique est responsable de la 'planification de la demande et des stocks' ?",
+      "options": ["Procure to Pay", "Order to Cash", "Record to Report", "Forecast to Fulfill"],
+      "correctAnswer": 3,
+      "explanation": "Forecast to Fulfill couvre le cycle de vie de la planification de la demande et de la gestion des stocks."
+    },
+    {
+      "id": 2,
+      "question": "Comment la présentation définit-elle le 'Pont' (Bridge) dans le contexte du changement d'état d'esprit ?",
+      "options": [
+        "Se concentrer sur ES6+ et les performances de la syntaxe",
+        "Utiliser les connaissances techniques pour construire et utiliser des solutions d'entreprise",
+        "Gérer la relation entre les quatre grands cabinets (Big Four)",
+        "Automatiser la paie et la facturation via des bases de données partagées"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Le Pont représente la synthèse de l'expertise technique avec la construction de solutions au niveau de l'entreprise."
+    },
+    {
+      "id": 3,
+      "question": "Laquelle des entreprises suivantes est identifiée comme le plus grand cabinet de services professionnels au monde en termes de chiffre d'affaires ?",
+      "options": ["PwC", "KPMG", "Deloitte", "EY"],
+      "correctAnswer": 2,
+      "explanation": "Deloitte est cité comme le plus grand des 'Big Four' mondialement en termes de revenus."
+    },
+    {
+      "id": 4,
+      "question": "Lors du passage à un rôle de Consultant, vers quoi l'attention principale doit-elle se porter, selon la 'Vue Externe' ?",
+      "options": [
+        "Syntaxe et indicateurs de performance",
+        "Architecture de base de données partagée",
+        "Processus métier, ROI et points de douleur du client",
+        "Nettoyage des bases de code ERP héritées"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Le Consultant (vue externe) donne la priorité aux processus métier, au retour sur investissement (ROI) et aux besoins du client."
+    },
+    {
+      "id": 5,
+      "question": "Quel rôle joue une 'base de données partagée' dans un système ERP tel que décrit dans le contenu ?",
+      "options": [
+        "Elle isole les départements pour éviter les fuites de données",
+        "Elle garantit que chaque département travaille à partir des mêmes données sans doublons",
+        "Elle agit comme une plateforme cloud-first de nouvelle génération pour S/4HANA",
+        "Elle gère la logique manuelle du cycle de vie de l'approvisionnement au paiement"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Une base de données partagée est centrale à un ERP, garantissant la cohérence des données entre tous les départements."
+    },
+    {
+      "id": 6,
+      "question": "Dans le cadre des processus métier SAP, 'Recruit to Retire' gère spécifiquement quel cycle de vie ?",
+      "options": ["Rapports financiers", "Le cycle de vie des RH", "Commandes clients et exécution", "Déclassement d'actifs"],
+      "correctAnswer": 1,
+      "explanation": "Recruit to Retire est le flux de travail désigné pour le cycle de vie des ressources humaines."
+    },
+    {
+      "id": 7,
+      "question": "Quel pourcentage du revenu mondial des transactions est indiqué comme passant par un système SAP ?",
+      "options": ["80%", "50%", "1.3M", "77%"],
+      "correctAnswer": 3,
+      "explanation": "La présentation souligne que 77 % des revenus mondiaux des transactions passent par SAP."
+    },
+    {
+      "id": 8,
+      "question": "KPMG est connu pour avoir une présence particulièrement forte dans quel secteur ?",
+      "options": ["Transformation digitale", "Secteurs des services financiers", "Fabrication mondiale", "Déclassement d'actifs"],
+      "correctAnswer": 1,
+      "explanation": "KPMG est reconnu pour ses services de conseil et d'audit solides dans les secteurs des services financiers."
+    },
+    {
+      "id": 9,
+      "question": "Selon les conclusions de la transformation, un système n'est décrit comme étant bon que s'il possède :",
+      "options": ["La logique qui le sous-tend", "Le nombre de bons gratuits fournis", "La méthodologie clean core", "L'architecture OData et Fiori"],
+      "correctAnswer": 0,
+      "explanation": "La leçon apprise est que le système technique dépend de la qualité de la logique métier sous-jacente."
+    },
+    {
+      "id": 10,
+      "question": "Quel terme est utilisé pour décrire SAP S/4HANA dans le processus de transformation ?",
+      "options": ["Un ERP hérité", "Une plateforme de gestion de projet interne", "Une plateforme cloud-first de nouvelle génération", "Un géant de l'audit des services professionnels"],
+      "correctAnswer": 2,
+      "explanation": "S/4HANA est la plateforme de nouvelle génération remplaçant les systèmes ERP hérités dans le monde entier."
+    }
+  ]
+}
