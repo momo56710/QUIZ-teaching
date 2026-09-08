@@ -408,9 +408,9 @@ export default function QuizWaiting() {
               <li>Each question has 4 multiple choice options</li>
               <li>You can choose points (1-{maxPoints}) for each question</li>
               <li>Once a point value is used, it cannot be chosen again</li>
-              <li>You have 20 seconds to answer each question</li>
-              <li>If time runs out, you lose the minimum available points</li>
-              <li>Correct answers earn points, wrong answers lose points</li>
+              <li>You have 60 seconds to answer each question</li>
+              <li>If time runs out, your minimum available point value is used up with no points earned</li>
+              <li>Correct answers earn their points; wrong answers earn 0 but still use up the point you picked</li>
               <li>Total questions: {totalQuestions}</li>
             </ul>
           }

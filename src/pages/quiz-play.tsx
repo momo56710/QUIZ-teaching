@@ -327,7 +327,10 @@ export default function QuizPlay() {
     setAnswers(newAnswers);
     setUsedPoints([...usedPoints, selectedPoints]);
 
-    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : -ans.selectedPoints), 0);
+    // A wrong/timeout answer earns 0 for that question - the chosen point
+    // value is used up (can't be picked again) but is never subtracted
+    // from the running score.
+    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : 0), 0);
     setCurrentScore(newScore);
 
     const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
@@ -370,7 +373,10 @@ export default function QuizPlay() {
     setAnswers(newAnswers);
     setUsedPoints([...usedPoints, minPoints]);
 
-    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : -ans.selectedPoints), 0);
+    // A wrong/timeout answer earns 0 for that question - the chosen point
+    // value is used up (can't be picked again) but is never subtracted
+    // from the running score.
+    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : 0), 0);
     setCurrentScore(newScore);
 
     const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
@@ -606,7 +612,7 @@ export default function QuizPlay() {
               <div>
                 <Text strong>Points: </Text>
                 <Text style={{ color: isCorrect ? '#52c41a' : '#ff4d4f' }}>
-                  {isCorrect ? `+${lastAnswer?.selectedPoints}` : `-${lastAnswer?.selectedPoints}`}
+                  {isCorrect ? `+${lastAnswer?.selectedPoints}` : `0 (point ${lastAnswer?.selectedPoints} used up)`}
                 </Text>
               </div>
               <div>
