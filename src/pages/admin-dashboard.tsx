@@ -206,7 +206,7 @@ export default function AdminDashboard() {
   };
 
   const handleCreateQuiz = async () => {
-    const quizId = 'web-development'; // Default quiz
+    const quizId = 'web-fundamentals'; // Default quiz
     const language = 'en'; // Default language
     
     const quizData = {

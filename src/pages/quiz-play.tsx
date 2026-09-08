@@ -12,17 +12,8 @@ import { database } from '../config/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { getQuestion, getTotalQuestions, getMaxPoints } from '../services/quizService';
 import { saveQuizResult } from '../services/firestoreService';
-import quizerp_en from '../data/quizzes/quizerp_en.json';
-import quizerp_fr from '../data/quizzes/quizerp_fr.json';
-import quizerp_ar from '../data/quizzes/quizerp_ar.json';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/reset.css';
-
-const erpLangData = {
-  en: quizerp_en,
-  fr: quizerp_fr,
-  ar: quizerp_ar
-} as const;
 
 const { Title, Text } = Typography;
 
@@ -556,21 +547,12 @@ export default function QuizPlay() {
   const progress = (currentQuestionNumber / totalQuestions) * 100;
 
   // Language display logic
-  let displayQuestionText = typeof currentQuestion.question === 'object' ? 
-    (currentQuestion.question[displayLang as keyof typeof currentQuestion.question] || currentQuestion.question['en']) : 
+  const displayQuestionText = typeof currentQuestion.question === 'object' ?
+    (currentQuestion.question[displayLang as keyof typeof currentQuestion.question] || currentQuestion.question['en']) :
     currentQuestion.question;
-  let displayOptions = currentQuestion.options;
-  let displayExplanation = currentQuestion.explanation ? 
+  const displayOptions = currentQuestion.options;
+  const displayExplanation = currentQuestion.explanation ?
     (typeof currentQuestion.explanation === 'object' ? (currentQuestion.explanation[displayLang as keyof typeof currentQuestion.explanation] || currentQuestion.explanation['en']) : currentQuestion.explanation) : '';
-
-  if (currentQuiz.quizId === 'erp-quiz') {
-    const localQ = erpLangData[displayLang].questions.find((q: any) => q.id === currentQuestionNumber);
-    if (localQ) {
-      displayQuestionText = localQ.question;
-      displayOptions = localQ.options;
-      displayExplanation = localQ.explanation;
-    }
-  }
 
   // Show answer display
   if (showAnswer) {

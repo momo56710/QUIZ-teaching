@@ -1,11 +1,5 @@
-import webDevelopment from '../data/quizzes/web-development-en.json';
-import tst from '../data/quizzes/tst.json';
-import expressBackend from '../data/quizzes/express-backend-quiz.json';
-import mongooseMongoDB from '../data/quizzes/mongoose-mongodb-quiz.json';
-import expressMongoose from '../data/quizzes/express-mongoose-quiz.json';
-import jwtAuthentication from '../data/quizzes/JWT-token-quiz.json';
-import backendTechnologies from '../data/quizzes/backend-technologies-quiz.json';
-import erpQuiz from '../data/quizzes/erp-quiz.json';
+import webFundamentals from '../data/quizzes/web-fundamentals.json';
+
 export interface QuizQuestion {
   id: number;
   question: {
@@ -56,104 +50,20 @@ export interface QuizSession {
 // Available quiz configurations
 export const availableQuizzes = [
   {
-    id: 'web-development',
-    title: 'Web Development Quiz',
-    description: 'Test your knowledge of HTML, CSS, JavaScript, and modern web technologies',
+    id: 'web-fundamentals',
+    title: 'Web Development Fundamentals Quiz',
+    description: 'Internet vs web, front end vs back end, HTML, CSS, JavaScript, the DOM, APIs, databases and Git.',
     category: 'Programming',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'tst',
-    title: 'TST',
-    description: 'Test your knowledge of TST',
-    category: 'Programming',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'express-backend-development',
-    title: 'Express.js Backend Development Quiz',
-    description: 'Test your knowledge of Express.js, Node.js, API development, and backend file structure',
-    category: 'Backend Development',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'mongoose-mongodb-development',
-    title: 'Mongoose & MongoDB Development Quiz',
-    description: 'Test your knowledge of Mongoose ODM, MongoDB, database modeling, and NoSQL development',
-    category: 'Database Development',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'express-mongoose-development',
-    title: 'Express.js & Mongoose Development Quiz',
-    description: 'Test your knowledge of Express.js, Mongoose, and e-commerce API development',
-    category: 'Backend Development',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'jwt-authentication',
-    title: 'JWT Authentication Quiz',
-    description: 'Test your knowledge of JWT authentication and authorization concepts',
-    category: 'Authentication & Authorization',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'backend-technologies',
-    title: 'Backend Technologies Quiz',
-    description: 'Test your knowledge of Multer, JWT, Mongoose, and Express',
-    category: 'Backend Development',
-    difficulty: 'Medium' as const,
-    languages: ['en', 'fr', 'ar']
-  },
-  {
-    id: 'erp-quiz',
-    title: 'ERP Quiz',
-    description: 'Test your knowledge of ERP fundamentals and SAP S/4HANA',
-    category: 'Enterprise Systems',
-    difficulty: 'Hard' as const,
+    difficulty: 'Easy' as const,
     languages: ['en', 'fr', 'ar']
   }
 ];
 
 // Quiz data mapping - simplified to only track user answers
 const quizData: Record<string, QuizData> = {
-  'web-development': {
-    ...webDevelopment,
-    difficulty: 'Medium' as const
-  },
-  'tst': {
-    ...tst,
-    difficulty: 'Medium' as const
-  },
-  'express-backend-development': {
-    ...expressBackend,
-    difficulty: 'Medium' as const
-  },
-  'mongoose-mongodb-development': {
-    ...mongooseMongoDB,
-    difficulty: 'Medium' as const
-  },
-  'express-mongoose-development': {
-    ...expressMongoose,
-    difficulty: 'Medium' as const
-  },
-  'jwt-authentication': {
-    ...jwtAuthentication,
-    difficulty: 'Medium' as const
-  },
-  'backend-technologies': {
-    ...backendTechnologies,
-    difficulty: 'Medium' as const
-  },  
-  'erp-quiz': {
-    ...erpQuiz,
-    difficulty: 'Hard' as const
+  'web-fundamentals': {
+    ...webFundamentals,
+    difficulty: 'Easy' as const
   }
 };
 
