@@ -1,16 +1,15 @@
-import { 
-  collection, 
-  doc, 
-  setDoc, 
-  getDoc, 
-  getDocs, 
-  query, 
-  orderBy, 
-  limit, 
-  updateDoc, 
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  orderBy,
+  limit,
   where,
   addDoc,
-  serverTimestamp
+  serverTimestamp,
+  runTransaction
 } from 'firebase/firestore';
 import { firestore } from '../config/firebase';
 
@@ -103,38 +102,39 @@ export const updateUserStats = async (
 ): Promise<void> => {
   try {
     const userRef = doc(firestore, 'users', userId);
-    const userDoc = await getDoc(userRef);
 
-    if (userDoc.exists()) {
-      // Update existing user
-      const currentData = userDoc.data() as UserStats;
-      const newQuizCount = currentData.quizCount + 1;
-      const newTotalPoints = currentData.totalPoints + newScore;
+    // Use a transaction (not read-then-write) so two near-simultaneous
+    // completions (e.g. two tabs, or a retried save) can't both read the
+    // same starting total and double-count the score.
+    await runTransaction(firestore, async (transaction) => {
+      const userDoc = await transaction.get(userRef);
 
-      await updateDoc(userRef, {
-        totalPoints: newTotalPoints,
-        quizCount: newQuizCount,
-        lastQuizDate: new Date(),
-        updatedAt: new Date(),
-      });
-    } else {
-      // Create new user
-      const newUser: Omit<UserStats, 'createdAt' | 'updatedAt'> = {
-        uid: userId,
-        displayName,
-        email,
-        photoURL,
-        totalPoints: newScore,
-        quizCount: 1,
-        lastQuizDate: new Date(),
-      };
+      if (userDoc.exists()) {
+        const currentData = userDoc.data() as UserStats;
+        transaction.update(userRef, {
+          totalPoints: currentData.totalPoints + newScore,
+          quizCount: currentData.quizCount + 1,
+          lastQuizDate: new Date(),
+          updatedAt: new Date(),
+        });
+      } else {
+        const newUser: Omit<UserStats, 'createdAt' | 'updatedAt'> = {
+          uid: userId,
+          displayName,
+          email,
+          photoURL,
+          totalPoints: newScore,
+          quizCount: 1,
+          lastQuizDate: new Date(),
+        };
 
-      await setDoc(userRef, {
-        ...newUser,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-    }
+        transaction.set(userRef, {
+          ...newUser,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+      }
+    });
   } catch (error) {
     console.error('Error updating user stats:', error);
     throw error;

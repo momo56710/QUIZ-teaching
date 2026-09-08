@@ -1,27 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Card, Typography, Space, Table, Tag, Button, Progress } from 'antd';
-import { 
-  TrophyOutlined, 
-  HistoryOutlined, 
+import {
+  TrophyOutlined,
+  HistoryOutlined,
   ArrowLeftOutlined,
   CalendarOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
-import { ref, onValue } from 'firebase/database';
-import { database } from '../config/firebase';
 import { useAuth } from '../contexts/AuthContext';
+import { getUserQuizHistory, type QuizResult } from '../services/firestoreService';
 import 'antd/dist/reset.css';
 
 const { Title, Text } = Typography;
 
-interface QuizHistoryEntry {
-  quizId: string;
-  language: 'en' | 'fr' | 'ar';
-  score: number;
-  totalQuestions: number;
-  completedAt: number;
-  answers: any[];
-}
+type QuizHistoryEntry = QuizResult;
+
+// Max possible score for a quiz of N questions: points are wagered from
+// 1..N with each value usable once, so the best case is 1+2+...+N.
+const maxPossibleScore = (totalQuestions: number) => (totalQuestions * (totalQuestions + 1)) / 2;
 
 export default function QuizHistory() {
   const { user } = useAuth();
@@ -35,30 +31,12 @@ export default function QuizHistory() {
       return;
     }
 
-    const historyRef = ref(database, `quizHistory/${user.uid}`);
-    const unsubscribe = onValue(historyRef, (snapshot) => {
-      const history: QuizHistoryEntry[] = [];
-      snapshot.forEach((childSnapshot) => {
-        history.push({
-          quizId: childSnapshot.key!,
-          ...childSnapshot.val()
-        });
-      });
-      setQuizHistory(history.sort((a, b) => b.completedAt - a.completedAt));
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    setLoading(true);
+    getUserQuizHistory(user.uid)
+      .then((history) => setQuizHistory(history))
+      .catch((error) => console.error('Error loading quiz history:', error))
+      .finally(() => setLoading(false));
   }, [user, navigate]);
-
-  const getLanguageName = (lang: string) => {
-    switch (lang) {
-      case 'en': return 'English';
-      case 'fr': return 'Français';
-      case 'ar': return 'العربية';
-      default: return lang;
-    }
-  };
 
   const getScoreColor = (score: number, total: number) => {
     const percentage = (score / total) * 100;
@@ -76,10 +54,10 @@ export default function QuizHistory() {
       ),
     },
     {
-      title: 'Language',
-      key: 'language',
+      title: 'Correct Answers',
+      key: 'correctAnswers',
       render: (entry: QuizHistoryEntry) => (
-        <Tag color="blue">{getLanguageName(entry.language)}</Tag>
+        <Tag color="blue">{entry.correctAnswers} / {entry.totalQuestions}</Tag>
       ),
     },
     {
@@ -87,15 +65,15 @@ export default function QuizHistory() {
       key: 'score',
       render: (entry: QuizHistoryEntry) => (
         <div>
-          <div style={{ 
-            fontSize: '18px', 
-            fontWeight: 'bold', 
-            color: getScoreColor(entry.score, entry.totalQuestions * 30)
+          <div style={{
+            fontSize: '18px',
+            fontWeight: 'bold',
+            color: getScoreColor(entry.score, maxPossibleScore(entry.totalQuestions))
           }}>
             {entry.score} pts
           </div>
           <Text type="secondary">
-            out of {entry.totalQuestions * 30} possible
+            out of {maxPossibleScore(entry.totalQuestions)} possible
           </Text>
         </div>
       ),
@@ -104,16 +82,17 @@ export default function QuizHistory() {
       title: 'Performance',
       key: 'performance',
       render: (entry: QuizHistoryEntry) => {
-        const percentage = (entry.score / (entry.totalQuestions * 30)) * 100;
+        const max = maxPossibleScore(entry.totalQuestions);
+        const percentage = Math.max(0, (entry.score / max) * 100);
         return (
           <div>
             <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>
-              {percentage.toFixed(1)}%
+              {((entry.score / max) * 100).toFixed(1)}%
             </div>
-            <Progress 
-              percent={percentage} 
+            <Progress
+              percent={percentage}
               size="small"
-              strokeColor={getScoreColor(entry.score, entry.totalQuestions * 30)}
+              strokeColor={getScoreColor(entry.score, max)}
             />
           </div>
         );
@@ -125,10 +104,10 @@ export default function QuizHistory() {
       render: (entry: QuizHistoryEntry) => (
         <div>
           <div style={{ fontWeight: 'bold' }}>
-            {new Date(entry.completedAt).toLocaleDateString()}
+            {entry.completedAt.toLocaleDateString()}
           </div>
           <Text type="secondary">
-            {new Date(entry.completedAt).toLocaleTimeString()}
+            {entry.completedAt.toLocaleTimeString()}
           </Text>
         </div>
       ),
@@ -211,7 +190,7 @@ export default function QuizHistory() {
               <Table 
                 dataSource={quizHistory}
                 columns={columns}
-                rowKey="quizId"
+                rowKey="id"
                 pagination={{ pageSize: 10 }}
                 size="small"
               />

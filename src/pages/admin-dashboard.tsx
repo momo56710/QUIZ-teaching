@@ -12,9 +12,11 @@ import {
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import { ref, onValue, set, update, remove } from 'firebase/database';
-import { database } from '../config/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { database, auth } from '../config/firebase';
 import { toast } from 'react-toastify';
 import { getAvailableQuizzes, getTotalQuestions, getMaxPoints } from '../services/quizService';
+import { isAdminEmail } from '../config/admin';
 import LeaderboardPodium from '../components/LeaderboardPodium';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/reset.css';
@@ -66,26 +68,37 @@ export default function AdminDashboard() {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
-  // Check if user is admin
+  // Check if user is admin. The localStorage flag alone can be forged in
+  // devtools, so access also requires the live Firebase-authenticated
+  // Google account to be the designated admin email.
   useEffect(() => {
-    const adminSession = localStorage.getItem('adminSession');
-    if (!adminSession) {
+    const rejectAccess = () => {
+      localStorage.removeItem('adminSession');
+      setIsAdmin(false);
       navigate('/admin/login');
-      return;
-    }
+    };
 
-    try {
-      const session = JSON.parse(adminSession);
-      if (!session.isAdmin || Date.now() - session.timestamp > 24 * 60 * 60 * 1000) {
-        localStorage.removeItem('adminSession');
-        navigate('/admin/login');
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      const adminSession = localStorage.getItem('adminSession');
+      if (!adminSession) {
+        rejectAccess();
         return;
       }
-      setIsAdmin(true);
-    } catch (error) {
-      localStorage.removeItem('adminSession');
-      navigate('/admin/login');
-    }
+
+      try {
+        const session = JSON.parse(adminSession);
+        const sessionValid = session.isAdmin && Date.now() - session.timestamp <= 24 * 60 * 60 * 1000;
+        if (!sessionValid || !isAdminEmail(firebaseUser?.email)) {
+          rejectAccess();
+          return;
+        }
+        setIsAdmin(true);
+      } catch (error) {
+        rejectAccess();
+      }
+    });
+
+    return () => unsubscribe();
   }, [navigate]);
 
   // Listen to admin session in Firebase

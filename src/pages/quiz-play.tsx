@@ -80,6 +80,8 @@ export default function QuizPlay() {
   const [maxPoints, setMaxPoints] = useState(0);
   const [stateRestored, setStateRestored] = useState(false);
   const [displayLang, setDisplayLang] = useState<'en' | 'fr' | 'ar'>('en');
+  const [isSubmittingAnswer, setIsSubmittingAnswer] = useState(false);
+  const [isFinishingQuiz, setIsFinishingQuiz] = useState(false);
 
   // Sync initial language with quiz language
   useEffect(() => {
@@ -253,7 +255,19 @@ export default function QuizPlay() {
         
         setStateRestored(true);
       } else {
-        // No existing data, user is starting fresh - start from quiz's current question
+        // No existing score record for this quiz session - this player is
+        // starting fresh. Explicitly clear any leftover local state from a
+        // previous quiz (the component doesn't always unmount between
+        // sessions), otherwise old answers/score/usedPoints would carry
+        // over and inflate the new quiz's score.
+        setAnswers([]);
+        setUsedPoints([]);
+        setCurrentScore(0);
+        setSelectedAnswer(null);
+        setSelectedPoints(null);
+        setShowAnswer(false);
+        setShowResults(false);
+
         const quizCurrentQuestion = currentQuiz.currentQuestion || 1;
         setCurrentQuestionNumber(quizCurrentQuestion);
         setTimeLeft(60);
@@ -299,10 +313,12 @@ export default function QuizPlay() {
   }, [stateRestored, currentQuestionNumber, totalQuestions, showAnswer, showResults, answers.length, currentQuiz, user]);
 
   const handleSubmitAnswer = useCallback(async () => {
-    if (!user || selectedAnswer === null || !selectedPoints || !currentQuiz) return;
+    if (!user || selectedAnswer === null || !selectedPoints || !currentQuiz || isSubmittingAnswer) return;
 
     const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionNumber);
     if (!currentQuestion) return;
+
+    setIsSubmittingAnswer(true);
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
     const timeSpent = 60 - timeLeft;
@@ -316,21 +332,15 @@ export default function QuizPlay() {
       timestamp: Date.now()
     };
 
-    console.log('Submitting answer:', {
-      questionId: answer.questionId,
-      currentQuestionNumber,
-      stayingOnSameQuestion: true
-    });
-
     const newAnswers = [...answers, answer];
     setAnswers(newAnswers);
     setUsedPoints([...usedPoints, selectedPoints]);
 
-    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : 0), 0);
+    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : -ans.selectedPoints), 0);
     setCurrentScore(newScore);
 
     const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
-    
+
     await update(playerScoreRef, {
       displayName: user.displayName,
       email: user.email,
@@ -342,13 +352,16 @@ export default function QuizPlay() {
     });
 
     setShowAnswer(true);
-  }, [user, selectedAnswer, selectedPoints, currentQuiz, currentQuestionNumber, timeLeft, answers, usedPoints, totalQuestions]);
+    setIsSubmittingAnswer(false);
+  }, [user, selectedAnswer, selectedPoints, currentQuiz, currentQuestionNumber, timeLeft, answers, usedPoints, totalQuestions, isSubmittingAnswer]);
 
   const handleTimeout = useCallback(async () => {
-    if (!user || !currentQuiz) return;
+    if (!user || !currentQuiz || isSubmittingAnswer) return;
 
     const currentQuestion = getQuestion(currentQuiz.quizId, currentQuiz.language, currentQuestionNumber);
     if (!currentQuestion) return;
+
+    setIsSubmittingAnswer(true);
 
     const availablePoints = Array.from({ length: maxPoints }, (_, i) => i + 1).filter(p => !usedPoints.includes(p));
     const minPoints = availablePoints.length > 0 ? Math.min(...availablePoints) : 1;
@@ -366,11 +379,11 @@ export default function QuizPlay() {
     setAnswers(newAnswers);
     setUsedPoints([...usedPoints, minPoints]);
 
-    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : 0), 0);
+    const newScore = newAnswers.reduce((total, ans) => total + (ans.isCorrect ? ans.selectedPoints : -ans.selectedPoints), 0);
     setCurrentScore(newScore);
 
     const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
-    
+
     await update(playerScoreRef, {
       displayName: user.displayName,
       email: user.email,
@@ -382,7 +395,8 @@ export default function QuizPlay() {
     });
 
     setShowAnswer(true);
-  }, [user, currentQuiz, currentQuestionNumber, selectedAnswer, answers, usedPoints, maxPoints, totalQuestions]);
+    setIsSubmittingAnswer(false);
+  }, [user, currentQuiz, currentQuestionNumber, selectedAnswer, answers, usedPoints, maxPoints, totalQuestions, isSubmittingAnswer]);
 
   const handlePointSelection = useCallback((points: number) => {
     if (!usedPoints.includes(points)) {
@@ -395,35 +409,40 @@ export default function QuizPlay() {
   }, [usedPoints, maxPoints]);
 
   const handleNextQuestion = useCallback(async () => {
-    if (!user || !currentQuiz) return;
+    if (!user || !currentQuiz || isFinishingQuiz) return;
 
     if (currentQuestionNumber < totalQuestions) {
+      setIsFinishingQuiz(true);
       const nextQuestionNumber = currentQuestionNumber + 1;
-      
+
       // Update local state
       setCurrentQuestionNumber(nextQuestionNumber);
       setSelectedAnswer(null);
       setSelectedPoints(null);
       setTimeLeft(60);
       setShowAnswer(false);
-      
+
       // Update user's current question in Firebase
       const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
       await update(playerScoreRef, {
         currentQuestion: nextQuestionNumber
       });
+      setIsFinishingQuiz(false);
     } else {
-      // Quiz completed
+      // Quiz completed - guard against double-submission doubling the
+      // player's lifetime Firestore totals (updateUserStats is additive)
+      setIsFinishingQuiz(true);
+
       const playerScoreRef = ref(database, `quizScores/${currentQuiz.id}/${user.uid}`);
       await update(playerScoreRef, {
         isFinished: true
       });
-      
+
       // Save quiz result to Firestore
       try {
         const correctAnswers = answers.filter(answer => answer.isCorrect).length;
         const totalTimeSpent = answers.reduce((total, answer) => total + answer.timeSpent, 0);
-        
+
         await saveQuizResult(
           currentQuiz.id,
           user.uid,
@@ -435,16 +454,17 @@ export default function QuizPlay() {
           correctAnswers,
           totalTimeSpent
         );
-        
+
         console.log('Quiz result saved to Firestore successfully');
       } catch (error) {
         console.error('Error saving quiz result to Firestore:', error);
       }
-      
+
       setShowAnswer(false);
       setShowResults(true);
+      setIsFinishingQuiz(false);
     }
-  }, [user, currentQuiz, currentQuestionNumber, totalQuestions, currentScore, answers]);
+  }, [user, currentQuiz, currentQuestionNumber, totalQuestions, currentScore, answers, isFinishingQuiz]);
 
   // Loading state
   if (loading || !stateRestored) {
@@ -625,9 +645,11 @@ export default function QuizPlay() {
 
             {/* Next Question Button */}
             <div style={{ textAlign: 'center', marginTop: '24px' }}>
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
                 size="large"
+                loading={isFinishingQuiz}
+                disabled={isFinishingQuiz}
                 onClick={handleNextQuestion}
               >
                 {currentQuestionNumber < totalQuestions ? 'Next Question' : 'Finish Quiz'}
@@ -828,10 +850,11 @@ export default function QuizPlay() {
 
         {/* Submit Button */}
         <Card>
-          <Button 
-            type="primary" 
+          <Button
+            type="primary"
             size="large"
-            disabled={selectedAnswer === null || selectedPoints === null}
+            loading={isSubmittingAnswer}
+            disabled={selectedAnswer === null || selectedPoints === null || isSubmittingAnswer}
             onClick={handleSubmitAnswer}
             style={{ width: '100%' }}
           >

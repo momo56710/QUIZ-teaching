@@ -1,0 +1,50 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "currentQuiz": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.email == 'mohamedmouh567@gmail.com'",
+
+      "players": {
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    },
+
+    "adminSession": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.email == 'mohamedmouh567@gmail.com'"
+    },
+
+    "quizScores": {
+      "$quizId": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.email == 'mohamedmouh567@gmail.com'",
+
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    },
+
+    "waitlist": {
+      "$quizId": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.email == 'mohamedmouh567@gmail.com'",
+
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    },
+
+    "activeUsers": {
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}

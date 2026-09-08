@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Lifetime per-user stats, keyed by uid. Read is public so the
+    // leaderboard (shown on the home page to signed-out visitors too)
+    // keeps working; only the owner can ever write their own row.
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // One immutable record per completed quiz. A player may only create
+    // a result for themselves, and may only read their own results
+    // (used by the quiz history page). No client may edit or delete.
+    match /quizResults/{resultId} {
+      allow read: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+  }
+}
