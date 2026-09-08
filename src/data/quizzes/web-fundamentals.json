@@ -14,10 +14,10 @@
         "ar": "يقارن المقرر الإنترنت بشبكة طرق سريعة تربط بين مدن مختلفة (الخوادم). ماذا يمثّل «الويب» في هذا التشبيه؟"
       },
       "options": [
-        "The traffic lights that control the highway",
-        "Restaurants, shops and houses along the highway (websites)",
-        "The cars driving on the highway",
-        "The road signs pointing to each city"
+        "The traffic lights that manage the highway's traffic",
+        "The shops and houses built along the road (websites)",
+        "The vehicles that travel between each city",
+        "The signs that guide drivers to their destination"
       ],
       "correctAnswer": 1,
       "explanation": {
@@ -55,9 +55,9 @@
       },
       "options": [
         "The part that handles data, authentication and logic on a server",
-        "What users see and interact with — buttons, images, animations",
+        "What users see and interact with, such as buttons and animations",
         "The database where information is stored after the page closes",
-        "The company that registers the domain name"
+        "The company responsible for registering the site's domain name"
       ],
       "correctAnswer": 1,
       "explanation": {
@@ -94,7 +94,7 @@
         "ar": "في بروتوكول HTTP التقليدي، من يبدأ المحادثة بين المتصفح والخادم؟"
       },
       "options": [
-        "The server pushes pages to browsers it already knows about",
+        "The server pushes pages to browsers automatically",
         "The browser asks first; the server only answers",
         "They negotiate continuously in both directions",
         "A third-party service starts every request"
@@ -154,10 +154,10 @@
         "ar": "لماذا يُشبَّه JavaScript بـ«العضلات والدماغ» في صفحة الويب؟"
       },
       "options": [
-        "It is the only one of the three front-end languages that can make decisions",
-        "It only changes text colour",
-        "It permanently stores all of a site's data",
-        "It replaces the need for HTML entirely"
+        "It is the only one that can actually make decisions",
+        "It only changes the text colour on the page",
+        "It permanently stores all of the site's data",
+        "It fully replaces the need for HTML and CSS"
       ],
       "correctAnswer": 0,
       "explanation": {
@@ -174,10 +174,10 @@
         "ar": "في `<a href=\"contact.html\">Contact us</a>`، ما هو `href`؟"
       },
       "options": [
-        "The visible text the user clicks on",
-        "An attribute name — it tells the browser where the link should go",
-        "A closing tag",
-        "An HTML comment"
+        "The clickable text shown to the visitor",
+        "An attribute telling the browser where to go",
+        "A tag that closes an open element",
+        "A comment the browser ignores"
       ],
       "correctAnswer": 1,
       "explanation": {
@@ -214,10 +214,10 @@
         "ar": "تحتاج مخبزة إلى موقع بسيط من 4 صفحات يحتوي على قائمة ونموذج اتصال، وجاهز هذا الأسبوع. بماذا ينصح المقرر؟"
       },
       "options": [
-        "High code — a custom React app looks more professional",
-        "No code or low code — the requirements fit inside what the tool already offers",
+        "High code, since a custom build looks more professional",
+        "No code or low code, since it covers what is needed",
         "Whatever framework the developer personally prefers",
-        "Wait until a back-end developer is available"
+        "Wait until a back-end developer becomes available"
       ],
       "correctAnswer": 1,
       "explanation": {
@@ -234,176 +234,16 @@
         "ar": "ما هو أوضح مثال على بيانات غير مهيكلة (unstructured)، حسب تعريف المقرر؟"
       },
       "options": [
-        "A student's grade stored as 17.5",
-        "A holiday photo",
-        "A product price column in a spreadsheet",
-        "A 5-star review's star count"
+        "A student's numeric grade of 17.5",
+        "A holiday photo saved on your phone",
+        "A product's price listed in a spreadsheet",
+        "The star count on a 5-star review"
       ],
       "correctAnswer": 1,
       "explanation": {
         "en": "Unstructured data is text- or media-heavy information with no clearly defined model — photos, videos, audio. Grades, prices and star counts are structured: fixed columns with a known type.",
         "fr": "Les données non structurées sont des informations riches en texte ou en média, sans modèle clairement défini — photos, vidéos, audio. Les notes, les prix et les nombres d'étoiles sont des données structurées : colonnes fixes avec un type connu.",
         "ar": "البيانات غير المهيكلة هي معلومات كثيفة النص أو الوسائط بلا نموذج محدد بوضوح — الصور والفيديوهات والصوت. أما الدرجات والأسعار وعدد النجوم فهي بيانات مهيكلة: أعمدة ثابتة ذات نوع معروف."
-      }
-    },
-    {
-      "id": 13,
-      "question": {
-        "en": "The course compares the DOM to a family tree. What does that mean?",
-        "fr": "Le cours compare le DOM à un arbre généalogique. Que signifie cette comparaison ?",
-        "ar": "يقارن المقرر شجرة DOM بشجرة العائلة. ماذا يعني هذا التشبيه؟"
-      },
-      "options": [
-        "HTML elements exist in a random, unconnected order",
-        "HTML elements are connected in a hierarchy of parents and children",
-        "The DOM only exists while the file is on the server",
-        "The DOM is a separate database, unrelated to the HTML file"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "The browser builds a tree from the HTML, with elements nested as parents and children. JavaScript never edits the HTML file directly — it edits this tree, and the browser repaints the result.",
-        "fr": "Le navigateur construit un arbre à partir du HTML, avec des éléments imbriqués en parents et enfants. JavaScript ne modifie jamais le fichier HTML directement — il modifie cet arbre, et le navigateur réaffiche le résultat.",
-        "ar": "يبني المتصفح شجرة من HTML، حيث تكون العناصر متداخلة كآباء وأبناء. لا يعدّل JavaScript ملف HTML مباشرة أبدًا — بل يعدّل هذه الشجرة، ويعيد المتصفح رسم النتيجة."
-      }
-    },
-    {
-      "id": 14,
-      "question": {
-        "en": "What does `document.querySelector(\"#value\")` give you?",
-        "fr": "Que renvoie `document.querySelector(\"#value\")` ?",
-        "ar": "ماذا تُرجِع `document.querySelector(\"#value\")`؟"
-      },
-      "options": [
-        "The text written inside the element",
-        "The element object from the DOM tree",
-        "A downloaded copy of the whole HTML file",
-        "Nothing, until the page is refreshed"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "querySelector returns the actual element node. From there you read or change its properties — .textContent, .value, .style, .classList — to update what the user sees.",
-        "fr": "querySelector renvoie le nœud élément lui-même. Ensuite, on lit ou modifie ses propriétés — .textContent, .value, .style, .classList — pour changer ce que voit l'utilisateur.",
-        "ar": "تُرجِع querySelector عقدة العنصر نفسها. من هناك، تقرأ أو تغيّر خصائصه — .textContent و.value و.style و.classList — لتغيير ما يراه المستخدم."
-      }
-    },
-    {
-      "id": 15,
-      "question": {
-        "en": "As defined in the course, what is an API?",
-        "fr": "Selon la définition du cours, qu'est-ce qu'une API ?",
-        "ar": "حسب تعريف المقرر، ما هي واجهة برمجة التطبيقات (API)؟"
-      },
-      "options": [
-        "A type of database used to store large files",
-        "The agreed set of URLs and rules the front end uses to talk to the back end",
-        "A CSS framework for building responsive layouts",
-        "A tool for tracking changes to source code"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "An API is the contract in the middle: the client asks using a URL and an HTTP method, the API checks the rules and talks to the server and database, and a response comes back — usually as JSON.",
-        "fr": "Une API est le contrat au milieu : le client fait une demande via une URL et une méthode HTTP, l'API vérifie les règles et communique avec le serveur et la base de données, puis une réponse revient — généralement en JSON.",
-        "ar": "الـ API هي العقد الذي في المنتصف: يطلب العميل باستخدام رابط وطريقة HTTP، وتتحقق الـ API من القواعد وتتواصل مع الخادم وقاعدة البيانات، ثم تعود استجابة — غالبًا بصيغة JSON."
-      }
-    },
-    {
-      "id": 16,
-      "question": {
-        "en": "Which HTTP method should you use to fetch a list of products without changing any data?",
-        "fr": "Quelle méthode HTTP faut-il utiliser pour récupérer une liste de produits sans modifier aucune donnée ?",
-        "ar": "أي طريقة HTTP يجب استخدامها لجلب قائمة المنتجات دون تغيير أي بيانات؟"
-      },
-      "options": [
-        "POST",
-        "GET",
-        "PUT",
-        "DELETE"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "GET is safe and repeatable: calling it many times changes nothing on the server. POST creates, PUT updates, and DELETE removes — reading should never be one of those.",
-        "fr": "GET est sûre et répétable : l'appeler plusieurs fois ne change rien sur le serveur. POST crée, PUT met à jour, et DELETE supprime — la lecture ne devrait jamais faire partie de ces actions.",
-        "ar": "طريقة GET آمنة وقابلة للتكرار: استدعاؤها عدة مرات لا يغيّر شيئًا على الخادم. أما POST فتُنشئ، وPUT تُحدّث، وDELETE تحذف — والقراءة يجب ألا تكون أبدًا من هذه الأفعال."
-      }
-    },
-    {
-      "id": 17,
-      "question": {
-        "en": "Why does the course describe POST as 'not repeatable', unlike GET?",
-        "fr": "Pourquoi le cours décrit-il POST comme « non répétable », contrairement à GET ?",
-        "ar": "لماذا يصف المقرر POST بأنها «غير قابلة للتكرار»، على عكس GET؟"
-      },
-      "options": [
-        "POST only works on mobile devices",
-        "Sending POST twice can create two separate records, while GET just reads data",
-        "Browsers block a second POST request automatically",
-        "POST always requires a database login"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "POST sends a body to create a new resource — pressing the button twice can create two records. GET only reads, so repeating it changes nothing.",
-        "fr": "POST envoie un corps de requête pour créer une nouvelle ressource — appuyer deux fois sur le bouton peut créer deux enregistrements. GET ne fait que lire, donc la répéter ne change rien.",
-        "ar": "ترسل POST محتوى لإنشاء مورد جديد — والضغط على الزر مرتين قد ينشئ سجلَّين. أما GET فتقرأ فقط، لذا تكرارها لا يغيّر شيئًا."
-      }
-    },
-    {
-      "id": 18,
-      "question": {
-        "en": "According to the course, which kind of data best fits a SQL (relational) database?",
-        "fr": "Selon le cours, quel type de données convient le mieux à une base de données SQL (relationnelle) ?",
-        "ar": "حسب المقرر، أي نوع من البيانات يناسب قاعدة بيانات SQL (العلائقية) بشكل أفضل؟"
-      },
-      "options": [
-        "Data whose shape changes often, read as whole objects",
-        "Data with a clear, stable shape where relationships and consistency matter — like money, grades or stock",
-        "Data that must scale horizontally across many machines above everything else",
-        "Data that is mostly unstructured photos and videos"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "SQL enforces one fixed shape per row and is strong at relationships and ad-hoc queries — ideal when consistency really matters, like financial or stock data. NoSQL fits data whose shape varies or that scales across many machines.",
-        "fr": "SQL impose une forme fixe à chaque ligne et excelle dans les relations et les requêtes ad hoc — idéal quand la cohérence compte vraiment, comme pour des données financières ou de stock. NoSQL convient aux données dont la forme varie ou qui doivent s'étendre sur de nombreuses machines.",
-        "ar": "تفرض SQL شكلًا ثابتًا لكل صف وتتفوق في العلاقات والاستعلامات غير المخطط لها مسبقًا — وهي مثالية عندما يهم الاتساق فعلًا، كالبيانات المالية أو المخزون. أما NoSQL فتناسب البيانات التي يتغير شكلها أو التي تحتاج للتوسع عبر أجهزة كثيرة."
-      }
-    },
-    {
-      "id": 19,
-      "question": {
-        "en": "What is the key difference between Git and GitHub, as explained in the course?",
-        "fr": "Quelle est la différence clé entre Git et GitHub, telle qu'expliquée dans le cours ?",
-        "ar": "ما هو الفرق الأساسي بين Git وGitHub، كما شرحه المقرر؟"
-      },
-      "options": [
-        "Git and GitHub are two names for exactly the same tool",
-        "Git tracks changes locally on your computer; GitHub is a cloud platform for sharing those repositories",
-        "GitHub tracks changes locally; Git only works online",
-        "Git is for front-end code, GitHub is for back-end code"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "Git works with no internet connection at all — it is the local version control system. GitHub is just one of several places (along with GitLab and Bitbucket) to host and share the result.",
-        "fr": "Git fonctionne sans aucune connexion Internet — c'est le système de contrôle de version local. GitHub n'est qu'un des nombreux endroits (avec GitLab et Bitbucket) pour héberger et partager le résultat.",
-        "ar": "يعمل Git دون أي اتصال بالإنترنت على الإطلاق — فهو نظام التحكم بالإصدارات المحلي. أما GitHub فهو مجرد أحد الأماكن (إلى جانب GitLab وBitbucket) لاستضافة النتيجة ومشاركتها."
-      }
-    },
-    {
-      "id": 20,
-      "question": {
-        "en": "You commit some work but do not push, and your laptop dies. What is on GitHub, according to the course?",
-        "fr": "Vous faites un commit sans le pousser (push), puis votre ordinateur portable tombe en panne. D'après le cours, que trouve-t-on sur GitHub ?",
-        "ar": "قمت بعمل commit دون push، ثم تعطّل حاسوبك المحمول. حسب المقرر، ماذا يوجد على GitHub؟"
-      },
-      "options": [
-        "Everything — commits sync automatically in the background",
-        "Only what you had already pushed before",
-        "Nothing will ever be recoverable",
-        "Only the file names, without their content"
-      ],
-      "correctAnswer": 1,
-      "explanation": {
-        "en": "A commit is local until you push it. 'Commit early, push often' is the habit that protects your work, since GitHub only has what was actually pushed.",
-        "fr": "Un commit reste local tant qu'il n'est pas poussé. « Committer tôt, pousser souvent » est l'habitude qui protège votre travail, car GitHub ne contient que ce qui a réellement été poussé.",
-        "ar": "يبقى الـ commit محليًا إلى أن تقوم بعمل push له. عادة «commit مبكرًا وpush كثيرًا» هي ما يحمي عملك، لأن GitHub لا يحتوي إلا على ما تم فعلاً رفعه (push)."
       }
     }
   ]
