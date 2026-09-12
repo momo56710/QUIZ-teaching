@@ -1,0 +1,410 @@
+{
+  "id": "html-css-basics",
+  "title": "HTML & CSS Basics Quiz",
+  "description": "Document structure, semantic tags, tables and forms, colours and units, the box model, backgrounds and positioning — based on the HTML & CSS Basics course.",
+  "category": "Programming",
+  "difficulty": "Medium",
+  "language": "en",
+  "questions": [
+    {
+      "id": 1,
+      "question": {
+        "en": "What does <!DOCTYPE html> actually tell the browser to do?",
+        "fr": "Que fait réellement <!DOCTYPE html> pour le navigateur ?",
+        "ar": "ماذا يفعل <!DOCTYPE html> فعليًا بالنسبة للمتصفح؟"
+      },
+      "options": [
+        "Switch rendering into modern standards mode",
+        "Load a special HTML5 JavaScript engine",
+        "Declare the character encoding for the page",
+        "Create the root element of the document"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "DOCTYPE switches the browser out of old quirks mode into standards mode. It does not load any engine, set the encoding (that is meta charset), or create an element.",
+        "fr": "DOCTYPE fait sortir le navigateur de l'ancien mode quirks pour passer en mode standards. Il ne charge aucun moteur, ne définit pas l'encodage (c'est le rôle de meta charset) et ne crée aucun élément.",
+        "ar": "يخرج DOCTYPE المتصفح من وضع الأخطاء القديم (quirks mode) إلى وضع المعايير الحديثة. فهو لا يُحمّل أي محرك، ولا يحدد الترميز (هذه مهمة meta charset)، ولا يُنشئ أي عنصر."
+      }
+    },
+    {
+      "id": 2,
+      "question": {
+        "en": "Which statement about the <head> section is correct?",
+        "fr": "Quelle affirmation à propos de la section <head> est correcte ?",
+        "ar": "أي عبارة عن قسم <head> صحيحة؟"
+      },
+      "options": [
+        "Everything inside it appears at the top of the page",
+        "None of its content is rendered on the page itself",
+        "It always needs to contain at least one image",
+        "It only works when placed after the body tag"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "The head holds metadata — title, charset, stylesheets, SEO tags — none of which renders visibly. Everything the visitor actually sees lives in the body.",
+        "fr": "La balise head contient des métadonnées — titre, encodage, feuilles de style, balises SEO — dont aucune ne s'affiche visuellement. Tout ce que le visiteur voit se trouve dans le body.",
+        "ar": "يحتوي head على بيانات وصفية — العنوان، الترميز، أوراق الأنماط، علامات تحسين محركات البحث — ولا يُعرض أي منها بصريًا. كل ما يراه الزائر فعليًا يوجد داخل body."
+      }
+    },
+    {
+      "id": 3,
+      "question": {
+        "en": "Why should <meta charset=\"UTF-8\"> be the very first tag inside <head>?",
+        "fr": "Pourquoi <meta charset=\"UTF-8\"> doit-elle être la toute première balise dans <head> ?",
+        "ar": "لماذا يجب أن تكون <meta charset=\"UTF-8\"> أول علامة داخل <head>؟"
+      },
+      "options": [
+        "It makes the page load faster on mobile devices",
+        "It stops accents and emoji from rendering as garbage",
+        "It tells search engines which language to index under",
+        "It is required before any CSS file can be linked"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Without an early charset declaration, accented letters and emoji can render as broken characters. It has nothing to do with mobile speed, search indexing or loading CSS.",
+        "fr": "Sans une déclaration d'encodage précoce, les lettres accentuées et les emoji peuvent s'afficher comme des caractères corrompus. Cela n'a rien à voir avec la vitesse mobile, l'indexation ou le chargement du CSS.",
+        "ar": "بدون تحديد الترميز في البداية، قد تُعرض الحروف المُنقّطة والرموز التعبيرية كرموز مشوّهة. لا علاقة لذلك بسرعة الهاتف أو الفهرسة أو تحميل CSS."
+      }
+    },
+    {
+      "id": 4,
+      "question": {
+        "en": "A site looks fine on desktop but forces mobile visitors to pinch and zoom. Which tag is most likely missing?",
+        "fr": "Un site s'affiche bien sur ordinateur mais force les visiteurs mobiles à zoomer avec les doigts. Quelle balise manque le plus probablement ?",
+        "ar": "يبدو الموقع جيدًا على الحاسوب لكنه يجبر زوار الهاتف على التكبير بأصابعهم. ما العلامة الأكثر احتمالًا أن تكون مفقودة؟"
+      },
+      "options": [
+        "The viewport meta tag, set to the device's width",
+        "The charset meta tag, declaring UTF-8 encoding",
+        "The favicon link tag pointing at an icon file",
+        "The meta description tag used for search results"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "Without a viewport meta tag, phones render the page at a shrunk-down desktop width, forcing visitors to zoom in. Charset, favicon and description solve completely different problems.",
+        "fr": "Sans balise meta viewport, les téléphones affichent la page à une largeur de bureau réduite, forçant les visiteurs à zoomer. L'encodage, le favicon et la description résolvent des problèmes totalement différents.",
+        "ar": "بدون علامة meta viewport، تعرض الهواتف الصفحة بعرض سطح مكتب مصغّر، مما يجبر الزوار على التكبير. الترميز والأيقونة والوصف تحل مشاكل مختلفة تمامًا."
+      }
+    },
+    {
+      "id": 5,
+      "question": {
+        "en": "Which tag most directly controls the summary text shown under your link in Google search results?",
+        "fr": "Quelle balise contrôle le plus directement le texte de résumé affiché sous votre lien dans les résultats Google ?",
+        "ar": "أي علامة تتحكم بشكل مباشر في النص الملخّص الذي يظهر تحت رابطك في نتائج بحث جوجل؟"
+      },
+      "options": [
+        "<title>",
+        "<meta name=\"description\">",
+        "<meta charset>",
+        "<link rel=\"icon\">"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Google often uses the meta description verbatim as the snippet under the link. Title controls the clickable headline itself, not the summary line beneath it.",
+        "fr": "Google utilise souvent le meta description tel quel comme extrait sous le lien. Le title contrôle le titre cliquable lui-même, pas la ligne de résumé en dessous.",
+        "ar": "غالبًا ما تستخدم جوجل meta description كما هي كنص مقتطف تحت الرابط. أما title فيتحكم في العنوان القابل للنقر نفسه، لا في سطر الملخص أسفله."
+      }
+    },
+    {
+      "id": 6,
+      "question": {
+        "en": "Which element should wrap the one block of content that is unique to the current page?",
+        "fr": "Quel élément doit envelopper le bloc de contenu unique à la page actuelle ?",
+        "ar": "أي عنصر يجب أن يُحيط بالجزء الوحيد من المحتوى الخاص بالصفحة الحالية؟"
+      },
+      "options": [
+        "<section>",
+        "<article>",
+        "<main>",
+        "<header>"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "There should be exactly one <main> per page, holding the content unique to it. Section groups themed content, article is self-contained content, and header is the introductory band.",
+        "fr": "Il ne doit y avoir qu'un seul <main> par page, contenant le contenu qui lui est propre. Section regroupe du contenu thématique, article est un contenu autonome, et header est la bande d'introduction.",
+        "ar": "يجب أن يكون هناك <main> واحد فقط في كل صفحة، يحتوي على المحتوى الخاص بها. أما section فتجمع محتوى موضوعيًا، وarticle محتوى مستقل بذاته، وheader هو الشريط التمهيدي."
+      }
+    },
+    {
+      "id": 7,
+      "question": {
+        "en": "A blog post that would still make sense if copied onto another site belongs inside which tag?",
+        "fr": "Un article de blog qui garderait son sens s'il était copié sur un autre site doit se trouver dans quelle balise ?",
+        "ar": "منشور مدونة يظل مفهومًا حتى لو نُقل إلى موقع آخر، أي علامة يجب أن يوضع داخلها؟"
+      },
+      "options": [
+        "<section>",
+        "<article>",
+        "<div>",
+        "<aside>"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "article marks content that stands on its own, like a blog post or a product card. Section groups related content under one heading but doesn't need to be independently meaningful.",
+        "fr": "article marque un contenu autonome, comme un article de blog ou une fiche produit. Section regroupe du contenu lié sous un même titre mais n'a pas besoin d'être significatif seul.",
+        "ar": "تُستخدم article لتمييز محتوى مستقل بذاته، كمنشور مدونة أو بطاقة منتج. أما section فتجمع محتوى مرتبطًا تحت عنوان واحد دون أن يكون مستقلًا بالضرورة."
+      }
+    },
+    {
+      "id": 8,
+      "question": {
+        "en": "You need to underline three words in the middle of a sentence without starting a new line. Which tag fits?",
+        "fr": "Vous devez souligner trois mots au milieu d'une phrase sans créer de nouvelle ligne. Quelle balise convient ?",
+        "ar": "تحتاج إلى وضع خط تحت ثلاث كلمات في وسط جملة دون بدء سطر جديد. أي علامة تناسب ذلك؟"
+      },
+      "options": [
+        "<div>",
+        "<span>",
+        "<p>",
+        "<section>"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "span is an inline container with no meaning of its own, meant exactly for styling a few words mid-sentence. div, p and section are all block-level and would break the line.",
+        "fr": "span est un conteneur en ligne sans signification propre, conçu justement pour styliser quelques mots au milieu d'une phrase. div, p et section sont tous de niveau bloc et créeraient une nouvelle ligne.",
+        "ar": "span هو عنصر مضمّن (inline) بلا معنى خاص به، ومصمم تمامًا لتنسيق بعض الكلمات وسط الجملة. أما div وp وsection فهي عناصر على مستوى الكتلة (block) وستبدأ سطرًا جديدًا."
+      }
+    },
+    {
+      "id": 9,
+      "question": {
+        "en": "<ol start=\"3\" type=\"A\"> produces a list that does what?",
+        "fr": "<ol start=\"3\" type=\"A\"> produit une liste qui fait quoi ?",
+        "ar": "ماذا تنتج <ol start=\"3\" type=\"A\">؟"
+      },
+      "options": [
+        "Begins numbering at 3, displayed using letters",
+        "Begins numbering at 1, displayed using roman numerals",
+        "Reverses the order of the items automatically",
+        "Begins numbering at 3, displayed using numerals"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "start sets the first counted value, and type controls the style of the marker — A gives letters instead of numbers. Neither attribute reverses order.",
+        "fr": "start définit la première valeur comptée, et type contrôle le style du marqueur — A donne des lettres au lieu de chiffres. Aucun des deux attributs n'inverse l'ordre.",
+        "ar": "يحدد start أول قيمة تُعد منها، ويتحكم type في شكل الترقيم — فـ A يعطي حروفًا بدل الأرقام. لا يعكس أي من الخاصيتين ترتيب العناصر."
+      }
+    },
+    {
+      "id": 10,
+      "question": {
+        "en": "What is the main purpose of the alt attribute on an <img>?",
+        "fr": "Quel est le rôle principal de l'attribut alt sur une balise <img> ?",
+        "ar": "ما هو الغرض الأساسي من خاصية alt في <img>؟"
+      },
+      "options": [
+        "It sets the maximum file size for the image",
+        "It provides an accessible name for screen readers",
+        "It controls how quickly the browser loads the image",
+        "It automatically adds a caption below the image"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "alt is read aloud by screen readers and shown if the image fails to load — it is the image's accessible name, not a file-size, speed or caption setting.",
+        "fr": "alt est lu à voix haute par les lecteurs d'écran et affiché si l'image ne se charge pas — c'est le nom accessible de l'image, pas un réglage de taille, de vitesse ou de légende.",
+        "ar": "تُقرأ alt بصوت عالٍ عبر قارئات الشاشة وتظهر إذا فشل تحميل الصورة — فهي الاسم المتاح للصورة، لا إعداد حجم أو سرعة أو تعليق."
+      }
+    },
+    {
+      "id": 11,
+      "question": {
+        "en": "In <th scope=\"col\">Day</th>, what does scope=\"col\" communicate to assistive technology?",
+        "fr": "Dans <th scope=\"col\">Day</th>, que communique scope=\"col\" aux technologies d'assistance ?",
+        "ar": "في <th scope=\"col\">Day</th>، بماذا يُخبر scope=\"col\" التقنيات المساعدة؟"
+      },
+      "options": [
+        "This header describes the whole column below",
+        "This cell must be centered visually on the page",
+        "This cell spans across two columns of the table",
+        "This cell holds only numeric data values"
+      ],
+      "correctAnswer": 0,
+      "explanation": {
+        "en": "scope=\"col\" tells assistive tech that this header cell describes every cell in the column below it, not just the one cell next to it.",
+        "fr": "scope=\"col\" indique aux technologies d'assistance que cette cellule d'en-tête décrit toutes les cellules de la colonne en dessous, pas seulement la cellule voisine.",
+        "ar": "يُخبر scope=\"col\" التقنيات المساعدة أن هذه الخلية الرأسية تصف كل الخلايا في العمود أسفلها، وليس فقط الخلية المجاورة."
+      }
+    },
+    {
+      "id": 12,
+      "question": {
+        "en": "What does colspan=\"2\" do to a table cell?",
+        "fr": "Que fait colspan=\"2\" à une cellule de tableau ?",
+        "ar": "ماذا تفعل colspan=\"2\" بخلية الجدول؟"
+      },
+      "options": [
+        "Splits the cell into two smaller cells",
+        "Merges the cell across two columns",
+        "Merges the cell across two rows",
+        "Doubles the cell's font size"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "colspan merges a cell horizontally across the given number of columns. rowspan does the equivalent down rows — the two are easy to swap by mistake.",
+        "fr": "colspan fusionne une cellule horizontalement sur le nombre de colonnes indiqué. rowspan fait l'équivalent verticalement sur les lignes — les deux sont faciles à confondre.",
+        "ar": "تدمج colspan خلية أفقيًا عبر عدد الأعمدة المحدد. وتقوم rowspan بالمثل عموديًا عبر الصفوف — ويسهل الخلط بينهما."
+      }
+    },
+    {
+      "id": 13,
+      "question": {
+        "en": "Adding required to an <input> does what when the form is submitted empty?",
+        "fr": "Que fait l'ajout de required à un <input> lorsque le formulaire est soumis vide ?",
+        "ar": "ماذا يفعل إضافة required إلى <input> عند إرسال النموذج فارغًا؟"
+      },
+      "options": [
+        "Silently allows the empty submission through",
+        "The browser blocks it and prompts for a value",
+        "Automatically fills in a default placeholder value",
+        "Converts the field into a read-only field"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "required makes the browser refuse to submit the form until that field has a value, and it shows a built-in prompt — no JavaScript needed.",
+        "fr": "required empêche le navigateur de soumettre le formulaire jusqu'à ce que ce champ ait une valeur, et affiche une invite intégrée — sans JavaScript.",
+        "ar": "تجعل required المتصفح يرفض إرسال النموذج حتى يحتوي هذا الحقل على قيمة، ويعرض تنبيهًا مدمجًا دون الحاجة إلى JavaScript."
+      }
+    },
+    {
+      "id": 14,
+      "question": {
+        "en": "Why do most teams prefer rem over em for font sizing?",
+        "fr": "Pourquoi la plupart des équipes préfèrent rem à em pour la taille de police ?",
+        "ar": "لماذا تفضل أغلب الفرق استخدام rem على em لتحديد حجم الخط؟"
+      },
+      "options": [
+        "rem is supported in more browsers than em is",
+        "em always renders text larger than rem does",
+        "rem points at the root size, so it never compounds",
+        "rem automatically adjusts itself to the viewport width"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "em is relative to the parent's font size and compounds when nested, getting hard to predict. rem always points at the root <html> size, so it never compounds.",
+        "fr": "em est relatif à la taille de police du parent et se compose en cas d'imbrication, devenant difficile à prévoir. rem pointe toujours vers la taille de la racine <html>, donc il ne se compose jamais.",
+        "ar": "يعتمد em على حجم خط العنصر الأب ويتراكم عند التداخل، فيصعب التنبؤ به. أما rem فيشير دائمًا إلى حجم الجذر <html>، فلا يتراكم أبدًا."
+      }
+    },
+    {
+      "id": 15,
+      "question": {
+        "en": "In rgba(255, 0, 0, 0.33), what does the last value control?",
+        "fr": "Dans rgba(255, 0, 0, 0.33), que contrôle la dernière valeur ?",
+        "ar": "في rgba(255, 0, 0, 0.33)، ماذا تتحكم القيمة الأخيرة؟"
+      },
+      "options": [
+        "How much blue is mixed into the colour",
+        "How saturated the colour appears",
+        "How transparent or solid the colour is",
+        "How bright the colour appears on screen"
+      ],
+      "correctAnswer": 2,
+      "explanation": {
+        "en": "The fourth value in rgba is alpha: 0 is fully invisible, 1 is fully solid. The first three values are the red, green and blue channels, already fixed by this point.",
+        "fr": "La quatrième valeur dans rgba est l'alpha : 0 est totalement invisible, 1 est totalement opaque. Les trois premières valeurs sont les canaux rouge, vert et bleu, déjà fixés.",
+        "ar": "القيمة الرابعة في rgba هي قناة الشفافية (alpha): القيمة 0 تعني غير مرئية تمامًا، و1 تعني صلبة تمامًا. القيم الثلاث الأولى هي قنوات الأحمر والأخضر والأزرق."
+      }
+    },
+    {
+      "id": 16,
+      "question": {
+        "en": "A box has width: 200px; padding: 20px; border: 5px solid black; with default box-sizing. How wide does it render?",
+        "fr": "Une boîte a width: 200px; padding: 20px; border: 5px solid black; avec le box-sizing par défaut. Quelle largeur s'affiche-t-elle ?",
+        "ar": "لعنصر width: 200px; padding: 20px; border: 5px solid black; مع box-sizing الافتراضي، كم يكون عرضه الفعلي؟"
+      },
+      "options": [
+        "200px",
+        "220px",
+        "240px",
+        "250px"
+      ],
+      "correctAnswer": 3,
+      "explanation": {
+        "en": "By default, padding and border add to the declared width on both sides: 200 + 20 + 20 + 5 + 5 = 250px.",
+        "fr": "Par défaut, le padding et la bordure s'ajoutent à la largeur déclarée des deux côtés : 200 + 20 + 20 + 5 + 5 = 250px.",
+        "ar": "بشكل افتراضي، تُضاف الحشوة والحد إلى العرض المعلن من الجانبين: 200 + 20 + 20 + 5 + 5 = 250 بكسل."
+      }
+    },
+    {
+      "id": 17,
+      "question": {
+        "en": "An element has top: 10px; but no position property set at all. What happens?",
+        "fr": "Un élément a top: 10px; mais aucune propriété position définie. Que se passe-t-il ?",
+        "ar": "لعنصر top: 10px; دون تحديد خاصية position، ماذا يحدث؟"
+      },
+      "options": [
+        "It shifts down by exactly 10 pixels from its spot",
+        "Nothing moves, since top is ignored when static",
+        "The browser throws a rendering error and stops",
+        "It moves up 10px instead of moving down"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "Every element starts as position: static, and static elements silently ignore top, right, bottom and left. CSS never errors here — it just does nothing.",
+        "fr": "Chaque élément commence en position: static, et les éléments statiques ignorent silencieusement top, right, bottom et left. CSS ne génère jamais d'erreur ici — il ne fait simplement rien.",
+        "ar": "يبدأ كل عنصر بوضعية position: static، والعناصر الثابتة تتجاهل بصمت top وright وbottom وleft. لا يُصدر CSS أي خطأ هنا — بل لا يفعل شيئًا فقط."
+      }
+    },
+    {
+      "id": 18,
+      "question": {
+        "en": "A section heading uses position: sticky; top: 0;. How does it behave as the page scrolls?",
+        "fr": "Un titre de section utilise position: sticky; top: 0;. Comment se comporte-t-il lors du défilement de la page ?",
+        "ar": "يستخدم عنوان قسم position: sticky; top: 0;. كيف يتصرف عند تمرير الصفحة؟"
+      },
+      "options": [
+        "It stays pinned to the browser window immediately",
+        "It behaves normally, then sticks once scrolled to",
+        "It is removed from the page's flow right away",
+        "It only works if JavaScript scrolls the page for it"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "sticky behaves like a normal, relatively positioned element until the scroll position hits the threshold, then it holds in place — unlike fixed, which is pinned from the start.",
+        "fr": "sticky se comporte comme un élément normal en position relative jusqu'à ce que le défilement atteigne le seuil, puis il reste fixé en place — contrairement à fixed, qui est fixé dès le début.",
+        "ar": "يتصرف sticky كعنصر عادي بوضعية relative إلى أن يصل التمرير إلى الحد المحدد، ثم يثبت في مكانه — بخلاف fixed الذي يكون مثبتًا منذ البداية."
+      }
+    },
+    {
+      "id": 19,
+      "question": {
+        "en": "What is the key difference between overflow: hidden and visibility: hidden on the same element?",
+        "fr": "Quelle est la différence clé entre overflow: hidden et visibility: hidden sur le même élément ?",
+        "ar": "ما الفرق الأساسي بين overflow: hidden وvisibility: hidden على نفس العنصر؟"
+      },
+      "options": [
+        "overflow: hidden removes the element from the page",
+        "visibility: hidden still reserves its empty space",
+        "overflow: hidden only affects images, never text",
+        "visibility: hidden also deletes the element's DOM node"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "visibility: hidden hides the element but keeps its space reserved, so the layout does not shift. overflow: hidden clips content spilling past the box's edge but keeps the box itself fully present and visible.",
+        "fr": "visibility: hidden masque l'élément mais conserve son espace réservé, donc la mise en page ne bouge pas. overflow: hidden coupe le contenu qui dépasse la boîte, mais la boîte elle-même reste présente et visible.",
+        "ar": "تُخفي visibility: hidden العنصر مع الاحتفاظ بمساحته المحجوزة، فلا يتغير التخطيط. أما overflow: hidden فتقصّ المحتوى الذي يتجاوز حدود الصندوق، بينما يبقى الصندوق نفسه ظاهرًا بالكامل."
+      }
+    },
+    {
+      "id": 20,
+      "question": {
+        "en": "Two overlapping elements both have position: relative;, and one has a higher z-index. What decides which one shows on top?",
+        "fr": "Deux éléments qui se chevauchent ont tous deux position: relative;, et l'un a un z-index plus élevé. Qu'est-ce qui décide lequel s'affiche au-dessus ?",
+        "ar": "عنصران متداخلان كلاهما بوضعية position: relative;، وأحدهما بقيمة z-index أعلى. ما الذي يحدد أيهما يظهر في الأعلى؟"
+      },
+      "options": [
+        "The element that appears later in the HTML always wins",
+        "The higher z-index value stacks above the other one",
+        "z-index only matters if both elements are the same size",
+        "Neither element can overlap once relative is set"
+      ],
+      "correctAnswer": 1,
+      "explanation": {
+        "en": "z-index only takes effect on positioned elements (relative, absolute, fixed or sticky), and between two such elements the higher value stacks on top, regardless of source order.",
+        "fr": "z-index n'a d'effet que sur les éléments positionnés (relative, absolute, fixed ou sticky), et entre deux tels éléments, la valeur la plus élevée s'affiche au-dessus, quel que soit l'ordre dans le code.",
+        "ar": "لا تعمل z-index إلا على العناصر المتموضعة (relative أو absolute أو fixed أو sticky)، وبين عنصرين من هذا النوع، تظهر القيمة الأعلى فوق الأخرى بصرف النظر عن ترتيبها في الكود."
+      }
+    }
+  ]
+}

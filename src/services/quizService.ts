@@ -1,4 +1,5 @@
 import webFundamentals from '../data/quizzes/web-fundamentals.json';
+import htmlCssBasics from '../data/quizzes/html-css-basics.json';
 
 export interface QuizQuestion {
   id: number;
@@ -56,6 +57,14 @@ export const availableQuizzes = [
     category: 'Programming',
     difficulty: 'Easy' as const,
     languages: ['en', 'fr', 'ar']
+  },
+  {
+    id: 'html-css-basics',
+    title: 'HTML & CSS Basics Quiz',
+    description: 'Document structure, semantic tags, tables and forms, colours and units, the box model, backgrounds and positioning.',
+    category: 'Programming',
+    difficulty: 'Medium' as const,
+    languages: ['en', 'fr', 'ar']
   }
 ];
 
@@ -64,6 +73,10 @@ const quizData: Record<string, QuizData> = {
   'web-fundamentals': {
     ...webFundamentals,
     difficulty: 'Easy' as const
+  },
+  'html-css-basics': {
+    ...htmlCssBasics,
+    difficulty: 'Medium' as const
   }
 };
 
