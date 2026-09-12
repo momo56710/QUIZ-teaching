@@ -316,7 +316,7 @@
       "options": [
         "200px",
         "220px",
-        "240px",
+        "225px",
         "250px"
       ],
       "correctAnswer": 3,
@@ -334,10 +334,10 @@
         "ar": "لعنصر top: 10px; دون تحديد خاصية position، ماذا يحدث؟"
       },
       "options": [
-        "It shifts down by exactly 10 pixels from its spot",
-        "Nothing moves, since top is ignored when static",
-        "The browser throws a rendering error and stops",
-        "It moves up 10px instead of moving down"
+        "It shifts down",
+        "Nothing moves",
+        "The browser throws amn error",
+        "It moves up 10px"
       ],
       "correctAnswer": 1,
       "explanation": {
@@ -354,10 +354,10 @@
         "ar": "يستخدم عنوان قسم position: sticky; top: 0;. كيف يتصرف عند تمرير الصفحة؟"
       },
       "options": [
-        "It stays pinned to the browser window immediately",
+        "It stays pinned to the browser window",
         "It behaves normally, then sticks once scrolled to",
-        "It is removed from the page's flow right away",
-        "It only works if JavaScript scrolls the page for it"
+        "It is removed from the page's flow",
+        "It will always appear in the start"
       ],
       "correctAnswer": 1,
       "explanation": {
